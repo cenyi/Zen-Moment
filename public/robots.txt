@@ -1,0 +1,8 @@
+# robots.txt for Zen Moment
+# https://zenmoment.net/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zenmoment.net/sitemap.xml

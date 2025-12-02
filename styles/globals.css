@@ -1,0 +1,189 @@
+/*
+  Zen Moment - Global Styles
+  Optimized for minimal bundle size and modern browsers
+*/
+
+/* Reset and base styles - Critical */
+:root {
+  --neumorphic-light-bg: #ffffff;      /* 纯净白色背景，避免灰暗感 */
+  --neumorphic-light-shadow: #cfd7e6;   /* 更深的阴影，增强立体感和对比度 */
+  --neumorphic-light-border: #a5b4fc;  /* 更明显的边界色，使用蓝色调 */
+  --neumorphic-light-flat: #e5e9f0;     /* 更明显的平面效果 */
+  --neumorphic-light-tips: #1e293b;    /* 更深的文字，确保高对比度 */
+  --neumorphic-light-muted: #475569;    /* 更深的中性灰，符合 WCAG AA 标准 */
+
+  --neumorphic-dark-bg: #2d3748;
+  --neumorphic-dark-shadow: #1a202c;
+  --neumorphic-dark-border: #374151;
+  --neumorphic-dark-flat: #374151;
+  --neumorphic-dark-tips: #e5e7eb;
+  --neumorphic-dark-muted: #6b7280;
+
+  --blue-400: #60a5fa;
+  --blue-600: #2563eb;
+  --green-400: #4ade80;
+  --green-600: #16a34a;
+  --purple-400: #a78bfa;
+  --purple-600: #7c3aed;
+  --red-400: #f87171;
+  --red-600: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* 注意：新拟态样式已统一使用 Tailwind 工具类，请使用 bg-neumorphic-light、shadow-neumorphic 等 */
+
+.neumorphic-tips-light {
+  color: var(--neumorphic-light-tips);
+}
+
+.neumorphic-tips-dark {
+  color: var(--neumorphic-dark-tips);
+}
+
+.neumorphic-muted-light {
+  color: var(--neumorphic-light-muted);
+}
+
+.neumorphic-muted-dark {
+  color: var(--neumorphic-dark-muted);
+}
+
+/* Animation styles - Optimized for performance */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-delay {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-delay-2 {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fade-in-delay-2 1s ease-out forwards;
+}
+
+/* Loading states - Critical for perceived performance */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Pulse animation for active states - Used sparingly */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Hover effects - Hardware accelerated */
+.hover-scale {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-scale:active {
+  transform: scale(0.95);
+}
+
+/* Focus styles - Accessibility optimized */
+.focus-ring {
+  outline: none;
+  position: relative;
+}
+
+.focus-ring:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--blue-600);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Utilities - Minimal set */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+
+.hidden { display: none; }
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+/* Screen reader only - Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Print styles - Minimal */
+@media print {
+  .neumorphic,
+  .neumorphic-dark {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+
+  button,
+  a {
+    color: #000 !important;
+    background: transparent !important;
+  }
+}

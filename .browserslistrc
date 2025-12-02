@@ -1,0 +1,7 @@
+# Modern browsers that don't need polyfills
+Chrome >= 110
+Firefox >= 115
+Safari >= 16
+Edge >= 110
+iOS >= 16
+Android >= 110

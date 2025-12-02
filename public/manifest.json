@@ -1,0 +1,25 @@
+{
+  "name": "Zen Moment",
+  "short_name": "Zen Moment",
+  "description": "Simple and private meditation timer with 4-7-8 breathing exercises. No tracking, no ads, just peace.",
+  "categories": ["health", "lifestyle", "wellness"],
+  "lang": "en",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/android-chrome-512x512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

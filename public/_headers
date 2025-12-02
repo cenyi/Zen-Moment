@@ -1,0 +1,44 @@
+# Cloudflare Pages Headers 配置
+# 这个文件确保安全头部和缓存策略正确应用
+
+# 基础安全头部
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# 静态资源永久缓存
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 图片资源缓存
+/images/*
+  Cache-Control: public, max-age=86400
+
+# 根路径短期缓存
+/
+  Cache-Control: public, max-age=3600
+
+# HTML 文件缓存策略
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Manifest 文件缓存
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+# Favicon 缓存
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+# 其他图标文件缓存
+/*.png
+  Cache-Control: public, max-age=86400
+
+/*.ico
+  Cache-Control: public, max-age=86400
+
+/*.svg
+  Cache-Control: public, max-age=86400

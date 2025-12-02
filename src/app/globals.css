@@ -1,0 +1,494 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义工具类 */
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+  
+  /* 拟物化风格样式 - 移至文件底部统一定义，避免重复 */
+  
+    
+  .text-neumorphic-tips-light {
+    color: #1a202c;
+  }
+
+  .text-neumorphic-tips-dark {
+    color: #f7fafc; /* 更亮的颜色，提升对比度 */
+  }
+  
+  .text-neumorphic-muted-light {
+    color: #718096;
+  }
+  
+  .text-neumorphic-muted-dark {
+    color: #e2e8f0; /* 更亮的颜色，进一步提升对比度 */
+  }
+  
+  /* 注意：阴影样式已统一使用 Tailwind 配置中的标准工具类 */
+  
+  /* 注意：悬停和按下效果已统一使用 Tailwind 的 hover: 和 active: 变体 */
+  
+  /* 圆形进度条样式 */
+  .progress-circle-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* 呼吸动画 */
+  @keyframes breathing {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 0.7; }
+  }
+  
+  .animate-breathing {
+    animation: breathing 4s infinite ease-in-out;
+  }
+  
+  /* 脉冲动画 */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s infinite ease-in-out;
+  }
+  
+  /* 渐变背景动画 */
+  @keyframes gradientBg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .animate-gradient-bg {
+    background-size: 200% 200%;
+    animation: gradientBg 15s ease infinite;
+  }
+  
+  /* 骨架屏动画 */
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+  
+  @keyframes ping-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.15;
+      transform: scale(1.2);
+    }
+  }
+  
+  .animate-ping-slow {
+    animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  
+  /* 淡入动画 */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeIn 0.5s ease-out 0.2s both;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.5s ease-out 0.4s both;
+  }
+  
+  /* 缩放进入动画 */
+  @keyframes scaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  /* 平滑移动动画 */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.4s ease-out;
+  }
+  
+  /* 按钮按下效果 */
+  .press-effect {
+    transition: transform 0.1s ease;
+  }
+  
+  .press-effect:active {
+    transform: scale(0.97);
+  }
+  
+  /* 工具提示样式 */
+  .tooltip {
+    position: relative;
+  }
+  
+  .tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+  
+  .tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* 响应式间距调整 */
+  .responsive-gap {
+    gap: clamp(1rem, 4vw, 2rem);
+  }
+  
+  /* 粒子动画 - 呼吸效果 */
+  @keyframes particleFloat0 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-20px, -20px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat1 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(0, -25px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat2 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(20px, -20px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat3 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(25px, 0) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat4 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(20px, 20px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat5 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(0, 25px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat6 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-20px, 20px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes particleFloat7 {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-25px, 0) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  /* 高对比度模式支持 */
+  @media (prefers-contrast: high) {
+    .bg-neumorphic-light {
+      background-color: #ffffff;
+    }
+    
+    .bg-neumorphic-dark {
+      background-color: #000000;
+    }
+    
+    .text-neumorphic-tips-light {
+      color: #000000;
+    }
+    
+    .text-neumorphic-tips-dark {
+      color: #ffffff;
+    }
+  }
+  
+  /* 注意：移动端优化已移至 Tailwind 工具类，使用 md:lg: 等响应式变体 */
+
+  /* 新拟态卡片专用工具类 - 简化版本，避免@apply错误 */
+  .neumorphic-card {
+    border-radius: 1rem;
+    border: 1px solid;
+    transition: all 0.3s ease;
+  }
+
+  .neumorphic-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .neumorphic-card-dark {
+    background: linear-gradient(to bottom right, rgba(31, 41, 55, 0.5), rgba(55, 65, 81, 0.3));
+    border-color: rgba(75, 85, 99, 0.4);
+    box-shadow: 20px 20px 40px #080b0e, -20px -20px 40px #b8c1cc;
+  }
+
+  .neumorphic-card-light {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.5), rgba(249, 250, 251, 0.3));
+    border-color: rgba(156, 163, 175, 0.5);
+    box-shadow: 20px 20px 40px #9ca6b4, -20px -20px 40px #ffffff;
+  }
+
+  .neumorphic-inset-card {
+    border-radius: 0.5rem;
+    border: 1px solid;
+    transition: all 0.3s ease;
+  }
+
+  .neumorphic-inset-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: inset 10px 10px 20px #080b0e, inset -10px -10px 20px #b8c1cc, 0 0 15px rgba(59, 130, 246, 0.2);
+  }
+
+  .neumorphic-inset-card-dark {
+    background: linear-gradient(to bottom right, rgba(55, 65, 81, 0.5), rgba(31, 41, 55, 0.3));
+    border-color: rgba(75, 85, 99, 0.35);
+    box-shadow: inset 10px 10px 20px #080b0e, inset -10px -10px 20px #b8c1cc;
+  }
+
+  .neumorphic-inset-card-light {
+    background: linear-gradient(to bottom right, rgba(243, 244, 246, 0.5), rgba(255, 255, 255, 0.5));
+    border-color: rgba(156, 163, 175, 0.4);
+    box-shadow: inset 8px 8px 16px #9ca6b4, inset -8px -8px 16px #ffffff;
+  }
+
+  /* 屏幕阅读器专用内容 */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* 焦点指示器优化 */
+  .focus-indicator {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .focus-indicator:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* 高对比度焦点样式 */
+  @media (prefers-contrast: high) {
+    .focus-indicator:focus-visible {
+      outline: 3px solid #000;
+      outline-offset: 2px;
+    }
+  }
+
+  /* 减少动画模式支持 */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* 低端设备性能优化 */
+  @media (max-width: 768px) and (max-height: 800px) {
+    /* 进一步简化阴影 */
+    .neumorphic {
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.04);
+    }
+
+    .neumorphic-dark {
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* 减少复杂的渐变和背景 */
+    .animate-gradient-bg {
+      animation: none !important;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    }
+
+    .neumorphic-breathing {
+      animation: none !important;
+    }
+
+    /* 禁用高消耗的transform动画 */
+    .transform,
+    .hover\:scale-105:hover,
+    .hover\:shadow-xl:hover {
+      transform: none !important;
+    }
+  }
+
+  /* 极低端设备 */
+  @media (max-width: 480px) {
+    .animate-fade-in,
+    .animate-scale-in,
+    .animate-slide-in {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* 最小化阴影效果 */
+    .neumorphic,
+    .neumorphic-dark {
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
+    }
+
+    .neumorphic:hover,
+    .neumorphic-dark:hover {
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.15) !important;
+    }
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes neumorphic-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      12px 12px 24px #c5cdd8,
+      -12px -12px 24px #ffffff;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow:
+      14px 14px 28px #b8c0d0,
+      -14px -14px 28px #ffffff;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 新拟态基础样式 - 优化对比度 */
+/* 新拟态基础样式 - 优化对比度
+   注意：这些背景色现在由 Tailwind 配置的 colors.neumorphic 统一管理
+   避免重复定义，使用 bg-neumorphic-light 和 bg-neumorphic-dark 工具类
+*/
+
+/* 注意：新拟态样式已统一使用 Tailwind 工具类，请使用 bg-neumorphic-light、shadow-neumorphic 等 */
+
+/* 深色主题背景覆盖 - 优化对比度 */
+.dark body {
+  background: #1a202c;
+}
+
+.light body {
+  background: #e0e5ec;
+}
