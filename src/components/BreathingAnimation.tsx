@@ -232,7 +232,7 @@ export const BreathingAnimation = ({
               </p>
 
               <Link
-                href="/breathing"
+                href="/breathing-exercise"
                 className={`
                   inline-flex items-center space-x-2
                   px-6 py-3 rounded-xl

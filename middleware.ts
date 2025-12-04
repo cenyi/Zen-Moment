@@ -4,6 +4,18 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const url = request.nextUrl
 
+  // 从/breathing重定向到/breathing-exercise的301重定向
+  if (url.pathname === '/breathing') {
+    const { search, hash } = url
+    const newUrl = `/breathing-exercise${search}${hash}`
+    return NextResponse.redirect(new URL(newUrl, request.url), {
+      status: 301,
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
+    })
+  }
+
   // 如果 URL 以 / 结尾，重定向到无 / 的版本
   if (url.pathname !== '/' && url.pathname.endsWith('/')) {
     const newUrl = url.pathname.slice(0, -1) + url.search + url.hash

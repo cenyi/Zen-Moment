@@ -43,7 +43,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Quick Start</h2>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="/breathing"
+                href="/breathing-exercise"
                 className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
               >
                 Start Breathing Exercise

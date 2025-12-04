@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Free Breathing Exercises Online: 4-7-8, Box Breathing & Techniques | Zen Moment',
   description: 'Zen Moment: Free breathing exercises online including 4-7-8 breathing, box breathing, and deep breathing techniques for anxiety relief, better sleep, and stress reduction. Practice breathing exercises before sleep, during work, or anytime. Best free breathing exercises app.',
   alternates: {
-    canonical: '/breathing',
+    canonical: '/breathing-exercise',
   },
   openGraph: {
     title: 'Free Breathing Exercises Online: 4-7-8, Box Breathing & Techniques | Zen Moment',
     description: 'Zen Moment: Free breathing exercises online including 4-7-8 breathing, box breathing, and deep breathing techniques for anxiety relief, better sleep, and stress reduction. Practice breathing exercises before sleep, during work, or anytime. Best free breathing exercises app.',
-    url: 'https://zenmoment.net/breathing',
+    url: 'https://zenmoment.net/breathing-exercise',
     siteName: 'Zen Moment',
     type: 'website',
     images: [

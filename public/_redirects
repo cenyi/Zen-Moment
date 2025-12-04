@@ -3,7 +3,8 @@
 
 # 移除尾部斜杠的重定向（301永久重定向到不带尾斜杠版本）
 /about/    /about    301
-/breathing/    /breathing    301
+/breathing/    /breathing-exercise    301
+/breathing    /breathing-exercise    301
 /contact/    /contact    301
 /blog/    /blog    301
 /stats/    /stats    301

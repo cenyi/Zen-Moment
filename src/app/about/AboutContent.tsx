@@ -14,7 +14,7 @@ export function AboutContent() {
             <span className="text-white font-bold text-3xl">Z</span>
           </div>
           <h1 className={`text-5xl md:text-6xl font-light mb-6 ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>
-            Zen Moment
+            About Zen Moment - Your Digital Sanctuary for Mindfulness
           </h1>
           <p className={`text-xl leading-relaxed max-w-2xl mx-auto ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>
             Your digital sanctuary for meditation and mindfulness.
@@ -275,7 +275,7 @@ export function AboutContent() {
               Try Meditation Timer
             </a>
             <a
-              href="/breathing"
+              href="/breathing-exercise"
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 ${
                 theme === 'dark'
                   ? 'neumorphic-dark text-green-400 hover:text-green-300'

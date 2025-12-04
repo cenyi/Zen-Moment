@@ -18,7 +18,7 @@ export const Navigation = ({ theme = 'dark', onThemeToggle, soundEnabled, onSoun
 
   const navItems = [
     { label: 'Timer', href: '/' },
-    { label: 'Breathing', href: '/breathing' },
+    { label: 'Breathing', href: '/breathing-exercise' },
     { label: 'Stats', href: '/stats' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },

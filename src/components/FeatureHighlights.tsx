@@ -287,7 +287,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
                 variant="secondary"
                 size="lg"
                 theme={theme}
-                href="/breathing"
+                href="/breathing-exercise"
                 className="min-w-[180px] text-lg font-medium"
               >
                 <span className="flex items-center justify-center space-x-3">

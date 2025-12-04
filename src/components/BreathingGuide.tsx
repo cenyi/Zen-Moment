@@ -104,7 +104,7 @@ export const BreathingGuide = ({ theme = 'dark' }: BreathingGuideProps) => {
             variant="primary"
             size="lg"
             theme={theme}
-            href="/breathing"
+            href="/breathing-exercise"
             className="min-w-[200px] text-lg font-medium"
           >
             <span className="flex items-center justify-center space-x-3">

@@ -85,7 +85,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/breathing"
+                  href="/breathing-exercise"
                   className={`text-sm transition-colors duration-200 hover:text-blue-500 ${theme === 'dark' ? 'text-neumorphic-muted-dark' : 'text-neumorphic-muted-light'}`}
                 >
                   4-7-8 Breathing

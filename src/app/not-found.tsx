@@ -322,7 +322,7 @@ export default function NotFound() {
 
               {/* Breathing Button */}
               <button
-                onClick={() => router.push('/breathing')}
+                onClick={() => router.push('/breathing-exercise')}
                 className={getHighContrastClasses(`
                   relative group overflow-hidden
                   px-8 py-3 rounded-2xl
