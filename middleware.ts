@@ -4,10 +4,9 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const url = request.nextUrl
 
-  // 从/breathing重定向到/breathing-exercise的301重定向
-  if (url.pathname === '/breathing') {
-    const { search, hash } = url
-    const newUrl = `/breathing-exercise${search}${hash}`
+  // 处理呼吸练习页面的重定向
+  if (url.pathname === '/breathing' || url.pathname === '/breathing/') {
+    const newUrl = '/breathing-exercise' + url.search + url.hash
     return NextResponse.redirect(new URL(newUrl, request.url), {
       status: 301,
       headers: {

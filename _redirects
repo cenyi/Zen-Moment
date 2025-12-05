@@ -1,2 +1,23 @@
-# Cloudflare Pages redirects configuration
-/blog /blog/ 200
+# Cloudflare Pages 重定向规则
+# 简化配置以避免重定向循环
+
+# 移除尾部斜杠的重定向（301永久重定向到不带尾斜杠版本）
+/about/    /about    301
+/breathing/    /breathing-exercise    301
+/breathing    /breathing-exercise    301
+/breathing-exercise/    /breathing-exercise    301
+/contact/    /contact    301
+/blog/    /blog    301
+/stats/    /stats    301
+/privacy-policy/    /privacy-policy    301
+/terms-of-service/    /terms-of-service    301
+
+# 博客文章尾部斜杠处理
+/blog/dont-empty-your-mind-do-this-instead/    /blog/dont-empty-your-mind-do-this-instead    301
+/blog/the-3-minute-mental-reset-before-a-big-meeting/    /blog/the-3-minute-mental-reset-before-a-big-meeting    301
+/blog/when-focus-fails-the-archers-breath-for-deep-work/ /blog/when-focus-fails-the-archers-breath-for-deep-work    301
+/blog/the-samurais-meditation-cultivating-stillness-in-action/ /blog/the-samurais-meditation-cultivating-stillness-in-action    301
+
+# Sitemap 和 robots.txt 简便访问
+/sitemap    /sitemap.xml    200
+/robots    /robots.txt    200

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import BreathingPageClient from './BreathingPageClient'
+import BreathingPageClient from '../breathing/BreathingPageClient'
 
 export const metadata: Metadata = {
   title: 'Free Breathing Exercises Online: 4-7-8, Box Breathing & Techniques | Zen Moment',
@@ -31,6 +31,6 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BreathingPage() {
+export default function BreathingExercisePage() {
   return <BreathingPageClient />
 }

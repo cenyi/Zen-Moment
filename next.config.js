@@ -5,6 +5,15 @@ const nextConfig = {
     unoptimized: true,
   },
   distDir: 'out',
+  
+  // Configure redirects
+  async redirects() {
+    return [
+      // Redirect /breathing to /breathing-exercise
+      { source: '/breathing', destination: '/breathing-exercise', permanent: true },
+      { source: '/breathing/', destination: '/breathing-exercise', permanent: true },
+    ];
+  },
 
   // Optimize for modern browsers
   experimental: {
