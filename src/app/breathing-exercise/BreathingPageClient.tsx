@@ -56,7 +56,7 @@ export default function BreathingPageClient() {
     playBackgroundSound,
     stopBackgroundSound,
     setVolume: setBackgroundVolume
-  } = useBackgroundSound(backgroundSoundId, soundEnabled, storeIsBreathing)
+  } = useBackgroundSound(backgroundSoundId, soundEnabled, false)
 
   const {
     getBreathingText,
@@ -86,19 +86,6 @@ export default function BreathingPageClient() {
     setCustomBreathingPattern(pattern)
   }
 
-  // 处理背景声音设置
-  const handleBackgroundSoundChange = (soundId: string) => {
-    setBackgroundSoundId(soundId)
-    if (soundId === 'none') {
-      stopBackgroundSound()
-    } else {
-      // 延迟播放背景声音，确保用户交互已经发生
-      setTimeout(() => {
-        playBackgroundSound()
-      }, 100)
-    }
-  }
-
   // 监听呼吸阶段变化，播放声音提示
   useEffect(() => {
     if (storeIsBreathing && soundEnabled && breathingPhase) {
@@ -106,16 +93,29 @@ export default function BreathingPageClient() {
     }
   }, [breathingPhase, storeIsBreathing, soundEnabled, playBreathingPhaseSound])
 
-  // 监听呼吸练习状态，控制背景声音
+  // 统一管理背景音效逻辑
   useEffect(() => {
-    if (storeIsBreathing && backgroundSoundId !== 'none' && soundEnabled) {
-      // 呼吸练习开始时，播放背景声音
-      playBackgroundSound()
-    } else if (!storeIsBreathing) {
-      // 呼吸练习停止时，停止背景声音
+    // 优先级 1: 如果选择了 "None"，必须停止
+    if (backgroundSoundId === 'none') {
       stopBackgroundSound()
+      return
     }
-  }, [storeIsBreathing, backgroundSoundId, soundEnabled, playBackgroundSound, stopBackgroundSound])
+
+    // 优先级 2: 如果声音未启用，停止
+    if (!soundEnabled) {
+      stopBackgroundSound()
+      return
+    }
+
+    // 优先级 3: 如果正在呼吸且有有效的背景声音选择，播放
+    if (storeIsBreathing && backgroundSoundId !== 'none') {
+      playBackgroundSound()
+      return
+    }
+
+    // 优先级 4: 其他情况停止
+    stopBackgroundSound()
+  }, [backgroundSoundId, soundEnabled, storeIsBreathing, playBackgroundSound, stopBackgroundSound])
 
   // 全局键盘快捷键支持
   useEffect(() => {
@@ -182,8 +182,8 @@ export default function BreathingPageClient() {
       {/* 第一屏：沉浸式呼吸体验 */}
       <div className={`min-h-screen flex flex-col items-center px-4 pt-8 pb-2 ${
         theme === 'dark'
-          ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-          : 'bg-neumorphic-light text-neumorphic-tips-light'
+          ? 'bg-gradient-to-b from-neumorphic-dark via-gray-900 to-neumorphic-dark text-neumorphic-tips-dark'
+          : 'bg-gradient-to-b from-neumorphic-light via-gray-100 to-neumorphic-light text-neumorphic-tips-light'
       }`}>
         {/* 页面主标题 */}
         <h1 className={`text-3xl md:text-4xl font-light mb-8 text-center ${
@@ -256,31 +256,31 @@ export default function BreathingPageClient() {
                     breathingPhase === 'inhale' ? 'scale-110' : 'scale-100'
                   }`} />
 
-                  {/* 呼吸阶段指示器 */}
+                  {/* 呼吸阶段指示器 - 增强色彩饱和度 */}
                   <div className={`absolute inset-4 rounded-full flex items-center justify-center transition-all duration-1000 ${
                     breathingPhase === 'inhale'
                       ? breathingModeId === 'relax'
-                        ? 'bg-blue-600/20'
+                        ? 'bg-gradient-to-br from-blue-500/50 to-blue-600/40'
                         : breathingModeId === 'focus'
-                        ? 'bg-purple-600/20'
+                        ? 'bg-gradient-to-br from-purple-500/50 to-purple-600/40'
                         : breathingModeId === 'energy'
-                        ? 'bg-orange-600/20'
-                        : 'bg-green-600/20'
+                        ? 'bg-gradient-to-br from-orange-500/50 to-orange-600/40'
+                        : 'bg-gradient-to-br from-green-500/50 to-green-600/40'
                       : breathingPhase === 'hold'
                       ? breathingModeId === 'relax'
-                        ? 'bg-indigo-600/20'
+                        ? 'bg-gradient-to-br from-indigo-500/45 to-indigo-600/35'
                         : breathingModeId === 'focus'
-                        ? 'bg-violet-600/20'
+                        ? 'bg-gradient-to-br from-violet-500/45 to-violet-600/35'
                         : breathingModeId === 'energy'
-                        ? 'bg-red-600/20'
-                        : 'bg-teal-600/20'
+                        ? 'bg-gradient-to-br from-red-500/45 to-red-600/35'
+                        : 'bg-gradient-to-br from-teal-500/45 to-teal-600/35'
                       : breathingModeId === 'relax'
-                        ? 'bg-blue-600/10'
+                        ? 'bg-gradient-to-br from-blue-500/25 to-blue-600/15'
                         : breathingModeId === 'focus'
-                        ? 'bg-purple-600/10'
+                        ? 'bg-gradient-to-br from-purple-500/25 to-purple-600/15'
                         : breathingModeId === 'energy'
-                        ? 'bg-orange-600/10'
-                        : 'bg-green-600/10'
+                        ? 'bg-gradient-to-br from-orange-500/25 to-orange-600/15'
+                        : 'bg-gradient-to-br from-green-500/25 to-green-600/15'
                   }`} />
 
                   {/* 呼气时的粒子效果 */}
@@ -377,25 +377,27 @@ export default function BreathingPageClient() {
                 min-w-[260px] shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1
                 active:shadow-neumorphic-inset active:translate-y-0
                 ${theme === 'dark'
-                  ? 'neumorphic-dark text-blue-400 border border-gray-600/20 hover:border-gray-500/30'
-                  : 'neumorphic text-blue-600 border border-gray-400/25 hover:border-gray-500/35'
+                  ? 'bg-gradient-to-br from-cyan-600 to-blue-700 text-white border border-cyan-500/40 hover:border-cyan-400/60 hover:from-cyan-500 hover:to-blue-600'
+                  : 'bg-gradient-to-br from-cyan-500 to-blue-600 text-white border border-cyan-400/50 hover:border-cyan-300/70 hover:from-cyan-400 hover:to-blue-500'
                 }
               `}
             >
-              {/* 新拟态内部光晕效果 */}
-              <div className={`absolute inset-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl ${
-                theme === 'dark' ? 'neumorphic-dark-inset' : 'neumorphic-inset'
+              {/* 按钮背景光晕效果 */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl ${
+                theme === 'dark' 
+                  ? 'bg-gradient-to-br from-cyan-500/20 to-blue-600/20' 
+                  : 'bg-gradient-to-br from-cyan-400/20 to-blue-500/20'
               }`} />
 
               {/* 按钮文字和图标 */}
               <div className="relative flex items-center justify-center space-x-3">
-                <span className="text-3xl">◯</span>
+                <span className="text-3xl">▶️</span>
                 <span>Start Breathing</span>
               </div>
 
-              {/* 新拟态脉冲动画 */}
-              <div className={`absolute inset-0 rounded-3xl border-2 border-blue-400/30 animate-pulse opacity-75 ${
-                theme === 'dark' ? 'border-blue-600/30' : 'border-blue-500/30'
+              {/* 增强的脉冲动画 */}
+              <div className={`absolute inset-0 rounded-3xl border-2 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                theme === 'dark' ? 'border-cyan-400/50' : 'border-cyan-300/60'
               }`} />
             </button>
           ) : (
@@ -411,19 +413,21 @@ export default function BreathingPageClient() {
                   min-w-[160px] shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1
                   active:shadow-neumorphic-inset active:translate-y-0
                   ${theme === 'dark'
-                    ? 'neumorphic-dark text-yellow-400 border border-gray-600/15 hover:border-gray-500/25'
-                    : 'neumorphic text-yellow-600 border border-gray-400/20 hover:border-gray-500/30'
+                    ? 'bg-gradient-to-br from-amber-600 to-yellow-700 text-white border border-amber-500/40 hover:border-amber-400/60 hover:from-amber-500 hover:to-yellow-600'
+                    : 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white border border-amber-400/50 hover:border-amber-300/70 hover:from-amber-400 hover:to-yellow-500'
                   }
                 `}
               >
-                {/* 新拟态内部光晕效果 */}
-                <div className={`absolute inset-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${
-                  theme === 'dark' ? 'neumorphic-dark-inset' : 'neumorphic-inset'
+                {/* 按钮背景光晕效果 */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${
+                  theme === 'dark' 
+                    ? 'bg-gradient-to-br from-amber-500/20 to-yellow-600/20' 
+                    : 'bg-gradient-to-br from-amber-400/20 to-yellow-500/20'
                 }`} />
 
                 {/* 按钮文字和图标 */}
                 <div className="relative flex items-center justify-center space-x-2">
-                  <span className="text-2xl">❚❚</span>
+                  <span className="text-2xl">⏸️</span>
                   <span>Pause</span>
                 </div>
               </button>
@@ -439,14 +443,16 @@ export default function BreathingPageClient() {
                   min-w-[160px] shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1
                   active:shadow-neumorphic-inset active:translate-y-0
                   ${theme === 'dark'
-                    ? 'neumorphic-dark text-red-400 border border-gray-600/15 hover:border-gray-500/25'
-                    : 'neumorphic text-red-600 border border-gray-400/20 hover:border-gray-500/30'
+                    ? 'bg-gradient-to-br from-rose-600 to-red-700 text-white border border-rose-500/40 hover:border-rose-400/60 hover:from-rose-500 hover:to-red-600'
+                    : 'bg-gradient-to-br from-rose-500 to-red-600 text-white border border-rose-400/50 hover:border-rose-300/70 hover:from-rose-400 hover:to-red-500'
                   }
                 `}
               >
-                {/* 新拟态内部光晕效果 */}
-                <div className={`absolute inset-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${
-                  theme === 'dark' ? 'neumorphic-dark-inset' : 'neumorphic-inset'
+                {/* 按钮背景光晕效果 */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${
+                  theme === 'dark' 
+                    ? 'bg-gradient-to-br from-rose-500/20 to-red-600/20' 
+                    : 'bg-gradient-to-br from-rose-400/20 to-red-500/20'
                 }`} />
 
                 {/* 按钮文字和图标 */}

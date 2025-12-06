@@ -48,149 +48,108 @@ export const useBackgroundSound = (
   const handleUserInteraction = useCallback(() => {
     if (!userInteractionRef.current) {
       userInteractionRef.current = true
-      if (soundEnabled && status.isSupported && currentSound.file) {
-        loadBackgroundSound()
-      }
     }
-  }, [soundEnabled, status.isSupported, currentSound.file])
+  }, [])
 
-  // 加载背景声音
-  const loadBackgroundSound = useCallback(() => {
-    if (!status.isSupported || !currentSound.file || !userInteractionRef.current) return
-
-    try {
-      // 清理之前的音频
-      if (audioRef.current) {
+  // 停止背景声音 - 最关键的函数
+  const stopBackgroundSound = useCallback(() => {
+    console.log('[Audio] Stopping background sound')
+    if (audioRef.current) {
+      try {
         audioRef.current.pause()
-        audioRef.current.src = ''
-        audioRef.current = null
+        audioRef.current.currentTime = 0
+        console.log('[Audio] Stopped successfully')
+      } catch (error) {
+        console.warn('[Audio] Error stopping:', error)
       }
-
-      // 创建新的音频对象
-      const audio = new Audio()
-      audio.src = currentSound.file
-      audio.preload = 'auto'
-      audio.volume = status.volume
-      audio.loop = true // 背景声音循环播放
-      audio.crossOrigin = 'anonymous'
-
-      // 加载成功
-      audio.onloadeddata = () => {
-        audioRef.current = audio
-        setStatus(prev => ({ ...prev, loaded: true, error: null }))
-
-        // 如果设置了自动播放，尝试播放
-        if (autoPlay && soundEnabled) {
-          playBackgroundSound()
-        }
-      }
-
-      // 加载错误
-      audio.onerror = (error) => {
-        console.warn(`Failed to load background sound ${soundId}:`, error)
-        setStatus(prev => ({
-          ...prev,
-          loaded: false,
-          error: error instanceof Error ? error : new Error(`Failed to load background sound: ${soundId}`)
-        }))
-      }
-
-      // 播放结束事件（对于循环音频不应该触发）
-      audio.onended = () => {
-        if (!audio.loop) {
-          setStatus(prev => ({ ...prev, playing: false }))
-        }
-      }
-
-      // 开始加载
-      audio.load()
-    } catch (error) {
-      console.error(`Error creating background audio for ${soundId}:`, error)
-      setStatus(prev => ({
-        ...prev,
-        loaded: false,
-        error: error instanceof Error ? error : new Error('Unknown background audio error')
-      }))
     }
-  }, [status.isSupported, currentSound.file, soundId, status.volume, autoPlay, soundEnabled])
+    setStatus(prev => ({ ...prev, playing: false }))
+  }, [])
 
   // 播放背景声音
   const playBackgroundSound = useCallback(async () => {
-    if (!soundEnabled ||
-        !status.isSupported ||
-        !userInteractionRef.current ||
-        !currentSound.file ||
-        soundId === 'none') {
+    console.log('[Audio] Play requested:', { soundId, soundEnabled, userInteraction: userInteractionRef.current })
+
+    // 检查条件
+    if (!soundEnabled) {
+      console.log('[Audio] Sound disabled, stopping')
+      stopBackgroundSound()
       return false
     }
 
-    const audio = audioRef.current
-    if (!audio) {
-      // 如果音频未加载，尝试重新加载
-      if (status.loaded === false) {
-        loadBackgroundSound()
-      }
+    if (!status.isSupported) {
+      console.log('[Audio] Audio not supported')
+      return false
+    }
+
+    if (!userInteractionRef.current) {
+      console.log('[Audio] No user interaction yet')
+      return false
+    }
+
+    if (soundId === 'none' || !currentSound.file) {
+      console.log('[Audio] Sound is none or no file')
+      stopBackgroundSound()
       return false
     }
 
     try {
-      // 如果已经在播放，不重复播放
-      if (!audio.paused) {
-        return true
+      // 如果音频对象不存在，创建新的
+      if (!audioRef.current) {
+        console.log('[Audio] Creating new audio object for:', currentSound.file)
+        const audio = new Audio()
+        audio.src = currentSound.file
+        audio.volume = status.volume
+        audio.loop = true
+        audio.crossOrigin = 'anonymous'
+        audioRef.current = audio
       }
 
-      // 设置音量
-      audio.volume = status.volume
+      const audio = audioRef.current
 
-      // 播放音频
-      const playPromise = audio.play()
-      if (playPromise) {
-        await playPromise
+      // 如果 src 不匹配，更新 src
+      if (audio.src !== currentSound.file) {
+        console.log('[Audio] Updating audio src to:', currentSound.file)
+        audio.pause()
+        audio.currentTime = 0
+        audio.src = currentSound.file
+        audio.loop = true
+      }
+
+      // 如果已经在播放，直接返回
+      if (!audio.paused) {
+        console.log('[Audio] Already playing')
         setStatus(prev => ({ ...prev, playing: true }))
         return true
       }
+
+      // 播放
+      console.log('[Audio] Starting playback')
+      const playPromise = audio.play()
+      if (playPromise) {
+        await playPromise
+      }
       setStatus(prev => ({ ...prev, playing: true }))
+      console.log('[Audio] Playback started successfully')
       return true
     } catch (error) {
-      console.warn(`Error playing background sound ${soundId}:`, error)
-
-      // 处理浏览器音频限制
-      if (error instanceof Error &&
-          (error.name === 'NotAllowedError' ||
-           error.message.includes('play() failed'))) {
-        console.info('Browser blocked background audio playback - user interaction required')
-      }
+      console.error('[Audio] Error playing:', error)
+      setStatus(prev => ({
+        ...prev,
+        playing: false,
+        error: error instanceof Error ? error : new Error('Unknown error')
+      }))
       return false
     }
-  }, [soundEnabled, status.isSupported, userInteractionRef, currentSound.file, soundId, status.volume, status.loaded, loadBackgroundSound])
-
-  // 停止背景声音
-  const stopBackgroundSound = useCallback(() => {
-    const audio = audioRef.current
-    if (audio) {
-      try {
-        audio.pause()
-        audio.currentTime = 0
-        setStatus(prev => ({ ...prev, playing: false }))
-        return true
-      } catch (error) {
-        console.warn('Error stopping background sound:', error)
-        return false
-      }
-    }
-    return false
-  }, [])
+  }, [soundEnabled, status.isSupported, soundId, currentSound.file, status.volume, stopBackgroundSound])
 
   // 设置音量
   const setVolume = useCallback((volume: number) => {
     const clampedVolume = Math.max(0, Math.min(1, volume))
+    console.log('[Audio] Setting volume to:', clampedVolume)
 
     if (audioRef.current) {
-      try {
-        audioRef.current.volume = clampedVolume
-      } catch (error) {
-        console.warn('Error setting background sound volume:', error)
-      }
+      audioRef.current.volume = clampedVolume
     }
 
     setStatus(prev => ({ ...prev, volume: clampedVolume }))
@@ -209,48 +168,57 @@ export const useBackgroundSound = (
   // 添加用户交互监听器
   useEffect(() => {
     if (!userInteractionRef.current && status.isSupported) {
-      window.addEventListener('click', handleUserInteraction)
-      window.addEventListener('touchstart', handleUserInteraction)
-      window.addEventListener('keydown', handleUserInteraction)
+      const handleInteraction = () => {
+        handleUserInteraction()
+      }
+      window.addEventListener('click', handleInteraction)
+      window.addEventListener('touchstart', handleInteraction)
+      window.addEventListener('keydown', handleInteraction)
 
       return () => {
-        window.removeEventListener('click', handleUserInteraction)
-        window.removeEventListener('touchstart', handleUserInteraction)
-        window.removeEventListener('keydown', handleUserInteraction)
+        window.removeEventListener('click', handleInteraction)
+        window.removeEventListener('touchstart', handleInteraction)
+        window.removeEventListener('keydown', handleInteraction)
       }
     }
   }, [handleUserInteraction, status.isSupported])
 
-  // 响应声音ID变化
+  // 响应声音ID变化 - 立即停止
   useEffect(() => {
-    if (soundId === 'none' || !currentSound.file) {
+    console.log('[Audio] Sound ID changed to:', soundId)
+    if (soundId === 'none') {
+      console.log('[Audio] Sound is none, stopping')
       stopBackgroundSound()
-      if (audioRef.current) {
-        audioRef.current.src = ''
-        audioRef.current = null
-      }
-      setStatus(prev => ({ ...prev, loaded: false, playing: false }))
-    } else if (userInteractionRef.current && soundEnabled) {
-      loadBackgroundSound()
     }
-  }, [soundId, currentSound.file, soundEnabled, loadBackgroundSound, stopBackgroundSound])
+  }, [soundId, stopBackgroundSound])
 
-  // 响应声音开关变化
+  // 响应声音启用状态变化
   useEffect(() => {
+    console.log('[Audio] Sound enabled changed to:', soundEnabled)
     if (!soundEnabled) {
       stopBackgroundSound()
-    } else if (userInteractionRef.current && currentSound.file && autoPlay) {
-      playBackgroundSound()
     }
-  }, [soundEnabled, stopBackgroundSound, playBackgroundSound, currentSound.file, autoPlay])
+  }, [soundEnabled, stopBackgroundSound])
+
+  // 响应音量变化
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = status.volume
+    }
+  }, [status.volume])
 
   // 清理函数
   useEffect(() => {
     return () => {
+      console.log('[Audio] Cleaning up')
       if (audioRef.current) {
-        audioRef.current.pause()
-        audioRef.current.src = ''
-        audioRef.current = null
+        try {
+          audioRef.current.pause()
+          audioRef.current.currentTime = 0
+          audioRef.current.src = ''
+        } catch (error) {
+          console.warn('[Audio] Error during cleanup:', error)
+        }
       }
     }
   }, [])
