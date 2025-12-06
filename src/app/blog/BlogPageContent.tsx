@@ -16,6 +16,15 @@ export function BlogPageContent({ theme }: { theme: 'dark' | 'light' }) {
   // 使用静态数据，简单直接
   const blogPosts: BlogPost[] = [
     {
+      slug: 'top-5-meditation-apps-2025-which-one-actually-works-for-you',
+      title: 'Top 5 Meditation Apps 2025: Which One Actually Works for You?',
+      date: '2025-12-06',
+      readTime: '18 min read',
+      category: 'App Reviews',
+      author: 'Zen Moment Team',
+      excerpt: 'Honest review of the 5 most popular meditation apps: Calm, Headspace, Insight Timer, Ten Percent Happier, and Waking Up. Compare features, pricing, and find the right fit for your needs.'
+    },
+    {
       slug: 'when-focus-fails-the-archers-breath-for-deep-work',
       title: "When Focus Fails: The Archer's Breath for Deep Work",
       date: '2025-11-25',

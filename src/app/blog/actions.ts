@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { remark } from 'remark'
 import html from 'remark-html'
+import remarkGfm from 'remark-gfm'
 import matter from 'gray-matter'
 
 // 导入现有的类型定义
@@ -91,6 +92,7 @@ async function processMarkdownFile(filePath: string): Promise<BlogPostData | nul
 
     // 转换markdown到HTML
     const processedContent = await remark()
+      .use(remarkGfm)
       .use(html, { sanitize: false })
       .process(matterResult.content)
     const contentHtml = processedContent.toString()
