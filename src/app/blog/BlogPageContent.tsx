@@ -22,7 +22,7 @@ export function BlogPageContent({ theme }: { theme: 'dark' | 'light' }) {
       readTime: '18 min read',
       category: 'App Reviews',
       author: 'Zen Moment Team',
-      excerpt: 'Honest review of the 5 most popular meditation apps: Calm, Headspace, Insight Timer, Ten Percent Happier, and Waking Up. Compare features, pricing, and find the right fit for your needs.'
+      excerpt: 'Most people abandon meditation apps within weeks. This guide breaks down what each of the top 5 apps actually does—and helps you pick the one that matches your real needs, not someone else\'s.'
     },
     {
       slug: 'when-focus-fails-the-archers-breath-for-deep-work',
