@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/enhanced-critical-css.js && copy public\\favicon.ico out\\favicon.ico",
+    "build": "next build && node scripts/enhanced-critical-css.js && copy public\\favicon.ico out\\favicon.ico && copy _redirects out\\_redirects",
     "build-base": "next build",
     "start": "next start",
     "lint": "next lint",

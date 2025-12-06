@@ -1,18 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // 在开发环境中禁用静态导出以启用中间件，生产环境使用静态导出
+  output: process.env.NODE_ENV === 'development' ? undefined : 'export',
   images: {
     unoptimized: true,
   },
   distDir: 'out',
-  
-  // Configure redirects
+
+  // 配置重定向
   async redirects() {
     return [
-      // Redirect /breathing to /breathing-exercise
-      { source: '/breathing', destination: '/breathing-exercise', permanent: true },
-      { source: '/breathing/', destination: '/breathing-exercise', permanent: true },
-    ];
+      {
+        source: '/breathing',
+        destination: '/breathing-exercise',
+        permanent: true,
+      },
+      {
+        source: '/breathing/',
+        destination: '/breathing-exercise',
+        permanent: true,
+      },
+    ]
   },
 
   // Optimize for modern browsers
