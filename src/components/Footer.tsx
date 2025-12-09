@@ -9,7 +9,7 @@ interface Partner {
   logo: string
   url: string
   isCustomLogo?: boolean
-  logoType?: 'twelve' | 'startup-fame' | 'good-ai-tools' | 'aura-plus-plus' | 'toolfame' | 'power-up-tools' | 'saashub'
+  logoType?: 'twelve' | 'startup-fame' | 'good-ai-tools' | 'aura-plus-plus' | 'toolfame' | 'power-up-tools' | 'saashub' | 'fazier'
 }
 
 export const Footer = () => {
@@ -175,7 +175,8 @@ export const Footer = () => {
               { name: 'Aura++', logo: '✨', url: 'https://auraplusplus.com/projects/zen-moment-meditation-timer', isCustomLogo: true, logoType: 'aura-plus-plus' },
               { name: 'ToolFame', logo: '🏆', url: 'https://toolfame.com/item/zen-moment', isCustomLogo: true, logoType: 'toolfame' },
               { name: 'Power Up Tools', logo: '⚡', url: 'https://poweruptools.com', isCustomLogo: true, logoType: 'power-up-tools' },
-              { name: 'SaaSHub', logo: '📊', url: 'https://www.saashub.com/zen-moment?utm_source=badge&utm_campaign=badge&utm_content=zen-moment&badge_variant=color&badge_kind=approved', isCustomLogo: true, logoType: 'saashub' }
+              { name: 'SaaSHub', logo: '📊', url: 'https://www.saashub.com/zen-moment?utm_source=badge&utm_campaign=badge&utm_content=zen-moment&badge_variant=color&badge_kind=approved', isCustomLogo: true, logoType: 'saashub' },
+              { name: 'Fazier', logo: '🌟', url: 'https://fazier.com/launches/zenmoment.net', isCustomLogo: true, logoType: 'fazier' }
             ].map((partner, index) => (
               <a
                 key={index}
@@ -204,12 +205,14 @@ export const Footer = () => {
                                 ? "https://poweruptools.com/assets/images/badge.png"
                                 : partner.logoType === 'saashub'
                                   ? "https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
-                                  : theme === 'dark'
-                                    ? "https://twelve.tools/badge2-dark.svg"
-                                    : "https://twelve.tools/badge2-light.svg"
+                                  : partner.logoType === 'fazier'
+                                    ? "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light"
+                                    : theme === 'dark'
+                                      ? "https://twelve.tools/badge2-dark.svg"
+                                      : "https://twelve.tools/badge2-light.svg"
                     }
                     alt={`Featured on ${partner.name}`}
-                    width={partner.logoType === 'startup-fame' ? "171" : partner.logoType === 'good-ai-tools' ? "171" : partner.logoType === 'aura-plus-plus' ? "171" : partner.logoType === 'toolfame' ? "171" : partner.logoType === 'power-up-tools' ? "171" : partner.logoType === 'saashub' ? "150" : "200"}
+                    width={partner.logoType === 'startup-fame' ? "171" : partner.logoType === 'good-ai-tools' ? "171" : partner.logoType === 'aura-plus-plus' ? "171" : partner.logoType === 'toolfame' ? "171" : partner.logoType === 'power-up-tools' ? "171" : partner.logoType === 'saashub' ? "150" : partner.logoType === 'fazier' ? "250" : "200"}
                     height="54"
                     className="group-hover:scale-105 transition-transform duration-300"
                   />
