@@ -9,7 +9,7 @@ interface Partner {
   logo: string
   url: string
   isCustomLogo?: boolean
-  logoType?: 'twelve' | 'startup-fame' | 'good-ai-tools' | 'aura-plus-plus' | 'toolfame' | 'power-up-tools' | 'saashub' | 'fazier' | 'findly-tools' | 'dofollow-tools'
+  logoType?: 'twelve' | 'startup-fame' | 'good-ai-tools' | 'aura-plus-plus' | 'toolfame' | 'power-up-tools' | 'saashub' | 'fazier' | 'findly-tools' | 'dofollow-tools' | 'deep-launch'
 }
 
 export const Footer = () => {
@@ -178,7 +178,8 @@ export const Footer = () => {
               { name: 'SaaSHub', logo: '📊', url: 'https://www.saashub.com/zen-moment?utm_source=badge&utm_campaign=badge&utm_content=zen-moment&badge_variant=color&badge_kind=approved', isCustomLogo: true, logoType: 'saashub' },
               { name: 'Fazier', logo: '🌟', url: 'https://fazier.com/launches/zenmoment.net', isCustomLogo: true, logoType: 'fazier' },
               { name: 'findly.tools', logo: '🔍', url: 'https://findly.tools/kirkify-ai?utm_source=kirkify-ai', isCustomLogo: true, logoType: 'findly-tools' },
-              { name: 'Dofollow.Tools', logo: '🔗', url: 'https://dofollow.tools', isCustomLogo: true, logoType: 'dofollow-tools' }
+              { name: 'Dofollow.Tools', logo: '🔗', url: 'https://dofollow.tools', isCustomLogo: true, logoType: 'dofollow-tools' },
+              { name: 'DeepLaunch.io', logo: '🚀', url: 'https://deeplaunch.io', isCustomLogo: true, logoType: 'deep-launch' }
             ].map((partner, index) => (
               <a
                 key={index}
@@ -213,12 +214,14 @@ export const Footer = () => {
                                       ? "https://findly.tools/badges/findly-tools-badge-light.svg"
                                       : partner.logoType === 'dofollow-tools'
                                         ? "https://dofollow.tools/badge/badge_light.svg"
+                                      : partner.logoType === 'deep-launch'
+                                        ? "https://deeplaunch.io/badge/badge_light.svg"
                                       : theme === 'dark'
                                         ? "https://twelve.tools/badge2-dark.svg"
                                         : "https://twelve.tools/badge2-light.svg"
                     }
                     alt={`Featured on ${partner.name}`}
-                    width={partner.logoType === 'startup-fame' ? "171" : partner.logoType === 'good-ai-tools' ? "171" : partner.logoType === 'aura-plus-plus' ? "171" : partner.logoType === 'toolfame' ? "171" : partner.logoType === 'power-up-tools' ? "171" : partner.logoType === 'saashub' ? "150" : partner.logoType === 'fazier' ? "250" : partner.logoType === 'findly-tools' ? "150" : partner.logoType === 'dofollow-tools' ? "200" : "200"}
+                    width={partner.logoType === 'startup-fame' ? "171" : partner.logoType === 'good-ai-tools' ? "171" : partner.logoType === 'aura-plus-plus' ? "171" : partner.logoType === 'toolfame' ? "171" : partner.logoType === 'power-up-tools' ? "171" : partner.logoType === 'saashub' ? "150" : partner.logoType === 'fazier' ? "250" : partner.logoType === 'findly-tools' ? "150" : partner.logoType === 'dofollow-tools' ? "200" : partner.logoType === 'deep-launch' ? "200" : "200"}
                     height="54"
                     className="group-hover:scale-105 transition-transform duration-300"
                   />
