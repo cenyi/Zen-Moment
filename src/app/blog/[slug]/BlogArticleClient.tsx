@@ -5,16 +5,21 @@ import Link from 'next/link'
 import { Navigation } from '../../../components/Navigation'
 import { Footer } from '../../../components/Footer'
 import ShareButtons from '../../../components/ShareButtons'
-import { BlogPostData } from '../actions'
+import { RelatedPosts } from '../../../components/RelatedPosts'
+import { BlogPostData, BlogPost } from '../actions'
 import { useTimerStore } from '../../../store/timerStore'
 import { usePerformanceOptimizedScroll } from '../../../hooks/usePerformanceOptimizedScroll'
 import { PerformanceMonitor } from '../../../components/PerformanceMonitor'
 
 interface BlogArticleClientProps {
   postData: BlogPostData
+  breadcrumbData?: any
+  allPosts?: BlogPost[]
 }
 
-export default function BlogArticleClient({ postData }: BlogArticleClientProps) {
+export default function BlogArticleClient({ postData, breadcrumbData, allPosts = [] }: BlogArticleClientProps) {
+  // 类型断言确保 allPosts 是 BlogPost[]
+  const relatedPosts = allPosts as BlogPost[]
   const [mounted, setMounted] = useState(false)
   const { theme, toggleTheme } = useTimerStore()
   const [readingProgress, setReadingProgress] = useState(0)
@@ -40,7 +45,7 @@ export default function BlogArticleClient({ postData }: BlogArticleClientProps) 
     return () => clearTimeout(timeoutId)
   }, [theme, resetCache])
 
-  
+
   const structuredDataHtml = useMemo(() => {
     try {
       return postData?.structuredData ? JSON.stringify(postData.structuredData) : '{}'
@@ -49,6 +54,15 @@ export default function BlogArticleClient({ postData }: BlogArticleClientProps) 
       return '{}'
     }
   }, [postData?.structuredData])
+
+  const breadcrumbDataHtml = useMemo(() => {
+    try {
+      return breadcrumbData ? JSON.stringify(breadcrumbData) : '{}'
+    } catch (error) {
+      console.error('Error stringifying breadcrumb data:', error)
+      return '{}'
+    }
+  }, [breadcrumbData])
 
   if (!mounted) {
     return (
@@ -66,12 +80,22 @@ export default function BlogArticleClient({ postData }: BlogArticleClientProps) 
 
   return (
     <>
-      {/* 结构化数据 */}
+      {/* BlogPosting 结构化数据 */}
       {postData.structuredData && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: structuredDataHtml
+          }}
+        />
+      )}
+
+      {/* BreadcrumbList 结构化数据 */}
+      {breadcrumbData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: breadcrumbDataHtml
           }}
         />
       )}
@@ -492,6 +516,16 @@ export default function BlogArticleClient({ postData }: BlogArticleClientProps) 
               </div>
             </div>
           </footer>
+
+          {/* 相关文章推荐 - 基于标签匹配 */}
+          {(allPosts as BlogPost[]).length > 0 && (
+            <RelatedPosts
+              currentPostTags={postData.tags || []}
+              currentPostSlug={postData.canonicalUrl?.split('/').pop() || ''}
+              allPosts={allPosts as BlogPost[]}
+              maxPosts={3}
+            />
+          )}
         </main>
       </div>
 

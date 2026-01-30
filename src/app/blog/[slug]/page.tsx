@@ -1,4 +1,4 @@
-import { getBlogPost, generateAllSlugs } from '../actions'
+import { getBlogPost, generateAllSlugs, getBlogPosts } from '../actions'
 import { notFound } from 'next/navigation'
 import BlogArticleClient from './BlogArticleClient'
 
@@ -16,7 +16,41 @@ export default async function BlogArticlePage({ params }: PageProps) {
     notFound()
   }
 
-  return <BlogArticleClient postData={postData} />
+  // 获取所有博客文章用于相关文章推荐
+  let allPosts = []
+  try {
+    allPosts = await getBlogPosts()
+  } catch (error) {
+    console.error('Error fetching all posts:', error)
+  }
+
+  // 生成 BreadcrumbList 数据
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://zenmoment.net"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://zenmoment.net/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": postData.title,
+        "item": postData.canonicalUrl
+      }
+    ]
+  }
+
+  return <BlogArticleClient postData={postData} breadcrumbData={breadcrumbData} allPosts={allPosts} />
 }
 
 // 生成静态参数（可选，用于SEO优化）
