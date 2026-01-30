@@ -24,8 +24,16 @@ export function EmptyState({
 }: EmptyStateProps) {
   const { theme } = useTimerStore()
 
+  // 定义内容类型
+  interface Content {
+    title: string
+    description: string
+    actionLabel: string
+    illustration: React.ReactNode
+  }
+
   // 默认内容根据类型设置
-  const getDefaultContent = () => {
+  const getDefaultContent = (): Content => {
     switch (type) {
       case 'no-data':
         return {

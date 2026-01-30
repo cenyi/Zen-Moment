@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTimerStore } from '../store/timerStore'
 
 export type ToastType = 'success' | 'error' | 'warning' | 'info'
@@ -140,14 +140,17 @@ function ToastItem({ toast, onRemove, theme }: ToastItemProps) {
       }
     }
 
-    return { ...typeStyles[toast.type] }
+    return {
+      base: baseStyles,
+      ...typeStyles[toast.type]
+    }
   }
 
   const styles = getToastStyles(toast.type)
 
   return (
     <div
-      className={`${baseStyles} ${styles[theme === 'dark' ? 'dark' : 'light']} ${
+      className={`${styles.base} ${styles[theme === 'dark' ? 'dark' : 'light']} ${
         isExiting ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'
       }`}
     >
