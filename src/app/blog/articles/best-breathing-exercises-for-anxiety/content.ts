@@ -1,4 +1,4 @@
-const markdownContent = `---
+const content = `---
 title: "Best Breathing Exercises for Anxiety: 5 Techniques Backed by Science"
 metaDescription: "Discover the best breathing exercises for anxiety relief. Learn 5 science-backed techniques including 4-7-8 breathing, box breathing, and diaphragmatic breathing with step-by-step instructions."
 date: "2025-01-30"

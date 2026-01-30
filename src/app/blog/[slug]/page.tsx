@@ -1,4 +1,4 @@
-import { getBlogPost, generateAllSlugs, getBlogPosts } from '../actions'
+import { getBlogPost, generateAllSlugs, getBlogPosts, BlogPost } from '../actions'
 import { notFound } from 'next/navigation'
 import BlogArticleClient from './BlogArticleClient'
 
@@ -17,7 +17,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
   }
 
   // 获取所有博客文章用于相关文章推荐
-  let allPosts = []
+  let allPosts: BlogPost[] = []
   try {
     allPosts = await getBlogPosts()
   } catch (error) {

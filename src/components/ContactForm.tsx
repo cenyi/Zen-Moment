@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { useTimerStore } from '../../store/timerStore'
-import { useToast } from '../Toast'
+import { useTimerStore } from '../store/timerStore'
+import { useToast } from './Toast'
 
 interface FormData {
   name: string
@@ -116,8 +116,8 @@ export function ContactForm() {
     const newErrors: FormErrors = {}
     let hasError = false
 
-    ;['name', 'email', 'subject', 'message'].forEach(field => {
-      const error = validateField(field, formData[field as string])
+    ;(['name', 'email', 'subject', 'message'] as const).forEach(field => {
+      const error = validateField(field, formData[field])
       if (error) {
         newErrors[field] = error
         hasError = true

@@ -1,4 +1,4 @@
-const markdownContent = `---
+const content = `---
 title: "How to Meditate for Beginners: A Simple Step-by-Step Guide"
 metaDescription: "Learn how to meditate for beginners with this comprehensive guide. Discover simple meditation techniques, common mistakes to avoid, and tips for building a consistent practice that sticks."
 date: "2025-01-30"
