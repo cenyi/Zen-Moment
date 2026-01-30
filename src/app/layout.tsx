@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ErrorBoundary } from '../components/ErrorBoundary'
+import { ToastProvider } from '../components/Toast'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://zenmoment.net'),
@@ -156,9 +157,11 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground" suppressHydrationWarning>
         <ErrorBoundary>
-          <div className="min-h-screen">
-            {children}
-          </div>
+          <ToastProvider>
+            <div className="min-h-screen">
+              {children}
+            </div>
+          </ToastProvider>
         </ErrorBoundary>
       </body>
     </html>

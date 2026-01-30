@@ -22,11 +22,18 @@ export default function BlogArticleClient({ postData, breadcrumbData, allPosts =
   // 类型断言确保 allPosts 是 BlogPost[]
   const relatedPosts = allPosts as BlogPost[]
   const [mounted, setMounted] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const { theme, toggleTheme } = useTimerStore()
   const [readingProgress, setReadingProgress] = useState(0)
 
   useEffect(() => {
     setMounted(true)
+    // 模拟内容加载状态
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 300)
+
+    return () => clearTimeout(timer)
   }, [])
 
   // 使用性能优化的滚动Hook
@@ -65,18 +72,41 @@ export default function BlogArticleClient({ postData, breadcrumbData, allPosts =
     }
   }, [breadcrumbData])
 
-  if (!mounted) {
-    return (
-      <div className={`min-h-screen transition-colors duration-300 ${
-        theme === 'dark'
-          ? 'bg-gray-950 text-gray-300'
-          : 'bg-gray-50 text-gray-900'
-      }`}>
-        <div className="flex justify-center items-center min-h-screen">
-          <div className="text-xl">Loading article...</div>
-        </div>
+  // 骨架屏组件
+  const ArticleSkeleton = () => (
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      {/* 标题骨架 */}
+      <div className="mb-8">
+        <div className={`h-12 w-3/4 max-w-2xl rounded animate-pulse mb-4 ${
+          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+        }`}></div>
+        <div className={`h-4 w-1/2 max-w-md rounded animate-pulse ${
+          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+        }`}></div>
       </div>
-    )
+
+      {/* 内容骨架 */}
+      <div className="space-y-4 mb-8">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className={`h-4 w-full rounded animate-pulse ${
+            theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+          }`} style={{ animationDelay: `${i * 100}ms` }}></div>
+        ))}
+      </div>
+
+      {/* 元信息骨架 */}
+      <div className={`flex gap-8 mb-8 animate-pulse rounded-lg p-6 ${
+        theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+      }`}>
+        <div className="h-4 w-20 rounded"></div>
+        <div className="h-4 w-32"></div>
+        <div className="h-4 w-24"></div>
+      </div>
+    </div>
+  )
+
+  if (!mounted || isLoading) {
+    return <ArticleSkeleton />
   }
 
   return (
