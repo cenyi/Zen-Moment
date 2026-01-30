@@ -10,6 +10,7 @@ import { Footer } from '../../components/Footer'
 import { BreathingModeSelector } from '../../components/BreathingModeSelector'
 import { CustomBreathingSettings } from '../../components/CustomBreathingSettings'
 import { FloatingSettingsButton } from '../../components/FloatingSettingsButton'
+import { FAQ } from '../../components/FAQ'
 
 // 懒加载Framer Motion和FloatingHelpButton
 const MotionDiv = lazy(() => import('framer-motion').then(mod => ({ default: mod.motion.div })))
@@ -1596,6 +1597,37 @@ export default function BreathingPageClient() {
           ]}
         />
       </Suspense>
+
+      {/* FAQ 部分 - 呼吸练习常见问题 */}
+      <FAQ
+        items={[
+          {
+            question: "What is the 4-7-8 breathing technique?",
+            answer: "The 4-7-8 breathing technique is a relaxation method developed by Dr. Andrew Weil. You inhale for 4 seconds, hold for 7 seconds, and exhale for 8 seconds. This pattern activates your parasympathetic nervous system, reducing stress and promoting relaxation."
+          },
+          {
+            question: "How often should I practice breathing exercises?",
+            answer: "For optimal results, practice 2-3 times daily. Use breathing exercises for stress relief (when overwhelmed), better sleep (30 minutes before bed), or improved focus (before work/study). Each session takes just 3-5 minutes."
+          },
+          {
+            question: "What's box breathing and who uses it?",
+            answer: "Box breathing (4-4-4-4) is used by Navy SEALs and first responders to stay calm under pressure. You inhale for 4 seconds, hold for 4, exhale for 4, and hold empty for 4. It's excellent for stress management and focus."
+          },
+          {
+            question: "Can breathing exercises help with anxiety?",
+            answer: "Yes! Research shows that controlled breathing activates the vagus nerve, which reduces cortisol levels and activates the body's relaxation response. Studies indicate that regular breathing practice can significantly reduce anxiety symptoms within 4-8 weeks."
+          },
+          {
+            question: "What's the best time to do breathing exercises?",
+            answer: "Anytime works! Morning practice sets a calm tone for the day. Before-sleep sessions improve sleep quality. Pre-meeting or pre-exam practice reduces performance anxiety. Listen to your body and practice when you need it most."
+          },
+          {
+            question: "How quickly will I see results?",
+            answer: "Many people feel calmer after just one 3-5 minute session. With regular practice (2-3 times daily for 2 weeks), you may notice reduced stress, better sleep, and improved emotional regulation. Long-term practice leads to lasting changes in stress response."
+          }
+        ]}
+        title="Breathing Exercises FAQ"
+      />
 
       {/* Footer */}
       <Footer />

@@ -10,6 +10,7 @@ import { Footer } from '../components/Footer'
 import { RingProgress } from '../components/RingProgress'
 import { FloatingHelpButton } from '../components/FloatingHelpButton'
 import { FloatingSettingsButton } from '../components/FloatingSettingsButton'
+import { FAQ } from '../components/FAQ'
 import { useSimpleTimer } from '../hooks/useSimpleTimer'
 import { useTimerStore } from '../store/timerStore'
 import { useBackgroundSound } from '../hooks/useBackgroundSound'
@@ -845,6 +846,37 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ 部分 */}
+      <FAQ
+        items={[
+          {
+            question: "How long should I meditate as a beginner?",
+            answer: "Start with 5-10 minutes daily. Research shows that even short meditation sessions can significantly reduce stress and improve focus. As you become more comfortable, gradually increase to 15-20 minutes. Consistency matters more than duration."
+          },
+          {
+            question: "Is Zen Moment really free?",
+            answer: "Yes! Zen Moment is completely free with no ads, no subscriptions, and no hidden fees. Our mission is to make meditation and mindfulness accessible to everyone."
+          },
+          {
+            question: "What's the difference between meditation timer and breathing exercises?",
+            answer: "The meditation timer is for silent meditation with customizable durations and sounds. Breathing exercises guide you through specific patterns like 4-7-8 breathing or box breathing, providing visual and audio cues for each breath phase."
+          },
+          {
+            question: "Can I use Zen Moment offline?",
+            answer: "Yes! Once loaded, Zen Moment works completely offline. You can meditate anywhere without an internet connection."
+          },
+          {
+            question: "How often should I practice breathing exercises?",
+            answer: "For best results, practice breathing exercises 2-3 times daily. Use them for stress relief (when feeling overwhelmed), better sleep (before bed), or improved focus (before work/study). Each session takes just 3-5 minutes."
+          },
+          {
+            question: "Do I need to create an account?",
+            answer: "No account needed! Zen Moment respects your privacy. Your meditation stats and preferences are stored locally on your device. We don't track your sessions or collect personal data."
+          }
+        ]}
+        title="Frequently Asked Questions"
+      />
 
       </main>
 
