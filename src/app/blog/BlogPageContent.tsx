@@ -16,6 +16,51 @@ export function BlogPageContent({ theme }: { theme: 'dark' | 'light' }) {
   // 使用静态数据，简单直接
   const blogPosts: BlogPost[] = [
     {
+      slug: 'how-long-should-you-meditate-science-backed-guidelines',
+      title: 'How Long Should You Meditate? Science-Backed Guidelines for Every Level',
+      date: '2026-02-12',
+      readTime: '8 min read',
+      category: 'Meditation Practice',
+      author: 'Zen Moment Team',
+      excerpt: 'Discover how long you should meditate based on research and experience. Learn why consistency matters more than duration, and find the right length for your goals.'
+    },
+    {
+      slug: 'meditation-for-stress-relief-a-practical-guide',
+      title: 'Meditation for Stress Relief: A Practical Guide for Busy People',
+      date: '2026-02-12',
+      readTime: '10 min read',
+      category: 'Stress Management',
+      author: 'Zen Moment Team',
+      excerpt: 'Learn how to use meditation for stress relief with practical techniques that fit into your busy schedule. Discover why stress happens and how meditation helps you respond differently.'
+    },
+    {
+      slug: 'walking-meditation-a-beginners-guide',
+      title: 'Walking Meditation: A Beginner\'s Guide to Mindfulness in Motion',
+      date: '2026-02-12',
+      readTime: '8 min read',
+      category: 'Meditation Techniques',
+      author: 'Zen Moment Team',
+      excerpt: 'Learn walking meditation step by step. Discover how to turn your daily walks into a mindfulness practice that reduces stress and increases awareness—no cushion required.'
+    },
+    {
+      slug: 'meditation-for-sleep-how-to-fall-asleep-faster',
+      title: 'Meditation for Sleep: How to Fall Asleep Faster and Sleep Deeper',
+      date: '2026-02-12',
+      readTime: '10 min read',
+      category: 'Sleep & Rest',
+      author: 'Zen Moment Team',
+      excerpt: 'Discover how meditation can improve your sleep quality. Learn effective techniques to fall asleep faster, reduce nighttime anxiety, and wake up feeling refreshed.'
+    },
+    {
+      slug: 'morning-meditation-routine-how-to-build-a-daily-habit',
+      title: 'Morning Meditation Routine: How to Build a Daily Habit That Actually Sticks',
+      date: '2026-02-12',
+      readTime: '9 min read',
+      category: 'Meditation Practice',
+      author: 'Zen Moment Team',
+      excerpt: 'Learn how to create a morning meditation routine that lasts. Discover practical strategies, common obstacles, and a step-by-step plan to make meditation a natural part of your day.'
+    },
+    {
       slug: 'top-5-meditation-apps-2025-which-one-actually-works-for-you',
       title: 'Top 5 Meditation Apps 2025: Which One Actually Works for You?',
       date: '2025-12-06',
