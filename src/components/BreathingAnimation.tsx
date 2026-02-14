@@ -79,11 +79,11 @@ export const BreathingAnimation = ({
   const getInstructionColor = () => {
     switch (breathPhase) {
       case 'inhale':
-        return theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+        return theme === 'dark' ? 'text-green-300' : 'text-green-700'
       case 'hold':
-        return theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
+        return theme === 'dark' ? 'text-amber-300' : 'text-amber-700'
       case 'exhale':
-        return theme === 'dark' ? 'text-green-400' : 'text-green-600'
+        return theme === 'dark' ? 'text-blue-300' : 'text-blue-700'
       default:
         return theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
     }
@@ -101,15 +101,15 @@ export const BreathingAnimation = ({
 
   return (
     <section className={`py-16 transition-colors duration-300 relative overflow-hidden ${
-      theme === 'dark' ? 'bg-gray-800' : 'bg-neumorphic-light'
+      theme === 'dark' ? 'bg-neumorphic-dark' : 'bg-neumorphic-light'
     }`}>
       {/* Background gradient overlay */}
       <div className={`absolute inset-0 opacity-30 transition-all duration-1000 ${
         breathPhase === 'inhale'
-          ? 'bg-gradient-to-br from-blue-600/20 to-purple-600/20'
+          ? 'bg-gradient-to-br from-green-500/20 to-blue-500/20'
           : breathPhase === 'hold'
-          ? 'bg-gradient-to-br from-purple-600/20 to-pink-600/20'
-          : 'bg-gradient-to-br from-gray-600/20 to-blue-600/20'
+          ? 'bg-gradient-to-br from-amber-500/20 to-purple-500/20'
+          : 'bg-gradient-to-br from-blue-500/20 to-teal-500/20'
       }`} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
@@ -124,7 +124,7 @@ export const BreathingAnimation = ({
             <div className="absolute inset-0 flex items-center justify-center">
               {/* Outer circles for visual effect */}
               <div className={`absolute w-full h-full rounded-full border-2 ${
-                theme === 'dark' ? 'border-gray-700' : 'border-gray-500/50/50'
+                theme === 'dark' ? 'border-gray-700' : 'border-gray-400/40'
               }`} />
               <div className={`absolute w-3/4 h-3/4 rounded-full border ${
                 theme === 'dark' ? 'border-gray-600' : 'border-gray-500/50'
@@ -134,13 +134,13 @@ export const BreathingAnimation = ({
               <div
                 className={`w-32 h-32 md:w-40 md:h-40 rounded-full transition-all duration-1000 ease-in-out ${getCircleScale()} shadow-2xl relative overflow-hidden`}
                 style={{
-                  background: breathPhase === 'inhale' ? 'linear-gradient(135deg, #3B82F6, #8B5CF6)' :
-                              breathPhase === 'hold' ? 'linear-gradient(135deg, #8B5CF6, #EC4899)' :
-                              'linear-gradient(135deg, #10B981, #3B82F6)'
+                  background: breathPhase === 'inhale' ? 'linear-gradient(135deg, #73977E, #6F8EA0)' :
+                              breathPhase === 'hold' ? 'linear-gradient(135deg, #BCA063, #8D7F9C)' :
+                              'linear-gradient(135deg, #6D938B, #8EA9B7)'
                 }}
               >
                 {/* Inner glow effect */}
-                <div className={`absolute inset-0 rounded-full transition-all duration-1000 ease-in-out ${breathPhase === 'inhale' ? 'bg-blue-400 opacity-30 animate-pulse' : breathPhase === 'hold' ? 'bg-purple-400 opacity-30' : 'bg-green-400 opacity-30'}`} />
+                <div className={`absolute inset-0 rounded-full transition-all duration-1000 ease-in-out ${breathPhase === 'inhale' ? 'bg-green-400 opacity-30 animate-pulse' : breathPhase === 'hold' ? 'bg-amber-400 opacity-30' : 'bg-blue-400 opacity-30'}`} />
 
                 {/* Particle effects */}
                 {breathPhase === 'exhale' && (
@@ -189,8 +189,8 @@ export const BreathingAnimation = ({
                 backdrop-blur-sm
                 min-w-[200px]
                 ${isActive
-                  ? 'bg-gradient-to-r from-red-500/20 to-pink-500/20 hover:from-red-500/30 hover:to-pink-500/30 border border-red-400/30 text-red-400'
-                  : 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 border border-blue-400/30 text-blue-400'
+                  ? 'bg-gradient-to-r from-orange-500/20 to-rose-500/20 hover:from-orange-500/30 hover:to-rose-500/30 border border-orange-400/30 text-orange-400'
+                  : 'bg-gradient-to-r from-green-500/20 to-blue-500/20 hover:from-green-500/30 hover:to-blue-500/30 border border-green-400/30 text-green-400'
                 }
                 ${theme === 'dark'
                   ? 'shadow-black/20 hover:shadow-black/30'
@@ -202,8 +202,8 @@ export const BreathingAnimation = ({
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className={`absolute inset-0 rounded-2xl ${
                   isActive
-                    ? 'bg-gradient-to-r from-red-400/20 to-pink-400/20'
-                    : 'bg-gradient-to-r from-blue-400/20 to-purple-400/20'
+                    ? 'bg-gradient-to-r from-orange-400/20 to-rose-400/20'
+                    : 'bg-gradient-to-r from-green-400/20 to-blue-400/20'
                 } blur-xl`} />
               </div>
 
@@ -219,7 +219,7 @@ export const BreathingAnimation = ({
 
               {/* Subtle pulse animation for active state */}
               {isActive && (
-                <div className="absolute inset-0 rounded-2xl border-2 border-red-400/30 animate-ping" />
+                <div className="absolute inset-0 rounded-2xl border-2 border-orange-400/30 animate-ping" />
               )}
             </button>
 
@@ -266,7 +266,7 @@ export const BreathingAnimation = ({
             theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
           }`}>
             <div>
-              <div className={`text-3xl mb-2 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>◈</div>
+              <div className={`text-3xl mb-2 ${theme === 'dark' ? 'text-green-300' : 'text-green-700'}`}>◈</div>
               <h3 className={`font-semibold mb-2 ${
                 theme === 'dark' ? 'text-white' : 'text-neumorphic-tips-light'
               }`}>Reduce Stress</h3>
@@ -275,7 +275,7 @@ export const BreathingAnimation = ({
               </p>
             </div>
             <div>
-              <div className={`text-3xl mb-2 ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`}>🌿</div>
+              <div className={`text-3xl mb-2 ${theme === 'dark' ? 'text-amber-300' : 'text-amber-700'}`}>🌿</div>
               <h3 className={`font-semibold mb-2 ${
                 theme === 'dark' ? 'text-white' : 'text-neumorphic-tips-light'
               }`}>Lower Anxiety</h3>
@@ -284,7 +284,7 @@ export const BreathingAnimation = ({
               </p>
             </div>
             <div>
-              <div className={`text-3xl mb-2 ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>○</div>
+              <div className={`text-3xl mb-2 ${theme === 'dark' ? 'text-blue-300' : 'text-blue-700'}`}>○</div>
               <h3 className={`font-semibold mb-2 ${
                 theme === 'dark' ? 'text-white' : 'text-neumorphic-tips-light'
               }`}>Better Sleep</h3>

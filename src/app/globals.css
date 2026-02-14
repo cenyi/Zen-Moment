@@ -1,37 +1,196 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 自定义工具类 */
+:root {
+  --neumorphic-light-bg: #F5E8D2;
+  --neumorphic-light-surface: #FFF4E3;
+  --neumorphic-light-shadow: #D8C4A8;
+  --neumorphic-light-border: #CCB695;
+  --neumorphic-light-flat: #F0DFC4;
+  --neumorphic-light-flat-soft: #F8EBD5;
+  --neumorphic-light-tips: #2D2A24;
+  --neumorphic-light-muted: #547160;
+
+  --neumorphic-dark-bg: #101A15;
+  --neumorphic-dark-surface: #1A2720;
+  --neumorphic-dark-shadow: #09110D;
+  --neumorphic-dark-border: #3F5C4A;
+  --neumorphic-dark-flat: #213126;
+  --neumorphic-dark-flat-soft: #283A2E;
+  --neumorphic-dark-tips: #EBECE8;
+  --neumorphic-dark-muted: #B4CFBE;
+
+  --zen-accent: #6E9B7F;
+  --zen-accent-strong: #5B836B;
+  --zen-warm-accent: #C89C67;
+  --zen-cool-accent: #7EA9C2;
+}
+
+/* 閼奉亜鐣炬稊澶婁紣閸忛琚?*/
 @layer utilities {
   .content-auto {
     content-visibility: auto;
   }
+
+  .bg-neumorphic-light {
+    background-color: var(--neumorphic-light-bg);
+  }
+
+  .bg-neumorphic-dark {
+    background-color: var(--neumorphic-dark-bg);
+  }
+
+  .theme-page-light {
+    background:
+      radial-gradient(circle at 14% 14%, rgba(133, 176, 150, 0.2), transparent 32%),
+      radial-gradient(circle at 86% 10%, rgba(200, 156, 103, 0.18), transparent 38%),
+      linear-gradient(180deg, #F5E8D2 0%, #FCF1DF 54%, #ECD6B6 100%);
+    color: var(--neumorphic-light-tips);
+  }
+
+  .theme-page-dark {
+    background:
+      radial-gradient(circle at 12% 14%, rgba(126, 169, 140, 0.24), transparent 34%),
+      radial-gradient(circle at 86% 8%, rgba(126, 169, 194, 0.16), transparent 40%),
+      linear-gradient(180deg, #101A15 0%, #1A2720 52%, #0F1713 100%);
+    color: var(--neumorphic-dark-tips);
+  }
+
+  .theme-section-light {
+    background:
+      radial-gradient(circle at 16% 15%, rgba(133, 176, 150, 0.14), transparent 34%),
+      radial-gradient(circle at 82% 10%, rgba(200, 156, 103, 0.14), transparent 36%),
+      linear-gradient(180deg, #EFDDBF 0%, #F7E8D0 48%, #E6CCAA 100%);
+    color: var(--neumorphic-light-tips);
+  }
+
+  .theme-section-dark {
+    background:
+      radial-gradient(circle at 14% 12%, rgba(126, 169, 140, 0.18), transparent 38%),
+      radial-gradient(circle at 82% 9%, rgba(126, 169, 194, 0.12), transparent 40%),
+      linear-gradient(180deg, #132019 0%, #1D2C24 50%, #121D18 100%);
+    color: var(--neumorphic-dark-tips);
+  }
+
+  .theme-surface-light {
+    background: linear-gradient(145deg, rgba(255, 246, 232, 0.92), rgba(245, 231, 208, 0.9));
+    border: 1px solid rgba(197, 169, 128, 0.5);
+  }
+
+  .theme-surface-dark {
+    background: linear-gradient(145deg, rgba(35, 50, 41, 0.9), rgba(22, 33, 27, 0.92));
+    border: 1px solid rgba(111, 150, 128, 0.42);
+  }
+
+  .neumorphic,
+  .neumorphic-light {
+    background: linear-gradient(145deg, var(--neumorphic-light-surface), var(--neumorphic-light-bg));
+    border: 1px solid rgba(185, 153, 112, 0.34);
+    box-shadow:
+      10px 10px 22px rgba(158, 126, 88, 0.18),
+      -10px -10px 22px rgba(255, 248, 234, 0.94);
+  }
+
+  .neumorphic-dark {
+    background: linear-gradient(145deg, var(--neumorphic-dark-surface), var(--neumorphic-dark-bg));
+    border: 1px solid rgba(108, 149, 126, 0.38);
+    box-shadow:
+      10px 10px 22px rgba(7, 12, 9, 0.42),
+      -10px -10px 22px rgba(54, 77, 64, 0.36);
+  }
+
+  .neumorphic-inset {
+    background: linear-gradient(145deg, var(--neumorphic-light-flat-soft), var(--neumorphic-light-flat));
+    border: 1px solid rgba(188, 160, 122, 0.3);
+    box-shadow:
+      inset 6px 6px 12px rgba(170, 141, 103, 0.24),
+      inset -6px -6px 12px rgba(255, 250, 240, 0.84);
+  }
+
+  .neumorphic-dark-inset {
+    background: linear-gradient(145deg, var(--neumorphic-dark-flat-soft), var(--neumorphic-dark-flat));
+    border: 1px solid rgba(109, 151, 129, 0.34);
+    box-shadow:
+      inset 6px 6px 12px rgba(7, 11, 9, 0.5),
+      inset -6px -6px 12px rgba(61, 86, 72, 0.36);
+  }
+
+  .neumorphic-flat {
+    background: linear-gradient(145deg, var(--neumorphic-light-flat-soft), var(--neumorphic-light-flat));
+    border: 1px solid rgba(188, 160, 122, 0.34);
+    box-shadow:
+      5px 5px 10px rgba(162, 129, 91, 0.14),
+      -5px -5px 10px rgba(255, 249, 236, 0.88);
+  }
+
+  .neumorphic-dark-flat {
+    background: linear-gradient(145deg, var(--neumorphic-dark-flat-soft), var(--neumorphic-dark-flat));
+    border: 1px solid rgba(109, 151, 129, 0.34);
+    box-shadow:
+      5px 5px 10px rgba(7, 11, 9, 0.4),
+      -5px -5px 10px rgba(60, 84, 70, 0.34);
+  }
+
+  .neumorphic-small {
+    border-radius: 0.75rem;
+  }
+
+  .neumorphic-dark-small {
+    border-radius: 0.75rem;
+  }
+
+  .neumorphic-large {
+    border-radius: 1.5rem;
+  }
+
+  .neumorphic-dark-large {
+    border-radius: 1.5rem;
+  }
+
+  .neumorphic-breathing-circle {
+    width: 14rem;
+    height: 14rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media (min-width: 768px) {
+    .neumorphic-breathing-circle {
+      width: 18rem;
+      height: 18rem;
+    }
+  }
+
+  .neumorphic-breathing {
+    animation: neumorphic-breathe 4s ease-in-out infinite;
+  }
   
-  /* 拟物化风格样式 - 移至文件底部统一定义，避免重复 */
+  /* 閹风喓澧块崠鏍棑閺嶅吋鐗卞?- 缁夋槒鍤﹂弬鍥︽鎼存洟鍎寸紒鐔剁鐎规矮绠熼敍宀勪缉閸忓秹鍣告径?*/
   
     
   .text-neumorphic-tips-light {
-    color: #1a202c;
+    color: var(--neumorphic-light-tips);
   }
 
   .text-neumorphic-tips-dark {
-    color: #f7fafc; /* 更亮的颜色，提升对比度 */
+    color: var(--neumorphic-dark-tips);
   }
-  
+
   .text-neumorphic-muted-light {
-    color: #718096;
+    color: var(--neumorphic-light-muted);
   }
-  
+
   .text-neumorphic-muted-dark {
-    color: #e2e8f0; /* 更亮的颜色，进一步提升对比度 */
+    color: var(--neumorphic-dark-muted);
   }
   
-  /* 注意：阴影样式已统一使用 Tailwind 配置中的标准工具类 */
+  /* 濞夈劍鍓伴敍姘舵Ь瑜拌鲸鐗卞蹇撳嚒缂佺喍绔存担璺ㄦ暏 Tailwind 闁板秶鐤嗘稉顓犳畱閺嶅洤鍣銉ュ徔缁?*/
   
-  /* 注意：悬停和按下效果已统一使用 Tailwind 的 hover: 和 active: 变体 */
+  /* 濞夈劍鍓伴敍姘亾閸嬫粌鎷伴幐澶夌瑓閺佸牊鐏夊鑼埠娑撯偓娴ｈ法鏁?Tailwind 閻?hover: 閸?active: 閸欐ü缍?*/
   
-  /* 圆形进度条样式 */
+  /* 閸﹀棗鑸版潻娑樺閺夆剝鐗卞?*/
   .progress-circle-container {
     position: relative;
     display: flex;
@@ -39,7 +198,7 @@
     align-items: center;
   }
   
-  /* 呼吸动画 */
+  /* 閸涚厧鎯涢崝銊ф暰 */
   @keyframes breathing {
     0% { transform: scale(1); opacity: 0.7; }
     50% { transform: scale(1.05); opacity: 0.9; }
@@ -50,7 +209,7 @@
     animation: breathing 4s infinite ease-in-out;
   }
   
-  /* 脉冲动画 */
+  /* 閼村鍟块崝銊ф暰 */
   @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -61,7 +220,7 @@
     animation: pulse 3s infinite ease-in-out;
   }
   
-  /* 渐变背景动画 */
+  /* 濞撴劕褰夐懗灞炬珯閸斻劎鏁?*/
   @keyframes gradientBg {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -73,7 +232,7 @@
     animation: gradientBg 15s ease infinite;
   }
   
-  /* 骨架屏动画 */
+  /* 妤犮劍鐏︾仦蹇撳З閻?*/
   .animate-spin-slow {
     animation: spin 3s linear infinite;
   }
@@ -93,7 +252,7 @@
     animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
   
-  /* 淡入动画 */
+  /* 濞ｂ€冲弳閸斻劎鏁?*/
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -117,7 +276,7 @@
     animation: fadeIn 0.5s ease-out 0.4s both;
   }
   
-  /* 缩放进入动画 */
+  /* 缂傗晜鏂佹潻娑樺弳閸斻劎鏁?*/
   @keyframes scaleIn {
     0% {
       opacity: 0;
@@ -133,7 +292,7 @@
     animation: scaleIn 0.3s ease-out;
   }
   
-  /* 平滑移动动画 */
+  /* 楠炶櫕绮︾粔璇插З閸斻劎鏁?*/
   @keyframes slideIn {
     0% {
       opacity: 0;
@@ -149,7 +308,7 @@
     animation: slideIn 0.4s ease-out;
   }
   
-  /* 按钮按下效果 */
+  /* 閹稿鎸抽幐澶夌瑓閺佸牊鐏?*/
   .press-effect {
     transition: transform 0.1s ease;
   }
@@ -158,7 +317,7 @@
     transform: scale(0.97);
   }
   
-  /* 工具提示样式 */
+  /* 瀹搞儱鍙块幓鎰仛閺嶅嘲绱?*/
   .tooltip {
     position: relative;
   }
@@ -185,12 +344,12 @@
     visibility: visible;
   }
   
-  /* 响应式间距调整 */
+  /* 閸濆秴绨插蹇涙？鐠烘繆鐨熼弫?*/
   .responsive-gap {
     gap: clamp(1rem, 4vw, 2rem);
   }
   
-  /* 粒子动画 - 呼吸效果 */
+  /* 缁帒鐡欓崝銊ф暰 - 閸涚厧鎯涢弫鍫熺亯 */
   @keyframes particleFloat0 {
     0% {
       transform: translate(0, 0) scale(1);
@@ -279,7 +438,7 @@
     }
   }
   
-  /* 高对比度模式支持 */
+  /* 妤傛ê顕В鏂垮濡€崇础閺€顖涘瘮 */
   @media (prefers-contrast: high) {
     .bg-neumorphic-light {
       background-color: #ffffff;
@@ -290,17 +449,17 @@
     }
     
     .text-neumorphic-tips-light {
-      color: #000000;
-    }
+    color: var(--neumorphic-light-tips);
+  }
     
     .text-neumorphic-tips-dark {
-      color: #ffffff;
-    }
+    color: var(--neumorphic-dark-tips);
+  }
   }
   
-  /* 注意：移动端优化已移至 Tailwind 工具类，使用 md:lg: 等响应式变体 */
+  /* 濞夈劍鍓伴敍姘毙╅崝銊ь伂娴兼ê瀵插鑼╅懛?Tailwind 瀹搞儱鍙跨猾浼欑礉娴ｈ法鏁?md:lg: 缁涘鎼锋惔鏂跨础閸欐ü缍?*/
 
-  /* 新拟态卡片专用工具类 - 简化版本，避免@apply错误 */
+  /* 閺傜増瀚欓幀浣稿幢閻楀洣绗撻悽銊ヤ紣閸忛琚?- 闂堟瑨鍝€閼奉亞鍔ф搴㈢壐 */
   .neumorphic-card {
     border-radius: 1rem;
     border: 1px solid;
@@ -312,15 +471,15 @@
   }
 
   .neumorphic-card-dark {
-    background: linear-gradient(to bottom right, rgba(31, 41, 55, 0.5), rgba(55, 65, 81, 0.3));
-    border-color: rgba(75, 85, 99, 0.4);
-    box-shadow: 20px 20px 40px #080b0e, -20px -20px 40px #b8c1cc;
+    background: linear-gradient(to bottom right, rgba(34, 48, 39, 0.9), rgba(22, 33, 27, 0.78));
+    border-color: rgba(112, 148, 128, 0.42);
+    box-shadow: 10px 10px 20px rgba(7, 11, 9, 0.62), -10px -10px 20px rgba(56, 80, 66, 0.38);
   }
 
   .neumorphic-card-light {
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.5), rgba(249, 250, 251, 0.3));
-    border-color: rgba(156, 163, 175, 0.5);
-    box-shadow: 20px 20px 40px #9ca6b4, -20px -20px 40px #ffffff;
+    background: linear-gradient(to bottom right, rgba(255, 246, 232, 0.95), rgba(241, 223, 196, 0.88));
+    border-color: rgba(197, 169, 128, 0.55);
+    box-shadow: 10px 10px 20px rgba(185, 153, 112, 0.24), -10px -10px 20px rgba(255, 249, 237, 0.86);
   }
 
   .neumorphic-inset-card {
@@ -330,23 +489,23 @@
   }
 
   .neumorphic-inset-card:hover {
-    border-color: rgba(59, 130, 246, 0.5);
-    box-shadow: inset 10px 10px 20px #080b0e, inset -10px -10px 20px #b8c1cc, 0 0 15px rgba(59, 130, 246, 0.2);
+    border-color: rgba(110, 155, 127, 0.45);
+    box-shadow: inset 5px 5px 10px rgba(196, 166, 126, 0.24), inset -5px -5px 10px rgba(255, 250, 239, 0.9), 0 0 12px rgba(110, 155, 127, 0.12);
   }
 
   .neumorphic-inset-card-dark {
-    background: linear-gradient(to bottom right, rgba(55, 65, 81, 0.5), rgba(31, 41, 55, 0.3));
-    border-color: rgba(75, 85, 99, 0.35);
-    box-shadow: inset 10px 10px 20px #080b0e, inset -10px -10px 20px #b8c1cc;
+    background: linear-gradient(to bottom right, rgba(34, 48, 39, 0.74), rgba(22, 33, 27, 0.54));
+    border-color: rgba(112, 148, 128, 0.34);
+    box-shadow: inset 5px 5px 10px rgba(7, 11, 9, 0.66), inset -5px -5px 10px rgba(56, 80, 66, 0.4);
   }
 
   .neumorphic-inset-card-light {
-    background: linear-gradient(to bottom right, rgba(243, 244, 246, 0.5), rgba(255, 255, 255, 0.5));
-    border-color: rgba(156, 163, 175, 0.4);
-    box-shadow: inset 8px 8px 16px #9ca6b4, inset -8px -8px 16px #ffffff;
+    background: linear-gradient(to bottom right, rgba(245, 230, 206, 0.75), rgba(255, 247, 233, 0.68));
+    border-color: rgba(197, 169, 128, 0.45);
+    box-shadow: inset 5px 5px 10px rgba(185, 153, 112, 0.26), inset -5px -5px 10px rgba(255, 249, 237, 0.9);
   }
 
-  /* 屏幕阅读器专用内容 */
+  /* 鐏炲繐绠烽梼鍛邦嚢閸ｃ劋绗撻悽銊ュ敶鐎?*/
   .sr-only {
     position: absolute;
     width: 1px;
@@ -359,18 +518,18 @@
     border: 0;
   }
 
-  /* 焦点指示器优化 */
+  /* 閻掞妇鍋ｉ幐鍥┿仛閸ｃ劋绱崠?*/
   .focus-indicator {
     transition: all 0.2s ease-in-out;
   }
 
   .focus-indicator:focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--zen-accent);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* 高对比度焦点样式 */
+  /* 妤傛ê顕В鏂垮閻掞妇鍋ｉ弽宄扮础 */
   @media (prefers-contrast: high) {
     .focus-indicator:focus-visible {
       outline: 3px solid #000;
@@ -378,24 +537,9 @@
     }
   }
 
-  /* 按钮悬停发光效果 */
-  button:hover {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
+  /* Button hover glow removed to keep interaction calm and low-stimulation. */
 
-  button[class*="from-cyan"]:hover {
-    box-shadow: 0 0 25px rgba(34, 211, 238, 0.4), 0 0 40px rgba(59, 130, 246, 0.2);
-  }
-
-  button[class*="from-amber"]:hover {
-    box-shadow: 0 0 25px rgba(217, 119, 6, 0.4), 0 0 40px rgba(245, 158, 11, 0.2);
-  }
-
-  button[class*="from-rose"]:hover {
-    box-shadow: 0 0 25px rgba(225, 29, 72, 0.4), 0 0 40px rgba(244, 63, 94, 0.2);
-  }
-
-  /* 减少动画模式支持 */
+  /* 閸戝繐鐨崝銊ф暰濡€崇础閺€顖涘瘮 */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -407,9 +551,9 @@
     }
   }
 
-  /* 低端设备性能优化 */
+  /* 娴ｅ海顏拋鎯ь槵閹嗗厴娴兼ê瀵?*/
   @media (max-width: 768px) and (max-height: 800px) {
-    /* 进一步简化阴影 */
+    /* 鏉╂稐绔村銉х暆閸栨牠妲捐ぐ?*/
     .neumorphic {
       box-shadow: 2px 2px 4px rgba(0,0,0,0.04);
     }
@@ -418,17 +562,17 @@
       box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
-    /* 减少复杂的渐变和背景 */
+    /* 閸戝繐鐨径宥嗘絽閻ㄥ嫭绗庨崣妯烘嫲閼冲本娅?*/
     .animate-gradient-bg {
       animation: none !important;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      background: linear-gradient(135deg, #EDE2D3 0%, #DDE7D8 100%) !important;
     }
 
     .neumorphic-breathing {
       animation: none !important;
     }
 
-    /* 禁用高消耗的transform动画 */
+    /* 缁備胶鏁ゆ妯荤Х閼版娈憈ransform閸斻劎鏁?*/
     .transform,
     .hover\:scale-105:hover,
     .hover\:shadow-xl:hover {
@@ -436,7 +580,7 @@
     }
   }
 
-  /* 极低端设备 */
+  /* 閺嬩椒缍嗙粩顖濐啎婢?*/
   @media (max-width: 480px) {
     .animate-fade-in,
     .animate-scale-in,
@@ -446,7 +590,7 @@
       transform: none !important;
     }
 
-    /* 最小化阴影效果 */
+    /* 閺堚偓鐏忓繐瀵查梼鏉戝閺佸牊鐏?*/
     .neumorphic,
     .neumorphic-dark {
       box-shadow: 1px 1px 2px rgba(0,0,0,0.1) !important;
@@ -468,14 +612,33 @@
   0%, 100% {
     transform: scale(1);
     box-shadow:
-      12px 12px 24px #c5cdd8,
-      -12px -12px 24px #ffffff;
+      10px 10px 22px rgba(158, 126, 88, 0.18),
+      -10px -10px 22px rgba(255, 248, 234, 0.94);
   }
   50% {
     transform: scale(1.02);
     box-shadow:
-      14px 14px 28px #b8c0d0,
-      -14px -14px 28px #ffffff;
+      12px 12px 26px rgba(158, 126, 88, 0.24),
+      -12px -12px 26px rgba(255, 248, 234, 0.98);
+  }
+}
+
+.dark .neumorphic-breathing {
+  animation: neumorphic-breathe-dark 4s ease-in-out infinite;
+}
+
+@keyframes neumorphic-breathe-dark {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      10px 10px 22px rgba(7, 11, 9, 0.42),
+      -10px -10px 22px rgba(54, 77, 64, 0.36);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow:
+      12px 12px 26px rgba(7, 11, 9, 0.48),
+      -12px -12px 26px rgba(60, 84, 70, 0.42);
   }
 }
 
@@ -489,23 +652,76 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-zen-body), "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 新拟态基础样式 - 优化对比度 */
-/* 新拟态基础样式 - 优化对比度
-   注意：这些背景色现在由 Tailwind 配置的 colors.neumorphic 统一管理
-   避免重复定义，使用 bg-neumorphic-light 和 bg-neumorphic-dark 工具类
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-zen-heading), "Noto Serif SC", Georgia, serif;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.font-light {
+  font-weight: 400;
+}
+
+h1.font-light,
+h2.font-light,
+h3.font-light,
+h4.font-light {
+  font-weight: 500;
+}
+
+p,
+li {
+  line-height: 1.72;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.font-mono,
+code,
+pre {
+  font-family: var(--font-zen-mono), "JetBrains Mono", Consolas, monospace;
+}
+
+/* 閺傜増瀚欓幀浣哥唨绾偓閺嶅嘲绱?- 娴兼ê瀵茬€佃鐦惔?*/
+/* 閺傜増瀚欓幀浣哥唨绾偓閺嶅嘲绱?- 娴兼ê瀵茬€佃鐦惔?
+   濞夈劍鍓伴敍姘崇箹娴滄稖鍎楅弲顖濆閻滄澘婀悽?Tailwind 闁板秶鐤嗛惃?colors.neumorphic 缂佺喍绔寸粻锛勬倞
+   闁灝鍘ら柌宥咁槻鐎规矮绠熼敍灞煎▏閻?bg-neumorphic-light 閸?bg-neumorphic-dark 瀹搞儱鍙跨猾?
 */
 
-/* 注意：新拟态样式已统一使用 Tailwind 工具类，请使用 bg-neumorphic-light、shadow-neumorphic 等 */
+/* 濞夈劍鍓伴敍姘煀閹风喐鈧焦鐗卞蹇撳嚒缂佺喍绔存担璺ㄦ暏 Tailwind 瀹搞儱鍙跨猾浼欑礉鐠囪渹濞囬悽?bg-neumorphic-light閵嗕够hadow-neumorphic 缁?*/
 
-/* 深色主题背景覆盖 - 优化对比度 */
+/* 濞ｈ精澹婃稉濠氼暯閼冲本娅欑憰鍡欐磰 - 閺堝牆鍘滈惌瀹犲窛 */
 .dark body {
-  background: #1a202c;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(126, 169, 140, 0.24), transparent 38%),
+    radial-gradient(circle at 86% 10%, rgba(126, 169, 194, 0.16), transparent 42%),
+    linear-gradient(180deg, #101A15 0%, #1A2720 48%, #0F1713 100%);
 }
 
+/* 濞村懓澹婃稉濠氼暯閼冲本娅欑憰鍡欐磰 - 閺冦儴鎯ら惌瀹犲窛 */
 .light body {
-  background: #e0e5ec;
+  background:
+    radial-gradient(circle at 14% 16%, rgba(133, 176, 150, 0.2), transparent 34%),
+    radial-gradient(circle at 84% 6%, rgba(200, 156, 103, 0.18), transparent 42%),
+    linear-gradient(180deg, #F5E8D2 0%, #FCF1DF 52%, #ECD6B6 100%);
 }
+

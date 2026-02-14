@@ -17,7 +17,9 @@ export default function BlogPageClient() {
   if (!mounted) {
     return (
       <div className={`min-h-screen ${
-        theme === 'dark' ? 'bg-neumorphic-dark text-neumorphic-tips-dark' : 'bg-neumorphic-light text-neumorphic-tips-light'
+        theme === 'dark'
+          ? 'theme-page-dark'
+          : 'theme-page-light'
       }`}>
         <div className="flex justify-center items-center min-h-screen">
           <div className="text-xl">Loading...</div>
@@ -28,7 +30,9 @@ export default function BlogPageClient() {
 
   return (
     <div className={`flex flex-col min-h-screen ${
-      theme === 'dark' ? 'bg-neumorphic-dark text-neumorphic-tips-dark' : 'bg-neumorphic-light text-neumorphic-tips-light'
+      theme === 'dark'
+        ? 'theme-page-dark'
+        : 'theme-page-light'
     }`}>
       <header>
         <Navigation

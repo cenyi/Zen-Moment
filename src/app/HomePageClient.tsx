@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
@@ -15,30 +15,30 @@ import { useSimpleTimer } from '../hooks/useSimpleTimer'
 import { useTimerStore } from '../store/timerStore'
 import { useBackgroundSound } from '../hooks/useBackgroundSound'
 
-// 骨架屏组件 - 提升加载体验
+// 楠ㄦ灦灞忕粍浠?- 鎻愬崌鍔犺浇浣撻獙
 const SkeletonLoader = ({ theme, loadingPhase }: { theme: 'dark' | 'light', loadingPhase: string }) => (
   <div className={`min-h-screen transition-colors duration-300 ${
     theme === 'dark'
-      ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-      : 'bg-neumorphic-light text-neumorphic-tips-light'
+      ? 'theme-page-dark'
+      : 'theme-page-light'
   }`}>
-    {/* 导航栏骨架 */}
+    {/* 瀵艰埅鏍忛鏋?*/}
     <div className="w-full h-16 px-4 py-3 flex justify-between items-center">
       <div className={`w-24 h-8 rounded-lg animate-pulse ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+        theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
       }`}></div>
       <div className="flex gap-3">
         <div className={`w-10 h-10 rounded-full animate-pulse ${
-          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
         }`}></div>
         <div className={`w-10 h-10 rounded-full animate-pulse ${
-          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
         }`}></div>
       </div>
     </div>
 
     <div className="flex flex-col justify-center items-center min-h-[calc(100vh-4rem)] px-6">
-      {/* 品牌展示 */}
+      {/* 鍝佺墝灞曠ず */}
       <div className="flex flex-col items-center mb-10">
         <div className="w-16 h-16 mb-4 flex items-center justify-center">
           <Image
@@ -55,28 +55,28 @@ const SkeletonLoader = ({ theme, loadingPhase }: { theme: 'dark' | 'light', load
         }`}>Zen Moment</h1>
       </div>
 
-      {/* 加载状态指示 */}
+      {/* 鍔犺浇鐘舵€佹寚绀?*/}
       <div className="text-center mb-12">
         <div className={`text-lg mb-3 animate-fade-in-delay ${
           theme === 'dark' ? 'text-neumorphic-muted-dark' : 'text-neumorphic-muted-light'
         }`}>
-          {loadingPhase === 'initializing' && '◯ Preparing your meditation space...'}
-          {loadingPhase === 'preparing' && '▲ Setting up timers...'}
-          {loadingPhase === 'ready' && '✦ Ready to begin your journey'}
+          {loadingPhase === 'initializing' && '\u25EF Preparing your meditation space...'}
+          {loadingPhase === 'preparing' && '\u25C9 Setting up timers...'}
+          {loadingPhase === 'ready' && '\u2728 Ready to begin your journey'}
         </div>
 
-        {/* 脉冲加载动画 */}
+        {/* 鑴夊啿鍔犺浇鍔ㄧ敾 */}
         <div className="relative inline-block">
           <div className={`w-20 h-20 rounded-full border-4 relative animate-spin-slow ${
             loadingPhase === 'initializing'
-              ? 'border-gray-400 border-t-transparent'
+              ? 'border-[#7C8078] border-t-transparent'
               : loadingPhase === 'preparing'
               ? 'border-blue-500 border-t-transparent'
               : 'border-green-500 border-t-transparent'
           }`}></div>
           <div className={`absolute inset-0 rounded-full animate-ping-slow opacity-30 ${
             loadingPhase === 'initializing'
-              ? 'bg-gray-400'
+              ? 'bg-[#7C8078]'
               : loadingPhase === 'preparing'
               ? 'bg-blue-500'
               : 'bg-green-500'
@@ -92,20 +92,20 @@ const SkeletonLoader = ({ theme, loadingPhase }: { theme: 'dark' | 'light', load
         </div>
       </div>
 
-      {/* 骨架屏内容区域 - 模拟计时器界面 */}
+      {/* 楠ㄦ灦灞忓唴瀹瑰尯鍩?- 妯℃嫙璁℃椂鍣ㄧ晫闈?*/}
       <div className="w-full max-w-md">
         <div className={`w-full h-32 rounded-2xl mb-6 animate-pulse ${
-          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
         }`}></div>
         <div className="flex justify-center gap-4 mb-6">
           {[...Array(3)].map((_, i) => (
             <div key={i} className={`w-12 h-12 rounded-full animate-pulse ${
-              theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+              theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
             }`}></div>
           ))}
         </div>
         <div className={`w-full h-16 rounded-xl animate-pulse ${
-          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
         }`}></div>
       </div>
     </div>
@@ -115,34 +115,34 @@ const SkeletonLoader = ({ theme, loadingPhase }: { theme: 'dark' | 'light', load
 export default function Home() {
   const [soundEnabled, setSoundEnabled] = useState(true)
 
-  // 统一使用 useTimerStore 作为主要状态管理
+  // 缁熶竴浣跨敤 useTimerStore 浣滀负涓昏鐘舵€佺鐞?
   const {
-    // 计时器状态
+    // 璁℃椂鍣ㄧ姸鎬?
     isRunning,
     isPaused,
     remainingTime,
     duration,
     completedCycles,
 
-    // 呼吸状态
+    // 鍛煎惛鐘舵€?
     isBreathing,
     breathingPhase,
     breathingProgress,
     currentBreathCycle,
     breathingModeId,
 
-    // 统计数据
+    // 缁熻鏁版嵁
     todayDuration,
     totalDuration,
     breathingSessions,
     streak,
 
-    // 主题
+    // 涓婚
     theme,
     backgroundSoundId,
     backgroundSoundVolume,
 
-    // 方法
+    // 鏂规硶
     startTimer: storeStartTimer,
     pauseTimer: storePauseTimer,
     resetTimer: storeResetTimer,
@@ -157,21 +157,21 @@ export default function Home() {
     completeTimer
   } = useTimerStore()
 
-  // useSimpleTimer 只作为辅助 Hook，提供基础功能
+  // useSimpleTimer 鍙綔涓鸿緟鍔?Hook锛屾彁渚涘熀纭€鍔熻兘
   const {
     mounted,
     loadingPhase,
     formatTime
   } = useSimpleTimer()
 
-  // 背景声音功能
+  // 鑳屾櫙澹伴煶鍔熻兘
   const {
     playBackgroundSound,
     stopBackgroundSound,
     setVolume: setBackgroundVolume
   } = useBackgroundSound(backgroundSoundId, soundEnabled, false)
 
-  // 计时器运行逻辑
+  // 璁℃椂鍣ㄨ繍琛岄€昏緫
   useEffect(() => {
     let interval: NodeJS.Timeout
 
@@ -188,29 +188,29 @@ export default function Home() {
     }
   }, [isRunning, remainingTime, tick])
 
-  // 监听计时器状态，控制背景声音
+  // 鐩戝惉璁℃椂鍣ㄧ姸鎬侊紝鎺у埗鑳屾櫙澹伴煶
   useEffect(() => {
     if (isRunning && backgroundSoundId !== 'none' && soundEnabled) {
-      // 计时器开始时，播放背景声音
+      // 璁℃椂鍣ㄥ紑濮嬫椂锛屾挱鏀捐儗鏅０闊?
       playBackgroundSound()
     } else if (!isRunning) {
-      // 计时器停止时，停止背景声音
+      // 璁℃椂鍣ㄥ仠姝㈡椂锛屽仠姝㈣儗鏅０闊?
       stopBackgroundSound()
     }
   }, [isRunning, backgroundSoundId, soundEnabled, playBackgroundSound, stopBackgroundSound])
 
-  // 移除重复的时长状态，统一使用 store 数据
-  const [customMinutes, setCustomMinutes] = useState('') // 自定义分钟
-  const [customSeconds, setCustomSeconds] = useState('') // 自定义秒数
+  // 绉婚櫎閲嶅鐨勬椂闀跨姸鎬侊紝缁熶竴浣跨敤 store 鏁版嵁
+  const [customMinutes, setCustomMinutes] = useState('') // 鑷畾涔夊垎閽?
+  const [customSeconds, setCustomSeconds] = useState('') // 鑷畾涔夌鏁?
 
-  // 计算进度百分比 - 使用 store 中的 duration
+  // 璁＄畻杩涘害鐧惧垎姣?- 浣跨敤 store 涓殑 duration
   const progressPercentage = duration > 0
     ? ((duration - remainingTime) / duration) * 100
     : 0
 
-  // 定义handler函数（在hooks之后，条件返回之前）
+  // 瀹氫箟handler鍑芥暟锛堝湪hooks涔嬪悗锛屾潯浠惰繑鍥炰箣鍓嶏級
   const handleStart = () => {
-    // 直接使用 store 中的时长开始计时
+    // 鐩存帴浣跨敤 store 涓殑鏃堕暱寮€濮嬭鏃?
     storeStartTimer(duration)
   }
 
@@ -219,7 +219,7 @@ export default function Home() {
   }
 
   const handleResume = () => {
-    // store 中需要实现 resumeTimer 方法
+    // store 涓渶瑕佸疄鐜?resumeTimer 鏂规硶
     storeStartTimer(remainingTime)
   }
 
@@ -227,10 +227,10 @@ export default function Home() {
     storeResetTimer()
   }
 
-  // 全局键盘快捷键支持 - 移到条件返回之前
+  // 鍏ㄥ眬閿洏蹇嵎閿敮鎸?- 绉诲埌鏉′欢杩斿洖涔嬪墠
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // 防止在输入框中触发全局快捷键
+      // 闃叉鍦ㄨ緭鍏ユ涓Е鍙戝叏灞€蹇嵎閿?
       if (e.target instanceof HTMLInputElement) {
         return
       }
@@ -274,7 +274,7 @@ export default function Home() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isRunning, isPaused, duration, handleStart, handlePause, handleResume, handleReset])
 
-  // 防止 hydration 不匹配 - 在组件未挂载前不渲染动态内容
+  // 闃叉 hydration 涓嶅尮閰?- 鍦ㄧ粍浠舵湭鎸傝浇鍓嶄笉娓叉煋鍔ㄦ€佸唴瀹?
   if (!mounted) {
     return <SkeletonLoader theme={theme} loadingPhase={loadingPhase} />;
   }
@@ -283,8 +283,8 @@ export default function Home() {
   return (
       <div className={`min-h-screen pt-16 transition-colors duration-300 ${
         theme === 'dark'
-          ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-          : 'bg-neumorphic-light text-neumorphic-tips-light'
+          ? 'theme-page-dark'
+          : 'theme-page-light'
       }`}>
       {/* Header with Navigation */}
       <header>
@@ -297,19 +297,19 @@ export default function Home() {
       {/* Main Content */}
       <main>
 
-      {/* Screen 1: 极简核心体验区 (首屏) */}
+      {/* Screen 1: 鏋佺畝鏍稿績浣撻獙鍖?(棣栧睆) */}
       <section className="min-h-screen flex items-start justify-center px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-16 sm:pb-20 relative" aria-labelledby="hero-heading">
         <div className="w-full max-w-4xl sm:max-w-5xl mx-auto flex flex-col items-center space-y-6 sm:space-y-8 mt-4 sm:mt-6">
 
-          {/* 主标题 - 紧凑单行版本 */}
+          {/* 涓绘爣棰?- 绱у噾鍗曡鐗堟湰 */}
           <div className="text-center mb-6 sm:mb-8">
-            <h1 id="hero-heading" className={`text-xl sm:text-2xl md:text-3xl font-light ${
-              theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
+            <h1 id="hero-heading" className={`text-xl sm:text-2xl md:text-3xl font-light tracking-wide ${
+              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
             }`}>
               Breathe. Focus. Find Peace.
             </h1>
             <p className={`text-sm sm:text-base font-light mt-2 ${
-              theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
             }`}>
               Zen Moment - Free Online Meditation Timer & Breathing Guide
             </p>
@@ -317,9 +317,9 @@ export default function Home() {
 
   
       
-          {/* 超大计时器与进度条 - 完美居中显示 */}
+          {/* 瓒呭ぇ璁℃椂鍣ㄤ笌杩涘害鏉?- 瀹岀編灞呬腑鏄剧ず */}
           <div className="relative -mt-2" role="timer" aria-label={`Zen Moment meditation timer: ${formatTime(isRunning ? remainingTime : duration)} remaining`}>
-            {/* 环形进度条 - 只在运行时显示 */}
+            {/* 鐜舰杩涘害鏉?- 鍙湪杩愯鏃舵樉绀?*/}
             {(isRunning || isPaused) && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{transform: 'translateY(-20px)'}} aria-hidden="true">
                 <RingProgress
@@ -331,16 +331,16 @@ export default function Home() {
               </div>
             )}
 
-            {/* 计时器文字 */}
+            {/* 璁℃椂鍣ㄦ枃瀛?*/}
             <div className="flex flex-col items-center justify-center w-full py-10" role="timer" aria-label="Zen Moment meditation timer">
-              <div className={`text-6xl md:text-7xl lg:text-8xl font-mono font-light leading-none ${
-                theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
+              <div className={`text-6xl md:text-7xl lg:text-8xl font-mono font-light leading-none tracking-wider ${
+                theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
               }`} aria-live="polite" aria-atomic="true">
-                <span className="tracking-wider text-center relative z-10">
+                <span className="text-center relative z-10">
                   {formatTime(isRunning ? remainingTime : duration)}
                 </span>
               </div>
-              {/* 计时器状态播报 - 仅对屏幕阅读器可见 */}
+              {/* 璁℃椂鍣ㄧ姸鎬佹挱鎶?- 浠呭灞忓箷闃呰鍣ㄥ彲瑙?*/}
               <div className="sr-only" role="status" aria-live="assertive" aria-atomic="true">
                 {isRunning && `${Math.ceil(remainingTime / 60)} minutes and ${remainingTime % 60} seconds remaining`}
                 {isPaused && 'Timer is paused'}
@@ -348,10 +348,10 @@ export default function Home() {
               </div>
               {isBreathing && breathingPhase && (
                 <div className={`text-xl md:text-2xl mt-4 font-medium transition-colors duration-300 animate-fade-in ${
-                  breathingPhase === 'inhale' ? (theme === 'dark' ? 'text-blue-400' : 'text-blue-600') :
-                  breathingPhase === 'hold' ? (theme === 'dark' ? 'text-purple-400' : 'text-purple-600') :
-                  breathingPhase === 'exhale' ? (theme === 'dark' ? 'text-green-400' : 'text-green-600') :
-                  (theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light')
+                  breathingPhase === 'inhale' ? (theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]') :
+                  breathingPhase === 'hold' ? (theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]') :
+                  breathingPhase === 'exhale' ? (theme === 'dark' ? 'text-[#7FA87C]' : 'text-[#C5BBA7]') :
+                  (theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]')
                 }`} role="status" aria-live="polite">
                   {breathingPhase === 'inhale' ? 'Breathe In' :
                    breathingPhase === 'hold' ? 'Hold' :
@@ -361,7 +361,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 大号圆形 START/PAUSE/RESUME 按钮 - 主要交互元素 */}
+          {/* 澶у彿鍦嗗舰 START/PAUSE/RESUME 鎸夐挳 - 涓昏浜や簰鍏冪礌 */}
           <div className="flex flex-col items-center mt-24 animate-scale-in" style={{marginBottom: '-8px'}} role="group" aria-label="Meditation timer controls">
             {!isRunning ? (
               isPaused ? (
@@ -400,7 +400,7 @@ export default function Home() {
               </SimpleButton>
             )}
 
-            {/* RESET 按钮 - 辅助按钮 */}
+            {/* RESET 鎸夐挳 - 杈呭姪鎸夐挳 */}
             <SimpleButton
               variant="secondary"
               size="lg"
@@ -414,9 +414,9 @@ export default function Home() {
 
           </div>
 
-          {/* 时长选择区域 - 重新组织视觉层次 */}
+          {/* 鏃堕暱閫夋嫨鍖哄煙 - 閲嶆柊缁勭粐瑙嗚灞傛 */}
           <div className="space-y-6 animate-fade-in">
-            {/* 主要快速选择 */}
+            {/* 涓昏蹇€熼€夋嫨 */}
             <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Quick duration selection">
               {[1, 3, 5, 10, 15].map((min) => (
                 <SimpleButton
@@ -426,7 +426,7 @@ export default function Home() {
                   theme={theme}
                   onClick={() => {
                     if (!isRunning) {
-                      // 添加选择动画效果
+                      // 娣诲姞閫夋嫨鍔ㄧ敾鏁堟灉
                       const button = document.getElementById(`duration-btn-${min}`);
                       if (button) {
                         button.classList.add('animate-pulse');
@@ -434,9 +434,9 @@ export default function Home() {
                       }
 
                       const newDuration = min * 60
-                      setCustomMinutes('') // 清空自定义时间
-                      setCustomSeconds('') // 清空自定义秒数
-                      // 直接设置新时长到 store
+                      setCustomMinutes('') // 娓呯┖鑷畾涔夋椂闂?
+                      setCustomSeconds('') // 娓呯┖鑷畾涔夌鏁?
+                      // 鐩存帴璁剧疆鏂版椂闀垮埌 store
                       storeSetDuration(newDuration)
                     }
                   }}
@@ -453,7 +453,7 @@ export default function Home() {
               ))}
             </div>
 
-            {/* 高频快捷选项 - 辅助快速选择 */}
+            {/* 楂橀蹇嵎閫夐」 - 杈呭姪蹇€熼€夋嫨 */}
             <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Quick preset durations">
               {[
                 { label: '30s', minutes: 0, seconds: 30 },
@@ -479,13 +479,13 @@ export default function Home() {
                       : 'cursor-pointer shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1 active:shadow-neumorphic-inset active:translate-y-0'
                   } ${
                     theme === 'dark'
-                      ? 'neumorphic-dark text-neumorphic-tips-dark hover:text-blue-400'
-                      : 'neumorphic text-neumorphic-tips-light hover:text-blue-600'
+                      ? 'bg-[#1D2922] text-[#E9E8E6] hover:text-[#A8C8B0] border border-[#4A5E54]/40'
+                      : 'bg-[#FBF4EA] text-[#2C2A29] hover:text-[#6B8F7A] border border-[#D8CFC0]/40'
                   } ${
                     (parseInt(customMinutes) === preset.minutes && parseInt(customSeconds) === preset.seconds)
                       ? theme === 'dark'
-                        ? 'neumorphic-dark-flat text-blue-400 ring-2 ring-blue-400/50'
-                        : 'neumorphic-flat text-blue-600 ring-2 ring-blue-600/50'
+                        ? 'bg-[#162019] text-[#A8C8B0] ring-2 ring-[#6B8F7A]/50 border-[#6B8F7A]/50'
+                        : 'bg-[#F1E6D6] text-[#6B8F7A] ring-2 ring-[#6B8F7A]/50 border-[#6B8F7A]/50'
                       : ''
                   }`}
                   aria-label={`Set duration to ${preset.label}`}
@@ -495,13 +495,13 @@ export default function Home() {
               ))}
             </div>
 
-            {/* 自定义时间输入 - 高级功能 */}
+            {/* 鑷畾涔夋椂闂磋緭鍏?- 楂樼骇鍔熻兘 */}
             <div className={`p-4 rounded-lg border ${
               isRunning ? 'opacity-50 cursor-not-allowed' : ''
             } ${
               theme === 'dark'
-                ? 'bg-gray-800/60 border-gray-600/30'
-                : 'bg-white/60 border-gray-400/20'
+                ? 'bg-[#1D2922]/60 border-[#4A5E54]/40'
+                : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/40'
             }`}>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
@@ -526,19 +526,19 @@ export default function Home() {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
                         e.preventDefault()
-                        // Enter键可以启动计时器
+                        // Enter閿彲浠ュ惎鍔ㄨ鏃跺櫒
                         if (!isRunning && duration > 0) {
                           handleStart()
                         }
                       }
                     }}
-                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
+                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-[#6B8F7A] focus:ring-offset-1 ${
                       theme === 'dark'
-                        ? 'bg-neumorphic-dark shadow-neumorphic-dark text-neumorphic-tips-dark placeholder-gray-500'
-                        : 'bg-neumorphic-light shadow-neumorphic text-neumorphic-tips-light placeholder-gray-500'
+                        ? 'bg-[#1D2922] shadow-neumorphic-dark text-[#E9E8E6] placeholder-[#A8C8B0]'
+                        : 'bg-[#FBF4EA] shadow-neumorphic text-[#2C2A29] placeholder-[#6B8F7A]'
                     }`}
                   />
-                  <span className={`text-sm ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>min</span>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>min</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <input
@@ -561,25 +561,25 @@ export default function Home() {
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
                         e.preventDefault()
-                        // Enter键可以启动计时器
+                        // Enter閿彲浠ュ惎鍔ㄨ鏃跺櫒
                         if (!isRunning && duration > 0) {
                           handleStart()
                         }
                       }
                     }}
-                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
+                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-[#6B8F7A] focus:ring-offset-1 ${
                       theme === 'dark'
-                        ? 'bg-neumorphic-dark shadow-neumorphic-dark text-neumorphic-tips-dark placeholder-gray-500'
-                        : 'bg-neumorphic-light shadow-neumorphic text-neumorphic-tips-light placeholder-gray-500'
+                        ? 'bg-[#1D2922] shadow-neumorphic-dark text-[#E9E8E6] placeholder-[#A8C8B0]'
+                        : 'bg-[#FBF4EA] shadow-neumorphic text-[#2C2A29] placeholder-[#6B8F7A]'
                     }`}
                   />
-                  <span className={`text-sm ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>sec</span>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>sec</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 键盘快捷键提示 */}
+          {/* 閿洏蹇嵎閿彁绀?*/}
           <FloatingHelpButton
             theme={theme}
             shortcuts={[
@@ -589,7 +589,7 @@ export default function Home() {
             ]}
           />
 
-          {/* 悬浮设置按钮 */}
+          {/* 鎮诞璁剧疆鎸夐挳 */}
           <FloatingSettingsButton
             theme={theme}
             disabled={isRunning}
@@ -597,28 +597,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Screen 2: 呼吸练习引导区 */}
+      {/* Screen 2: 鍛煎惛缁冧範寮曞鍖?*/}
       <BreathingGuide theme={theme} />
 
-      {/* Screen 3: 引导探索区 */}
+      {/* Screen 3: 寮曞鎺㈢储鍖?*/}
       <FeatureHighlights theme={theme} />
 
       {/* Screen 4: Meditation Guide & Benefits */}
       <section className={`py-20 transition-colors duration-300 ${
         theme === 'dark'
-          ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-neumorphic-tips-dark'
-          : 'bg-gradient-to-b from-gray-50 via-white to-gray-50 text-neumorphic-tips-light'
+          ? 'theme-section-dark'
+          : 'theme-section-light'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className={`text-4xl md:text-5xl font-light mb-6 ${
-              theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
+              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
             }`}>
               Start Your Meditation Journey with Zen Moment
             </h2>
             <p className={`text-xl font-light max-w-3xl mx-auto ${
-              theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
             }`}>
               Zen Moment offers the perfect free online meditation timer for beginners and quick meditation sessions. Experience the best free meditation app with guided breathing exercises for stress relief and focus improvement.
             </p>
@@ -626,97 +626,109 @@ export default function Home() {
 
           {/* Benefits Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            <div className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
+            <div className={`p-8 rounded-2xl border ${
+              theme === 'dark'
+                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
+                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
             }`}>
-              <div className="text-3xl mb-4">🧠</div>
+              <div className="text-3xl mb-4">{'\uD83E\uDDE0'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
+                theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
               }`}>
                 Enhanced Focus & Clarity
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Regular meditation practice improves concentration, reduces mental fog, and enhances cognitive performance. Studies show that just 10 minutes of daily meditation can significantly improve attention span and mental clarity.
               </p>
             </div>
 
-            <div className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
+            <div className={`p-8 rounded-2xl border ${
+              theme === 'dark'
+                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
+                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
             }`}>
-              <div className="text-3xl mb-4">💆‍♀️</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDC86\u200D\u2640\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-green-300' : 'text-green-600'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Stress Reduction & Meditation Relaxation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Using Zen Moment's meditation timer, meditation activates the body's natural relaxation response, lowering cortisol levels and reducing symptoms of anxiety and depression. Experience deep peace and tranquility through guided meditation techniques.
               </p>
             </div>
 
-            <div className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
+            <div className={`p-8 rounded-2xl border ${
+              theme === 'dark'
+                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
+                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
             }`}>
-              <div className="text-3xl mb-4">😴</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDE34'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-indigo-300' : 'text-indigo-600'
+                theme === 'dark' ? 'text-[#7FA87C]' : 'text-[#C5BBA7]'
               }`}>
                 Better Sleep with Meditation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Our free meditation timer helps calm racing thoughts and prepares your mind for restful sleep. Many practitioners report falling asleep faster and experiencing deeper, more restorative sleep patterns with regular meditation practice.
               </p>
             </div>
 
-            <div className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
+            <div className={`p-8 rounded-2xl border ${
+              theme === 'dark'
+                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
+                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
             }`}>
-              <div className="text-3xl mb-4">⚖️</div>
+              <div className="text-3xl mb-4">{'\u2696\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
+                theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
               }`}>
                 Emotional Balance
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Develop greater emotional awareness and regulation through meditation. Learn to respond rather than react to life's challenges with mindfulness-based stress reduction techniques.
               </p>
             </div>
 
-            <div className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
+            <div className={`p-8 rounded-2xl border ${
+              theme === 'dark'
+                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
+                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
             }`}>
-              <div className="text-3xl mb-4">💪</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDCAA'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-red-300' : 'text-red-600'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Increased Resilience
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Build mental and emotional strength through consistent meditation practice. Develop the resilience to navigate life's ups and downs with greater ease and stability.
               </p>
             </div>
 
-            <div className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
+            <div className={`p-8 rounded-2xl border ${
+              theme === 'dark'
+                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
+                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
             }`}>
-              <div className="text-3xl mb-4">🌱</div>
+              <div className="text-3xl mb-4">{'\uD83C\uDF31'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-teal-300' : 'text-teal-600'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Personal Growth Through Meditation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
               }`}>
                 Meditation opens doors to deeper self-understanding and spiritual growth. Connect with your inner wisdom and discover your true potential through guided meditation practices with Zen Moment.
               </p>
@@ -724,120 +736,120 @@ export default function Home() {
           </div>
 
           {/* Quick Start Section - Target Beginners and Quick Users */}
-          <div className={`p-12 rounded-3xl ${
+          <div className={`p-12 rounded-3xl border ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-green-900/20 to-teal-900/20 border border-green-800/30'
-              : 'bg-gradient-to-br from-green-50 to-teal-50 border border-green-200'
+              ? 'bg-gradient-to-br from-[#1D2922]/60 to-[#162019]/60 border-[#4A5E54]/40'
+              : 'bg-gradient-to-br from-[#FBF4EA]/60 to-[#F1E6D6]/60 border-[#D8CFC0]/40'
           }`}>
             <h3 className={`text-3xl font-light text-center mb-4 ${
-              theme === 'dark' ? 'text-green-300' : 'text-green-600'
+              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
             }`}>
-              ⚡ Quick Meditation for Beginners
+              {'\u26A1'} Quick Meditation for Beginners
             </h3>
             <p className={`text-lg text-center mb-8 ${
-              theme === 'dark' ? 'text-green-400' : 'text-green-600'
+              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
             }`}>
               Start with just 5 minutes using Zen Moment's free meditation timer
             </p>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className={`text-center p-4 rounded-xl ${
-                theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+              <div className={`text-center p-4 rounded-xl border ${
+                theme === 'dark' ? 'bg-[#1D2922]/50 border-[#4A5E54]/30' : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/30'
               }`}>
-                <div className="text-2xl mb-2">🎯</div>
+                <div className="text-2xl mb-2">{'\uD83C\uDF3F'}</div>
                 <h4 className={`font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-blue-300' : 'text-blue-600'
+                  theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
                 }`}>
                   Meditation for Beginners
                 </h4>
-                <p className="text-sm">Simple 5-minute meditation sessions to build your meditation practice with our free meditation timer</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>Simple 5-minute meditation sessions to build your meditation practice with our free meditation timer</p>
               </div>
-              <div className={`text-center p-4 rounded-xl ${
-                theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+              <div className={`text-center p-4 rounded-xl border ${
+                theme === 'dark' ? 'bg-[#1D2922]/50 border-[#4A5E54]/30' : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/30'
               }`}>
-                <div className="text-2xl mb-2">⏱️</div>
+                <div className="text-2xl mb-2">{'\u23F1\uFE0F'}</div>
                 <h4 className={`font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
+                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
                 }`}>
                   Free Meditation Timer
                 </h4>
-                <p className="text-sm">Perfect for busy professionals needing quick meditation sessions for stress relief and focus improvement</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>Perfect for busy professionals needing quick meditation sessions for stress relief and focus improvement</p>
               </div>
-              <div className={`text-center p-4 rounded-xl ${
-                theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+              <div className={`text-center p-4 rounded-xl border ${
+                theme === 'dark' ? 'bg-[#1D2922]/50 border-[#4A5E54]/30' : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/30'
               }`}>
-                <div className="text-2xl mb-2">🌟</div>
+                <div className="text-2xl mb-2">{'\uD83D\uDD13'}</div>
                 <h4 className={`font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
+                  theme === 'dark' ? 'text-[#7FA87C]' : 'text-[#C5BBA7]'
                 }`}>
                   Free Online Meditation Tool
                 </h4>
-                <p className="text-sm">No ads, no tracking - just pure meditation experience with guided breathing exercises</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>No ads, no tracking - just pure meditation experience with guided breathing exercises</p>
               </div>
             </div>
           </div>
 
           {/* Meditation Tips */}
-          <div className={`p-12 rounded-3xl ${
+          <div className={`p-12 rounded-3xl border ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-purple-800/30'
-              : 'bg-gradient-to-br from-purple-50 to-blue-50 border border-purple-200'
+              ? 'bg-gradient-to-br from-[#1D2922]/60 to-[#162019]/60 border-[#4A5E54]/40'
+              : 'bg-gradient-to-br from-[#FBF4EA]/60 to-[#F1E6D6]/60 border-[#D8CFC0]/40'
           }`}>
             <h3 className={`text-3xl font-light text-center mb-8 ${
-              theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
+              theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
             }`}>
-              🧘‍♂️ Advanced Meditation Techniques with Zen Moment
+              {'\uD83E\uDDD8'} Advanced Meditation Techniques with Zen Moment
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h4 className={`text-xl font-medium mb-4 ${
-                  theme === 'dark' ? 'text-blue-300' : 'text-blue-600'
+                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
                 }`}>
                   Beginner's Meditation Guide
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-green-400 mt-1">•</span>
+                    <span className="text-[#A8C8B0] mt-1">{'\u2022'}</span>
                     <span><strong>Start small:</strong> Begin with 5-10 minutes daily meditation sessions using our free meditation timer and gradually increase duration as you become more comfortable with meditation practice.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-blue-400 mt-1">•</span>
+                    <span className="text-[#D4A574] mt-1">{'\u2022'}</span>
                     <span><strong>Find a quiet space:</strong> Choose a peaceful environment where you won't be disturbed during your meditation sessions.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-purple-400 mt-1">•</span>
+                    <span className="text-[#A8C8B0] mt-1">{'\u2022'}</span>
                     <span><strong>Focus on your breath:</strong> Use your breath as an anchor to keep your mind present during meditation with Zen Moment's guided timer.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-orange-400 mt-1">•</span>
+                    <span className="text-[#8BB8D8] mt-1">{'\u2022'}</span>
                     <span><strong>Be patient with yourself:</strong> Meditation is a skill that develops over time. Don't judge yourself when your mind wanders during meditation.</span>
                   </li>
                 </ul>
               </div>
               <div>
                 <h4 className={`text-xl font-medium mb-4 ${
-                  theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
+                  theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
                 }`}>
                   Best Practices for Meditation Success
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-[#D4A574] mt-1">{'\u2022'}</span>
                     <span><strong>Consistency is key:</strong> Regular daily meditation practice is more important than session length. Use Zen Moment's meditation timer for consistent practice.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-teal-400 mt-1">•</span>
+                    <span className="text-[#A8C8B0] mt-1">{'\u2022'}</span>
                     <span><strong>Mix meditation styles:</strong> Combine different meditation techniques like mindfulness, loving-kindness, and body scan for comprehensive meditation benefits.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-indigo-400 mt-1">•</span>
+                    <span className="text-[#8BB8D8] mt-1">{'\u2022'}</span>
                     <span><strong>Use guided meditation:</strong> Start with guided meditation apps or recordings to help you learn proper meditation techniques and deepen your practice.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-[#A898B8] mt-1">{'\u2022'}</span>
                     <span><strong>Track your progress:</strong> Use Zen Moment's free meditation timer to monitor your meditation journey and celebrate milestones in your practice.</span>
                   </li>
                 </ul>
@@ -847,7 +859,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ 部分 */}
+      {/* FAQ 閮ㄥ垎 */}
       <FAQ
         items={[
           {
@@ -887,3 +899,8 @@ export default function Home() {
       </div>
   )
 }
+
+
+
+
+

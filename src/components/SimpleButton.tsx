@@ -18,116 +18,45 @@ export const SimpleButton = ({
   href,
   ...props
 }: SimpleButtonProps) => {
-  // Base classes with accessibility and touch target standards
-  const baseClasses = 'font-medium transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed min-w-[44px] min-h-[44px] flex items-center justify-center'
+  const baseClasses =
+    'font-semibold tracking-[0.01em] transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#6E9B7F] disabled:opacity-50 disabled:cursor-not-allowed min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl'
 
   const sizeClasses = {
     sm: 'px-4 py-2 text-sm',
     md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
+    lg: 'px-8 py-4 text-lg',
   } as const
 
-  const sizeShadowClasses = {
+  const shadowClasses = {
     sm: theme === 'dark' ? 'shadow-neumorphic-dark-small' : 'shadow-neumorphic-small',
     md: theme === 'dark' ? 'shadow-neumorphic-dark' : 'shadow-neumorphic',
-    lg: theme === 'dark' ? 'shadow-neumorphic-dark-large' : 'shadow-neumorphic-large'
+    lg: theme === 'dark' ? 'shadow-neumorphic-dark-large' : 'shadow-neumorphic-large',
   } as const
 
   const variantClasses = {
-    primary: {
-      ...sizeShadowClasses,
-      ...(theme === 'dark' ? {
-        'bg-neumorphic-dark': true,
-        'text-blue-400': true,
-        'hover:text-blue-300': true,
-        'hover:shadow-neumorphic-dark-hover': true,
-        'hover:-translate-y-1': true,
-        'hover:scale-1.02': true,
-        'active:shadow-neumorphic-dark-inset': true,
-        'active:translate-y-0': true,
-        'active:scale-1': true,
-        // 增强边界感 - 更强的边框对比度作为阴影的后备方案
-        'border': true,
-        'border-gray-600/35': true,
-        'hover:border-gray-500/45': true
-      } : {
-        'bg-neumorphic-light': true,
-        'text-blue-600': true,
-        'hover:text-blue-700': true,
-        'hover:shadow-neumorphic-hover': true,
-        'hover:-translate-y-1': true,
-        'hover:scale-1.02': true,
-        'active:shadow-neumorphic-inset': true,
-        'active:translate-y-0': true,
-        'active:scale-1': true,
-        // 增强边界感 - 微妙边框作为阴影的后备方案
-        'border': true,
-        'border-gray-400/25': true,
-        'hover:border-gray-500/35': true
-      })
-    },
-    secondary: {
-      ...sizeShadowClasses,
-      ...(theme === 'dark' ? {
-        'bg-neumorphic-dark': true,
-        'text-neumorphic-tips-dark': true,
-        'hover:text-white': true,
-        'hover:shadow-neumorphic-dark-hover': true,
-        'hover:-translate-y-1': true,
-        'hover:scale-1.02': true,
-        'active:shadow-neumorphic-dark-inset': true,
-        'active:translate-y-0': true,
-        'active:scale-1': true,
-        // 增强边界感 - 更强的边框对比度作为阴影的后备方案
-        'border': true,
-        'border-gray-600/30': true,
-        'hover:border-gray-500/40': true
-      } : {
-        'bg-neumorphic-light': true,
-        'text-neumorphic-tips-light': true,
-        'hover:text-blue-700': true,
-        'hover:shadow-neumorphic-hover': true,
-        'hover:-translate-y-1': true,
-        'hover:scale-1.02': true,
-        'active:shadow-neumorphic-inset': true,
-        'active:translate-y-0': true,
-        'active:scale-1': true,
-        // 增强边界感 - 微妙边框作为阴影的后备方案
-        'border': true,
-        'border-gray-400/20': true,
-        'hover:border-gray-500/30': true
-      })
-    }
+    primary:
+      theme === 'dark'
+        ? 'bg-[#223529] text-[#D8EADF] hover:text-[#EEF5F0] border border-[#547661]/55 hover:border-[#8ABFA2]/55 hover:shadow-neumorphic-dark-hover hover:-translate-y-1 hover:scale-1.02 active:shadow-neumorphic-dark-inset active:translate-y-0 active:scale-1'
+        : 'bg-[#FFF3E1] text-[#4A705D] hover:text-[#27372E] border border-[#D8C4A7]/60 hover:border-[#6E9B7F]/55 hover:shadow-neumorphic-hover hover:-translate-y-1 hover:scale-1.02 active:shadow-neumorphic-inset active:translate-y-0 active:scale-1',
+    secondary:
+      theme === 'dark'
+        ? 'bg-[#1A2A21] text-[#E7EFEA] hover:text-[#CFE2D7] border border-[#4A6756]/50 hover:border-[#8ABFA2]/55 hover:shadow-neumorphic-dark-hover hover:-translate-y-1 hover:scale-1.02 active:shadow-neumorphic-dark-inset active:translate-y-0 active:scale-1'
+        : 'bg-[#FBEBD6] text-[#2D342C] hover:text-[#4E775F] border border-[#DCC8AD]/55 hover:border-[#6E9B7F]/55 hover:shadow-neumorphic-hover hover:-translate-y-1 hover:scale-1.02 active:shadow-neumorphic-inset active:translate-y-0 active:scale-1',
   } as const
 
-  // Safety checks to prevent undefined access
-  const safeVariant = variant && variant in variantClasses ? variant : 'primary'
-  const safeSize = size && size in sizeClasses ? size : 'md'
-
-  // Build class names from the variantClasses object
-  const variantClassNames = Object.entries(variantClasses[safeVariant])
-    .filter(([, isActive]) => isActive)
-    .map(([className]) => className)
-    .join(' ')
-
   const widthClass = fullWidth ? 'w-full' : ''
+  const buttonClasses = `${baseClasses} ${shadowClasses[size]} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className}`
 
   if (href) {
     return (
-      <a
-        href={href}
-        className={`${baseClasses} ${variantClassNames} ${sizeClasses[safeSize]} ${widthClass} ${className}`}
-      >
+      <a href={href} className={buttonClasses}>
         {children}
       </a>
     )
   }
 
   return (
-    <button
-      className={`${baseClasses} ${variantClassNames} ${sizeClasses[safeSize]} ${widthClass} ${className}`}
-      {...props}
-    >
+    <button className={buttonClasses} {...props}>
       {children}
     </button>
   )

@@ -71,7 +71,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
           </div>
           <div>
             <h3 className={`text-xl font-semibold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-800'
+              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
             }`}>
               Custom Breathing Pattern
             </h3>
@@ -113,7 +113,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 ? 'bg-gradient-to-br from-indigo-500/30 to-teal-500/30 border border-indigo-400/40'
                 : 'bg-gradient-to-br from-indigo-200 to-teal-200 border border-indigo-300'
             }`}>
-              <span className="text-2xl">🌊</span>
+              <span className="text-2xl">{'\u{1F4A8}'}</span>
             </div>
             <div>
               <div className={`text-3xl font-mono font-bold ${
@@ -151,7 +151,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
             <div className={`text-2xl font-bold ${
               theme === 'dark' ? 'text-purple-300' : 'text-purple-700'
             }`}>
-              {Math.round(300 / totalCycleTime)} ×
+              {Math.round(300 / totalCycleTime)} cycles
             </div>
             <div className={`text-sm font-medium ${
               theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
@@ -178,7 +178,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 </svg>
               </div>
               <h4 className={`font-semibold ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
+                theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
               }`}>
                 Quick Presets
               </h4>
@@ -195,7 +195,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                     ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:scale-105 active:scale-95 hover:-translate-y-1'}
                     ${theme === 'dark'
                       ? 'bg-gradient-to-br from-slate-800/50 to-indigo-800/30 hover:from-slate-700/50 hover:to-indigo-700/30 border border-slate-600/30 hover:border-indigo-500/40'
-                      : 'bg-gradient-to-br from-gray-50/50 to-indigo-50/50 hover:from-gray-100/70 hover:to-indigo-100/70 border border-gray-200/50 hover:border-indigo-300/50'
+                      : 'bg-gradient-to-br from-[#F6EFE4]/70 to-indigo-50/60 hover:from-[#EFE4D4]/85 hover:to-indigo-100/75 border border-[#D8CFC0]/55 hover:border-indigo-300/50'
                     }
                   `}
                 >
@@ -205,7 +205,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                     {preset.name}
                   </div>
                   <div className={`text-xs font-mono ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-gray-600'
+                    theme === 'dark' ? 'text-slate-400' : 'text-[#5A7466]'
                   }`}>
                     {preset.pattern.inhale}-{preset.pattern.hold}-{preset.pattern.exhale}
                     {preset.pattern.holdAfter ? `-${preset.pattern.holdAfter}` : ''}
@@ -228,7 +228,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 </svg>
               </div>
               <h4 className={`font-semibold ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
+                theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
               }`}>
                 Manual Fine-tuning
               </h4>
@@ -245,7 +245,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                     theme === 'dark' ? 'bg-blue-500/20' : 'bg-blue-100'
                   }`}>
-                    <span className="text-lg">🫁</span>
+                    <span className="text-lg">{'\u{1F309}'}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
@@ -269,7 +269,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                       className="w-full h-2 rounded-full appearance-none cursor-pointer"
                       disabled={disabled}
                       style={{
-                        background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${(settings.inhale - 1) * 100 / 19}%, ${
+                        background: `linear-gradient(to right, #6F8EA0 0%, #6F8EA0 ${(settings.inhale - 1) * 100 / 19}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
                         } ${(settings.inhale - 1) * 100 / 19}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
@@ -290,7 +290,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                     theme === 'dark' ? 'bg-purple-500/20' : 'bg-purple-100'
                   }`}>
-                    <span className="text-lg">⏸️</span>
+                    <span className="text-lg">鈴革笍</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
@@ -314,7 +314,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                       className="w-full h-2 rounded-full appearance-none cursor-pointer"
                       disabled={disabled}
                       style={{
-                        background: `linear-gradient(to right, #a855f7 0%, #a855f7 ${settings.hold * 100 / 20}%, ${
+                        background: `linear-gradient(to right, #8D7F9C 0%, #8D7F9C ${settings.hold * 100 / 20}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
                         } ${settings.hold * 100 / 20}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
@@ -335,7 +335,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                     theme === 'dark' ? 'bg-green-500/20' : 'bg-green-100'
                   }`}>
-                    <span className="text-lg">💨</span>
+                    <span className="text-lg">{'\u{1F4A8}'}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
@@ -359,7 +359,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                       className="w-full h-2 rounded-full appearance-none cursor-pointer"
                       disabled={disabled}
                       style={{
-                        background: `linear-gradient(to right, #10b981 0%, #10b981 ${(settings.exhale - 1) * 100 / 19}%, ${
+                        background: `linear-gradient(to right, #73977E 0%, #73977E ${(settings.exhale - 1) * 100 / 19}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
                         } ${(settings.exhale - 1) * 100 / 19}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
@@ -380,7 +380,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                     theme === 'dark' ? 'bg-yellow-500/20' : 'bg-yellow-100'
                   }`}>
-                    <span className="text-lg">🌙</span>
+                    <span className="text-lg">{'\u{1F30A}'}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
@@ -404,7 +404,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                       className="w-full h-2 rounded-full appearance-none cursor-pointer"
                       disabled={disabled}
                       style={{
-                        background: `linear-gradient(to right, #f59e0b 0%, #f59e0b ${(settings.holdAfter || 0) * 100 / 20}%, ${
+                        background: `linear-gradient(to right, #BCA063 0%, #BCA063 ${(settings.holdAfter || 0) * 100 / 20}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
                         } ${(settings.holdAfter || 0) * 100 / 20}%, ${
                           theme === 'dark' ? '#374151' : '#e5e7eb'
@@ -442,10 +442,10 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 <ul className={`space-y-1 text-sm ${
                   theme === 'dark' ? 'text-indigo-200' : 'text-indigo-700'
                 }`}>
-                  <li>• <strong>4-7-8 pattern:</strong> Great for relaxation and sleep preparation</li>
-                  <li>• <strong>Equal patterns (4-4-4):</strong> Excellent for focus and concentration</li>
-                  <li>• <strong>Longer exhales:</strong> Help activate the parasympathetic nervous system</li>
-                  <li>• <strong>Start gentle:</strong> Begin with shorter times if you're new to breathing exercises</li>
+                  <li>鈥?<strong>4-7-8 pattern:</strong> Great for relaxation and sleep preparation</li>
+                  <li>鈥?<strong>Equal patterns (4-4-4):</strong> Excellent for focus and concentration</li>
+                  <li>鈥?<strong>Longer exhales:</strong> Help activate the parasympathetic nervous system</li>
+                  <li>鈥?<strong>Start gentle:</strong> Begin with shorter times if you're new to breathing exercises</li>
                 </ul>
               </div>
             </div>

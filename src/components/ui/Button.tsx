@@ -19,9 +19,9 @@ export const Button = ({
   const baseClasses = 'font-medium transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
 
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500',
-    accent: 'bg-green-600 text-white hover:bg-green-700 focus:ring-green-500'
+    primary: 'bg-[#5B836B] text-[#FFF6EA] hover:bg-[#4A705D] focus:ring-[#6E9B7F]',
+    secondary: 'bg-[#4B5F54] text-[#EBECE8] hover:bg-[#3E5147] focus:ring-[#6E9B7F]',
+    accent: 'bg-[#C89C67] text-[#2D2A24] hover:bg-[#A67E4F] focus:ring-[#C89C67]'
   }
 
   const sizeClasses = {

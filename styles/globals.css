@@ -5,28 +5,50 @@
 
 /* Reset and base styles - Critical */
 :root {
-  --neumorphic-light-bg: #ffffff;      /* 纯净白色背景，避免灰暗感 */
-  --neumorphic-light-shadow: #cfd7e6;   /* 更深的阴影，增强立体感和对比度 */
-  --neumorphic-light-border: #a5b4fc;  /* 更明显的边界色，使用蓝色调 */
-  --neumorphic-light-flat: #e5e9f0;     /* 更明显的平面效果 */
-  --neumorphic-light-tips: #1e293b;    /* 更深的文字，确保高对比度 */
-  --neumorphic-light-muted: #475569;    /* 更深的中性灰，符合 WCAG AA 标准 */
+  /* ============================================
+     冥想应用专业配色 - 「静谧自然」
+     设计原则：宁静、自然、呼吸感、专注
+     ============================================ */
 
-  --neumorphic-dark-bg: #2d3748;
-  --neumorphic-dark-shadow: #1a202c;
-  --neumorphic-dark-border: #374151;
-  --neumorphic-dark-flat: #374151;
-  --neumorphic-dark-tips: #e5e7eb;
-  --neumorphic-dark-muted: #6b7280;
+  /* 浅色主题 - 「晨雾海滩」 */
+  --neumorphic-light-bg: #FFFFFF;       /* 纯净白 */
+  --neumorphic-light-shadow: #E5E1DC;   /* 柔和暖灰阴影 */
+  --neumorphic-light-border: #D5D1CC;   /* 自然边界 */
+  --neumorphic-light-flat: #EDE9E4;     /* 平面底色 */
+  --neumorphic-light-tips: #3D3833;     /* 深棕灰文字 */
+  --neumorphic-light-muted: #6B6560;    /* 中灰棕 */
 
-  --blue-400: #60a5fa;
-  --blue-600: #2563eb;
-  --green-400: #4ade80;
-  --green-600: #16a34a;
-  --purple-400: #a78bfa;
-  --purple-600: #7c3aed;
-  --red-400: #f87171;
-  --red-600: #dc2626;
+  /* 深色主题 - 「月夜森林」 */
+  --neumorphic-dark-bg: #252B27;        /* 深绿灰 */
+  --neumorphic-dark-shadow: #0D100E;    /* 深阴影 */
+  --neumorphic-dark-border: #3A423C;    /* 自然边界 */
+  --neumorphic-dark-flat: #1E2420;      /* 平面底色 */
+  --neumorphic-dark-tips: #E8E4E0;      /* 暖白文字 */
+  --neumorphic-dark-muted: #A8A4A0;     /* 浅灰 */
+
+  /* ============================================
+     品牌强调色 - 自然呼吸感
+     ============================================ */
+  --brand-primary: #5B8A72;      /* 森林绿 - 生长、平静 */
+  --brand-secondary: #7BA3C0;    /* 天空蓝 - 呼吸、开阔 */
+  --brand-accent: #D4A574;       /* 暖沙金 - 温暖、能量 */
+
+  /* 呼吸阶段专用色 */
+  --breathe-inhale: #7CB89E;     /* 吸气 - 清新绿 */
+  --breathe-hold: #C4A574;       /* 屏息 - 暖金 */
+  --breathe-exhale: #8BB8D8;     /* 呼气 - 宁静蓝 */
+
+  /* ============================================
+     功能色 - 柔和版本
+     ============================================ */
+  --blue-400: #8BB8D8;
+  --blue-600: #5A8AA8;
+  --green-400: #7CB89E;
+  --green-600: #5B8A72;
+  --purple-400: #A898B8;
+  --purple-600: #8A7A98;
+  --red-400: #D89888;
+  --red-600: #B87868;
 }
 
 * {

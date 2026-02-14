@@ -51,10 +51,10 @@ export function FAQ({ items, title = "Frequently Asked Questions", showSchema = 
 
       {/* FAQ 组件 */}
       <div className={`max-w-4xl mx-auto my-12 ${
-        theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+        theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
       }`}>
         <h2 className={`text-3xl font-serif text-center mb-8 ${
-          theme === 'dark' ? 'text-white' : 'text-gray-900'
+          theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
         }`}>
           {title}
         </h2>
@@ -65,19 +65,19 @@ export function FAQ({ items, title = "Frequently Asked Questions", showSchema = 
               key={index}
               className={`border rounded-lg overflow-hidden transition-all duration-200 ${
                 theme === 'dark'
-                  ? 'bg-gray-900 border-gray-800 hover:border-blue-500'
-                  : 'bg-white border-gray-200 hover:border-blue-400'
+                  ? 'bg-[#1E1B1E]/80 border-[#3A3A3C]/50 hover:border-[#6B8F7A]/50'
+                  : 'bg-[#F7F4EF]/80 border-[#E8E4E0]/50 hover:border-[#6B8F7A]/50'
               }`}
             >
               <button
                 onClick={() => toggleItem(index)}
                 className={`w-full px-6 py-4 text-left flex items-center justify-between transition-colors ${
-                  theme === 'dark' ? 'hover:bg-gray-800' : 'hover:bg-gray-50'
+                  theme === 'dark' ? 'hover:bg-[#151917]/50' : 'hover:bg-[#1E1B1E]/50'
                 }`}
                 aria-expanded={openIndex === index}
               >
                 <span className={`font-medium pr-4 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
                 }`}>
                   {item.question}
                 </span>
@@ -85,7 +85,7 @@ export function FAQ({ items, title = "Frequently Asked Questions", showSchema = 
                   className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
                     openIndex === index ? 'rotate-180' : ''
                   } ${
-                    theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                    theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -97,7 +97,7 @@ export function FAQ({ items, title = "Frequently Asked Questions", showSchema = 
 
               {openIndex === index && (
                 <div className={`px-6 pb-4 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
                 }`}>
                   <div className="pt-2 leading-relaxed">
                     {item.answer}

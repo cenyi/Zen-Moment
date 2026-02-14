@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState, lazy, Suspense } from 'react'
 import { useTimerStore } from '../../store/timerStore'
@@ -12,7 +12,7 @@ import { CustomBreathingSettings } from '../../components/CustomBreathingSetting
 import { FloatingSettingsButton } from '../../components/FloatingSettingsButton'
 import { FAQ } from '../../components/FAQ'
 
-// 懒加载Framer Motion和FloatingHelpButton
+// 鎳掑姞杞紽ramer Motion鍜孎loatingHelpButton
 const MotionDiv = lazy(() => import('framer-motion').then(mod => ({ default: mod.motion.div })))
 const FloatingHelpButton = lazy(() => import('../../components/FloatingHelpButton').then(mod => ({ default: mod.FloatingHelpButton })))
 
@@ -52,7 +52,7 @@ export default function BreathingPageClient() {
     toggleTheme
   } = storeData
 
-  // 背景声音功能
+  // 鑳屾櫙澹伴煶鍔熻兘
   const {
     playBackgroundSound,
     stopBackgroundSound,
@@ -65,11 +65,10 @@ export default function BreathingPageClient() {
     getProgressPercentage
   } = useBreathing()
 
-  // 防止 hydration 不匹配 - 同步声音状态
   useEffect(() => {
     setMounted(true)
 
-    // 读取声音设置
+    // 璇诲彇澹伴煶璁剧疆
     const savedSoundSetting = localStorage.getItem('zen-sound-enabled')
     if (savedSoundSetting !== null) {
       setSoundEnabled(savedSoundSetting === 'true')
@@ -82,43 +81,41 @@ export default function BreathingPageClient() {
     localStorage.setItem('zen-sound-enabled', newSoundEnabled.toString())
   }
 
-  // 处理自定义呼吸模式设置
+  // Apply custom breathing pattern settings.
   const handleCustomBreathingSettings = (pattern: CustomBreathingPattern) => {
     setCustomBreathingPattern(pattern)
   }
 
-  // 监听呼吸阶段变化，播放声音提示
   useEffect(() => {
     if (storeIsBreathing && soundEnabled && breathingPhase) {
       playBreathingPhaseSound(breathingPhase)
     }
   }, [breathingPhase, storeIsBreathing, soundEnabled, playBreathingPhaseSound])
 
-  // 统一管理背景音效逻辑
+  // 缁熶竴绠＄悊鑳屾櫙闊虫晥閫昏緫
   useEffect(() => {
-    // 优先级 1: 如果选择了 "None"，必须停止
+    // Priority 1: explicit "none" always stops playback.
     if (backgroundSoundId === 'none') {
       stopBackgroundSound()
       return
     }
 
-    // 优先级 2: 如果声音未启用，停止
+    // 浼樺厛绾?2: 濡傛灉澹伴煶鏈惎鐢紝鍋滄
     if (!soundEnabled) {
       stopBackgroundSound()
       return
     }
 
-    // 优先级 3: 如果正在呼吸且有有效的背景声音选择，播放
+    // Priority 3: play when breathing is active and a valid sound is selected.
     if (storeIsBreathing && backgroundSoundId !== 'none') {
       playBackgroundSound()
       return
     }
 
-    // 优先级 4: 其他情况停止
+    // 浼樺厛绾?4: 鍏朵粬鎯呭喌鍋滄
     stopBackgroundSound()
   }, [backgroundSoundId, soundEnabled, storeIsBreathing, playBackgroundSound, stopBackgroundSound])
 
-  // 全局键盘快捷键支持
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
@@ -153,13 +150,13 @@ export default function BreathingPageClient() {
     }
   }, [mounted, storeIsBreathing, startBreathing, resetBreathing])
 
-  // 防止 hydration 不匹配
+  // Prevent hydration mismatch.
   if (!mounted) {
     return (
       <div className={`min-h-screen ${
         theme === 'dark'
-          ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-          : 'bg-neumorphic-light text-neumorphic-tips-light'
+          ? 'theme-page-dark'
+          : 'theme-page-light'
       }`}>
         <div className="flex justify-center items-center min-h-screen">
           <div className="text-xl">Loading...</div>
@@ -171,8 +168,8 @@ export default function BreathingPageClient() {
   return (
     <div className={`min-h-screen pt-16 transition-colors duration-300 ${
       theme === 'dark'
-        ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-        : 'bg-neumorphic-light text-neumorphic-tips-light'
+        ? 'theme-page-dark'
+        : 'theme-page-light'
     }`}>
       {/* Navigation */}
       <Navigation
@@ -180,20 +177,20 @@ export default function BreathingPageClient() {
         onThemeToggle={toggleTheme}
       />
 
-      {/* 第一屏：沉浸式呼吸体验 */}
+      {/* 绗竴灞忥細娌夋蹈寮忓懠鍚镐綋楠?*/}
       <div className={`min-h-screen flex flex-col items-center px-4 pt-8 pb-2 ${
         theme === 'dark'
-          ? 'bg-gradient-to-b from-neumorphic-dark via-gray-900 to-neumorphic-dark text-neumorphic-tips-dark'
-          : 'bg-gradient-to-b from-neumorphic-light via-gray-100 to-neumorphic-light text-neumorphic-tips-light'
+          ? 'theme-section-dark'
+          : 'theme-section-light'
       }`}>
-        {/* 页面主标题 */}
+        {/* 椤甸潰涓绘爣棰?*/}
         <h1 className={`text-3xl md:text-4xl font-light mb-8 text-center ${
           theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
         }`}>
           Free Breathing Exercises Online: 4-7-8, Box Breathing & More
         </h1>
 
-        {/* 模式选择器区域 */}
+        {/* 妯″紡閫夋嫨鍣ㄥ尯鍩?*/}
         <div className="w-full max-w-2xl mb-6">
           <BreathingModeSelector
             currentModeId={breathingModeId}
@@ -203,7 +200,7 @@ export default function BreathingPageClient() {
           />
         </div>
 
-        {/* 自定义呼吸模式设置 */}
+        {/* 鑷畾涔夊懠鍚告ā寮忚缃?*/}
         {useCustomPattern && (
           <div className="w-full max-w-2xl mb-8">
             <CustomBreathingSettings
@@ -214,10 +211,10 @@ export default function BreathingPageClient() {
           </div>
         )}
 
-        {/* 呼吸动画圆圈区域 */}
+        {/* 鍛煎惛鍔ㄧ敾鍦嗗湀鍖哄煙 */}
         <div className="flex items-center justify-center my-4" role="region" aria-label="Breathing animation">
           <div className="relative">
-            {/* 新拟态背景圆圈 */}
+            {/* 鏂版嫙鎬佽儗鏅渾鍦?*/}
             <div className={`absolute rounded-full transition-all duration-1000 neumorphic-breathing-circle ${
               theme === 'dark' ? 'neumorphic-dark border border-gray-600/10' : 'neumorphic border border-gray-400/15'
             } neumorphic-breathing`} />
@@ -236,7 +233,7 @@ export default function BreathingPageClient() {
                   ease: "easeInOut"
                 }}
               >
-                {/* 外圈装饰 */}
+                {/* 澶栧湀瑁呴グ */}
                 <div className={`absolute w-full h-full rounded-full border-2 ${
                   theme === 'dark' ? 'border-gray-600/50' : 'border-gray-300/50'
                 }`} />
@@ -244,20 +241,20 @@ export default function BreathingPageClient() {
                   theme === 'dark' ? 'border-gray-500/50' : 'border-gray-400/50'
                 }`} />
 
-                {/* 主体呼吸圆圈 - 新拟态风格 */}
+                {/* 涓讳綋鍛煎惛鍦嗗湀 - 鏂版嫙鎬侀鏍?*/}
                 <div
                   className={`w-48 h-48 md:w-56 md:h-56 rounded-full transition-all duration-1000 ease-in-out relative overflow-hidden ${
                     theme === 'dark' ? 'neumorphic-dark-inset' : 'neumorphic-inset'
                   }`}
                 >
-                  {/* 新拟态内部光晕效果 */}
+                  {/* 鏂版嫙鎬佸唴閮ㄥ厜鏅曟晥鏋?*/}
                   <div className={`absolute inset-2 rounded-full transition-all duration-1000 ease-in-out ${
                     theme === 'dark' ? 'neumorphic-dark-flat' : 'neumorphic-flat'
                   } ${
                     breathingPhase === 'inhale' ? 'scale-110' : 'scale-100'
                   }`} />
 
-                  {/* 呼吸阶段指示器 - 增强色彩饱和度 */}
+                  {/* 鍛煎惛闃舵鎸囩ず鍣?- 澧炲己鑹插僵楗卞拰搴?*/}
                   <div className={`absolute inset-4 rounded-full flex items-center justify-center transition-all duration-1000 ${
                     breathingPhase === 'inhale'
                       ? breathingModeId === 'relax'
@@ -284,14 +281,14 @@ export default function BreathingPageClient() {
                         : 'bg-gradient-to-br from-green-500/25 to-green-600/15'
                   }`} />
 
-                  {/* 呼气时的粒子效果 */}
+                  {/* 鍛兼皵鏃剁殑绮掑瓙鏁堟灉 */}
                   {breathingPhase === 'exhale' && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-full h-full rounded-full border-2 border-white/20 animate-ping" />
                     </div>
                   )}
 
-                  {/* 呼吸指导文字 - 在圆圈中心 */}
+                  {/* 鍛煎惛鎸囧鏂囧瓧 - 鍦ㄥ渾鍦堜腑蹇?*/}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center z-10">
                       <div className={`text-3xl md:text-4xl font-medium mb-2 ${
@@ -317,20 +314,20 @@ export default function BreathingPageClient() {
           </div>
         </div>
 
-        {/* 底部控制区域 */}
+        {/* 搴曢儴鎺у埗鍖哄煙 */}
         <div className="mt-10 mb-8 flex flex-col items-center gap-8">
-          {/* 进度条 - 只在呼吸时显示 */}
+          {/* 杩涘害鏉?- 鍙湪鍛煎惛鏃舵樉绀?*/}
           {storeIsBreathing && (
             <div className="w-72 md:w-96 mb-6">
               <div className={`w-full rounded-full h-4 relative overflow-hidden ${
                 theme === 'dark' ? 'neumorphic-dark-inset' : 'neumorphic-inset'
               }`}>
-                {/* 新拟态背景 */}
+                {/* 鏂版嫙鎬佽儗鏅?*/}
                 <div className={`absolute inset-0 rounded-full ${
                   theme === 'dark' ? 'bg-gradient-to-r from-blue-900/30 to-purple-900/30' : 'bg-gradient-to-r from-blue-400/10 to-purple-400/10'
                 }`} />
 
-                {/* 新拟态进度条 */}
+                {/* 鏂版嫙鎬佽繘搴︽潯 */}
                 <Suspense fallback={
                   <div
                     className={`h-4 rounded-full relative overflow-hidden transition-all duration-500 ease-out ${
@@ -347,14 +344,14 @@ export default function BreathingPageClient() {
                     animate={{ width: `${getProgressPercentage()}%` }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                  {/* 内部光效 - 增强暗色模式对比度 */}
+                  {/* 鍐呴儴鍏夋晥 - 澧炲己鏆楄壊妯″紡瀵规瘮搴?*/}
                   <div className={`absolute inset-0 rounded-full ${
                     theme === 'dark' ? 'bg-gradient-to-r from-blue-500/60 to-purple-500/60' : 'bg-gradient-to-r from-blue-400/40 to-purple-400/40'
                   }`} />
                   </MotionDiv>
                 </Suspense>
 
-                {/* 进度文字 */}
+                {/* 杩涘害鏂囧瓧 */}
                 <div className={`absolute -top-8 right-0 text-sm font-medium ${
                   theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
                 }`}>
@@ -364,7 +361,7 @@ export default function BreathingPageClient() {
             </div>
           )}
 
-          {/* 控制按钮 */}
+          {/* 鎺у埗鎸夐挳 */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {!storeIsBreathing ? (
             <button
@@ -383,20 +380,20 @@ export default function BreathingPageClient() {
                 }
               `}
             >
-              {/* 按钮背景光晕效果 */}
+              {/* 鎸夐挳鑳屾櫙鍏夋檿鏁堟灉 */}
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl ${
                 theme === 'dark' 
                   ? 'bg-gradient-to-br from-cyan-500/20 to-blue-600/20' 
                   : 'bg-gradient-to-br from-cyan-400/20 to-blue-500/20'
               }`} />
 
-              {/* 按钮文字和图标 */}
+              {/* 鎸夐挳鏂囧瓧鍜屽浘鏍?*/}
               <div className="relative flex items-center justify-center space-x-3">
-                <span className="text-3xl">▶️</span>
+                <span className="text-3xl">{'\uD83C\uDF2C\uFE0F'}</span>
                 <span>Start Breathing</span>
               </div>
 
-              {/* 增强的脉冲动画 */}
+              {/* 澧炲己鐨勮剦鍐插姩鐢?*/}
               <div className={`absolute inset-0 rounded-3xl border-2 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
                 theme === 'dark' ? 'border-cyan-400/50' : 'border-cyan-300/60'
               }`} />
@@ -419,16 +416,16 @@ export default function BreathingPageClient() {
                   }
                 `}
               >
-                {/* 按钮背景光晕效果 */}
+                {/* 鎸夐挳鑳屾櫙鍏夋檿鏁堟灉 */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${
                   theme === 'dark' 
                     ? 'bg-gradient-to-br from-amber-500/20 to-yellow-600/20' 
                     : 'bg-gradient-to-br from-amber-400/20 to-yellow-500/20'
                 }`} />
 
-                {/* 按钮文字和图标 */}
+                {/* 鎸夐挳鏂囧瓧鍜屽浘鏍?*/}
                 <div className="relative flex items-center justify-center space-x-2">
-                  <span className="text-2xl">⏸️</span>
+                  <span className="text-2xl">{'\u23F8\uFE0F'}</span>
                   <span>Pause</span>
                 </div>
               </button>
@@ -449,16 +446,16 @@ export default function BreathingPageClient() {
                   }
                 `}
               >
-                {/* 按钮背景光晕效果 */}
+                {/* 鎸夐挳鑳屾櫙鍏夋檿鏁堟灉 */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl ${
                   theme === 'dark' 
                     ? 'bg-gradient-to-br from-rose-500/20 to-red-600/20' 
                     : 'bg-gradient-to-br from-rose-400/20 to-red-500/20'
                 }`} />
 
-                {/* 按钮文字和图标 */}
+                {/* 鎸夐挳鏂囧瓧鍜屽浘鏍?*/}
                 <div className="relative flex items-center justify-center space-x-2">
-                  <span className="text-2xl">🔄</span>
+                  <span className="text-2xl">{'\u21BA'}</span>
                   <span>Reset</span>
                 </div>
               </button>
@@ -466,7 +463,7 @@ export default function BreathingPageClient() {
           )}
           </div>
 
-          {/* 悬浮按钮组 */}
+          {/* 鎮诞鎸夐挳缁?*/}
           <Suspense fallback={null}>
             <FloatingSettingsButton
               theme={theme}
@@ -484,11 +481,11 @@ export default function BreathingPageClient() {
         </div>
       </div>
 
-      {/* 第二屏：Mindfulness & Breathing Connection */}
+      {/* 绗簩灞忥細Mindfulness & Breathing Connection */}
       <section className={`py-20 transition-colors duration-300 ${
         theme === 'dark'
-          ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-neumorphic-tips-dark'
-          : 'bg-gradient-to-b from-gray-50 via-white to-gray-50 text-neumorphic-tips-light'
+          ? 'theme-section-dark'
+          : 'theme-section-light'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mindfulness Header */}
@@ -518,14 +515,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🧘</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDC41\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-indigo-300' : 'text-indigo-600'
               }`}>
                 Present Moment Awareness
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Mindful breathing anchors you in the present moment, reducing anxiety about the future and regrets about the past. Each breath becomes a doorway to mindfulness and deeper self-awareness.
               </p>
@@ -534,14 +531,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🌊</div>
+              <div className="text-3xl mb-4">{'\uD83C\uDF0A'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-teal-300' : 'text-teal-600'
               }`}>
                 Emotional Regulation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Mindfulness breathing helps observe emotions without judgment, creating space between stimulus and response. This enhanced emotional intelligence leads to better decision-making and relationships.
               </p>
@@ -550,14 +547,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🎯</div>
+              <div className="text-3xl mb-4">{'\uD83C\uDFAF'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-green-300' : 'text-green-600'
               }`}>
                 Enhanced Concentration
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Regular mindfulness breathing practice strengthens attention muscles, improving focus in daily activities. Experience greater productivity and mental clarity through consistent mindful awareness.
               </p>
@@ -566,14 +563,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">💖</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDC97'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-pink-300' : 'text-pink-600'
               }`}>
                 Self-Compassion Growth
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Mindfulness breathing cultivates self-compassion and kindness toward yourself and others. Develop a more positive self-image and reduce harsh self-criticism through gentle awareness practices.
               </p>
@@ -582,14 +579,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🔄</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDEE1\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
               }`}>
                 Stress Resilience
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Build resilience to life's challenges through mindfulness breathing. Develop the ability to remain calm and centered amidst chaos, transforming stress into opportunities for growth.
               </p>
@@ -598,14 +595,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">✨</div>
+              <div className="text-3xl mb-4">{'\u2728'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-yellow-300' : 'text-yellow-600'
               }`}>
                 Spiritual Connection
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Mindfulness breathing opens pathways to deeper spiritual insights and connection. Experience moments of profound peace and unity consciousness through dedicated practice.
               </p>
@@ -621,7 +618,7 @@ export default function BreathingPageClient() {
             <h3 className={`text-3xl font-light text-center mb-8 ${
               theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
             }`}>
-              🌸 Mindfulness Breathing Techniques
+              {'\uD83C\uDF3F'} Mindfulness Breathing Techniques
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -631,22 +628,22 @@ export default function BreathingPageClient() {
                   Core Mindfulness Principles
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-purple-400 mt-1">•</span>
+                    <span className="text-purple-400 mt-1">{'\u2022'}</span>
                     <span><strong>Non-judgmental awareness:</strong> Observe your breath and thoughts without criticism or evaluation, creating a safe space for authentic mindfulness practice.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-blue-400 mt-1">•</span>
+                    <span className="text-blue-400 mt-1">{'\u2022'}</span>
                     <span><strong>Present moment focus:</strong> Use each breath as an anchor to return to now, the only moment where life truly happens and transformation occurs.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-green-400 mt-1">•</span>
+                    <span className="text-green-400 mt-1">{'\u2022'}</span>
                     <span><strong>Gentle acceptance:</strong> Welcome whatever arises in your awareness with kindness and curiosity, trusting that each experience contributes to your growth.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-orange-400 mt-1">•</span>
+                    <span className="text-orange-400 mt-1">{'\u2022'}</span>
                     <span><strong>Beginner's mind:</strong> Approach each breathing session with fresh curiosity, as if experiencing mindfulness for the first time, preventing complacency in your practice.</span>
                   </li>
                 </ul>
@@ -658,22 +655,22 @@ export default function BreathingPageClient() {
                   Integration into Daily Life
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-cyan-400 mt-1">•</span>
+                    <span className="text-cyan-400 mt-1">{'\u2022'}</span>
                     <span><strong>Mindful transitions:</strong> Use breathing exercises as bridges between activities, bringing mindfulness to work, relationships, and daily tasks with enhanced presence.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-pink-400 mt-1">•</span>
+                    <span className="text-pink-400 mt-1">{'\u2022'}</span>
                     <span><strong>Stress response management:</strong> Apply mindful breathing techniques when feeling overwhelmed, transforming stressful moments into opportunities for mindful awareness.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-yellow-400 mt-1">{'\u2022'}</span>
                     <span><strong>Enhanced relationships:</strong> Practice mindful breathing before important conversations, bringing greater presence, empathy, and authentic communication to interactions.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-red-400 mt-1">{'\u2022'}</span>
                     <span><strong>Sleep preparation:</strong> Use mindfulness breathing as part of your bedtime routine to quiet racing thoughts and prepare your mind for restful, rejuvenating sleep.</span>
                   </li>
                 </ul>
@@ -683,11 +680,11 @@ export default function BreathingPageClient() {
         </div>
       </section>
 
-      {/* 第二屏：Use Cases & Scenarios */}
+      {/* 绗簩灞忥細Use Cases & Scenarios */}
       <section className={`py-20 transition-colors duration-300 ${
         theme === 'dark'
-          ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-neumorphic-tips-dark'
-          : 'bg-gradient-to-b from-gray-50 via-white to-gray-50 text-neumorphic-tips-light'
+          ? 'theme-section-dark'
+          : 'theme-section-light'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -716,14 +713,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">😴</div>
+              <div className="text-3xl mb-4">{'\uD83C\uDF19'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-indigo-300' : 'text-indigo-600'
               }`}>
                 Breathing Exercises Before Sleep
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Deep breathing exercises and 4-7-8 breathing techniques are perfect for bedtime routines and sleep breathing exercises. Calm your nervous system, release daily stress, and prepare your mind for restorative sleep with our free guided breathing exercises online.
               </p>
@@ -732,14 +729,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">💼</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDCBC'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-blue-300' : 'text-blue-600'
               }`}>
                 Breathing Exercises During Work
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Quick 3-minute breathing exercises including box breathing techniques for workplace stress relief and anxiety reduction. Use breathing exercises during meetings, before presentations, or when feeling overwhelmed with work pressure. Perfect breathing techniques for focus.
               </p>
@@ -748,14 +745,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🧘</div>
+              <div className="text-3xl mb-4">{'\uD83D\uDC41\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-green-300' : 'text-green-600'
               }`}>
                 Breathing Exercises for Anxiety & Stress Relief
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Free breathing exercises and deep breathing techniques for immediate anxiety relief and stress reduction. Access Zen Moment's online breathing exercises anytime you need quick relaxation, mental clarity, and anxiety management throughout your day.
               </p>
@@ -764,14 +761,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🎯</div>
+              <div className="text-3xl mb-4">{'\uD83C\uDFAF'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
               }`}>
                 Focus & Concentration with Breathing Techniques
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Use breathing exercises and techniques like box breathing to enhance concentration before important tasks. Deep breathing and 4-7-8 breathing techniques improve oxygen flow and mental clarity for better focus. Perfect breathing exercises for productivity.
               </p>
@@ -780,14 +777,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">🏃‍♂️</div>
+              <div className="text-3xl mb-4">{'\uD83C\uDFC3'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-red-300' : 'text-red-600'
               }`}>
                 Pre-Exercise Breathing Techniques
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Optimize your workout with breathing exercises and deep breathing techniques. Prepare your body and mind with guided breathing exercises for enhanced performance and recovery.
               </p>
@@ -796,14 +793,14 @@ export default function BreathingPageClient() {
             <div className={`p-8 rounded-2xl ${
               theme === 'dark' ? 'neumorphic-dark' : 'neumorphic'
             }`}>
-              <div className="text-3xl mb-4">☕</div>
+              <div className="text-3xl mb-4">{'\u2615'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
                 theme === 'dark' ? 'text-yellow-300' : 'text-yellow-600'
               }`}>
                 Quick Break Breathing Exercises
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
               }`}>
                 Take 2-3 minute breathing exercises and breathing breaks throughout your day. Perfect for coffee breaks, between meetings, or whenever you need mental refreshment with quick breathing techniques.
               </p>
@@ -812,11 +809,11 @@ export default function BreathingPageClient() {
         </div>
       </section>
 
-      {/* 第三屏：FAQ */}
+      {/* 绗笁灞忥細FAQ */}
       <section className={`py-32 transition-colors duration-300 relative min-h-screen ${
         theme === 'dark'
-          ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-neumorphic-tips-dark'
-          : 'bg-gradient-to-b from-gray-50 via-white to-gray-50 text-neumorphic-tips-light'
+          ? 'theme-section-dark'
+          : 'theme-section-light'
       }`}>
         {/* Visual Divider */}
         <div className={`absolute top-0 left-0 right-0 h-1 ${
@@ -837,7 +834,7 @@ export default function BreathingPageClient() {
               <span>Breathing Knowledge & Safety</span>
             </div>
           </div>
-          {/* 呼吸练习专用FAQ - 动态显示针对当前模式的问题 */}
+          {/* 鍛煎惛缁冧範涓撶敤FAQ - 鍔ㄦ€佹樉绀洪拡瀵瑰綋鍓嶆ā寮忕殑闂 */}
           <div className="text-center mb-12">
             <h2 className={`text-4xl md:text-5xl font-light mb-4 ${
               theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
@@ -851,14 +848,14 @@ export default function BreathingPageClient() {
             </p>
           </div>
 
-          {/* 重要安全声明 */}
+          {/* 閲嶈瀹夊叏澹版槑 */}
           <div className={`mb-12 p-6 rounded-2xl border-2 ${
             theme === 'dark'
               ? 'bg-yellow-900/20 border-yellow-700/50'
               : 'bg-yellow-50 border-yellow-200'
           }`}>
             <div className="flex items-start space-x-3">
-              <span className="text-2xl">⚠️</span>
+              <span className="text-2xl">{'\u26A0\uFE0F'}</span>
               <div>
                 <h3 className={`font-semibold mb-2 ${
                   theme === 'dark' ? 'text-yellow-300' : 'text-yellow-800'
@@ -866,7 +863,7 @@ export default function BreathingPageClient() {
                   Please Read This First
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   <strong>Talk to your doctor</strong> before trying these exercises if you have asthma, breathing problems, heart issues, or if you're pregnant. If you start feeling dizzy or unwell while practicing, just stop and breathe normally for a bit.
                 </p>
@@ -874,7 +871,7 @@ export default function BreathingPageClient() {
             </div>
           </div>
 
-      {/* 呼吸背后的简单原理 */}
+      {/* 鍛煎惛鑳屽悗鐨勭畝鍗曞師鐞?*/}
           <div className={`mb-16 p-8 rounded-3xl ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-indigo-900/20 to-purple-900/20 border border-indigo-800/30'
@@ -883,7 +880,7 @@ export default function BreathingPageClient() {
             <h2 className={`text-3xl font-light text-center mb-8 ${
               theme === 'dark' ? 'text-indigo-300' : 'text-indigo-700'
             }`}>
-              🌬️ Why Breathing Works
+              {'\uD83D\uDD2C'} Why Breathing Works
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -893,18 +890,18 @@ export default function BreathingPageClient() {
                   What Happens in Your Body
                 </h3>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-green-400 mt-1">•</span>
+                    <span className="text-green-400 mt-1">{'\u2022'}</span>
                     <span><strong>Calms your nervous system:</strong> Slow breathing helps activate your body's relaxation response, which can lower stress hormones</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-blue-400 mt-1">•</span>
+                    <span className="text-blue-400 mt-1">{'\u2022'}</span>
                     <span><strong>Better heart rhythm:</strong> Regular breathing patterns can help your heart work more efficiently, especially during stress</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-purple-400 mt-1">•</span>
+                    <span className="text-purple-400 mt-1">{'\u2022'}</span>
                     <span><strong>More oxygen:</strong> Deep belly breathing uses your lungs better than shallow chest breathing</span>
                   </li>
                 </ul>
@@ -917,28 +914,28 @@ export default function BreathingPageClient() {
                 </h3>
                 <div className="space-y-4">
                   <div className={`p-4 rounded-lg ${
-                    theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+                    theme === 'dark' ? 'bg-[#1F2A22]/60' : 'bg-[#F8F1E7]/75'
                   }`}>
                     <div className="flex items-center space-x-3 mb-2">
-                      <span className="text-2xl">🌱</span>
+                      <span className="text-2xl">{'\uD83C\uDF31'}</span>
                       <span className="font-semibold">First 2 weeks: Just notice your breath</span>
                     </div>
                     <p className="text-sm">Spend 10 minutes a day just paying attention to how you breathe naturally. Don't try to change anything yet.</p>
                   </div>
                   <div className={`p-4 rounded-lg ${
-                    theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+                    theme === 'dark' ? 'bg-[#1F2A22]/60' : 'bg-[#F8F1E7]/75'
                   }`}>
                     <div className="flex items-center space-x-3 mb-2">
-                      <span className="text-2xl">🌿</span>
+                      <span className="text-2xl">{'\uD83C\uDF3F'}</span>
                       <span className="font-semibold">Weeks 3-4: Try simple patterns</span>
                     </div>
                     <p className="text-sm">Start with the basic box breathing. Focus on making each part of the breath feel smooth and connected.</p>
                   </div>
                   <div className={`p-4 rounded-lg ${
-                    theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+                    theme === 'dark' ? 'bg-[#1F2A22]/60' : 'bg-[#F8F1E7]/75'
                   }`}>
                     <div className="flex items-center space-x-3 mb-2">
-                      <span className="text-2xl">🌳</span>
+                      <span className="text-2xl">{'\uD83C\uDF33'}</span>
                       <span className="font-semibold">Weeks 5-8: Match breathing to your needs</span>
                     </div>
                     <p className="text-sm">Use energizing breathing when you need a boost, and calming techniques when you're stressed or before bed.</p>
@@ -948,7 +945,7 @@ export default function BreathingPageClient() {
             </div>
           </div>
 
-          {/* 呼吸练习综合FAQ - 包含所有模式的高质量问题 */}
+          {/* 鍛煎惛缁冧範缁煎悎FAQ - 鍖呭惈鎵€鏈夋ā寮忕殑楂樿川閲忛棶棰?*/}
           <div className="space-y-8">
             {/* Relax Mode - 4-7-8 Breathing */}
             <div className="space-y-4">
@@ -1371,7 +1368,7 @@ export default function BreathingPageClient() {
             </div>
           </div>
 
-          {/* 医疗免责声明和注意事项 */}
+          {/* 鍖荤枟鍏嶈矗澹版槑鍜屾敞鎰忎簨椤?*/}
           <div className={`mt-16 p-8 rounded-3xl ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-red-900/20 to-orange-900/20 border border-red-800/30'
@@ -1380,7 +1377,7 @@ export default function BreathingPageClient() {
             <h3 className={`text-3xl font-light text-center mb-8 ${
               theme === 'dark' ? 'text-red-300' : 'text-red-700'
             }`}>
-              🏥 Health & Safety Tips
+              {'\uD83D\uDEE1\uFE0F'} Health & Safety Tips
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -1390,26 +1387,26 @@ export default function BreathingPageClient() {
                   When to Check with Your Doctor
                 </h3>
                 <ul className={`space-y-2 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-red-400 mt-1">{'\u2022'}</span>
                     <span><strong>Respiratory conditions:</strong> Asthma, COPD, chronic bronchitis, or recent respiratory infections</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-red-400 mt-1">{'\u2022'}</span>
                     <span><strong>Cardiovascular issues:</strong> Heart conditions, high/low blood pressure, or recent cardiac events</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-red-400 mt-1">{'\u2022'}</span>
                     <span><strong>Pregnancy:</strong> Particularly in the first trimester or with high-risk pregnancies</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-red-400 mt-1">{'\u2022'}</span>
                     <span><strong>Medications:</strong> Beta-blockers, sedatives, or drugs affecting respiration</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-red-400 mt-1">•</span>
+                    <span className="text-red-400 mt-1">{'\u2022'}</span>
                     <span><strong>Recent surgeries:</strong> Especially abdominal, chest, or cardiac procedures</span>
                   </li>
                 </ul>
@@ -1421,26 +1418,26 @@ export default function BreathingPageClient() {
                   When to Stop and Take a Break
                 </h3>
                 <ul className={`space-y-2 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-yellow-400 mt-1">{'\u2022'}</span>
                     <span><strong>Dizziness or lightheadedness</strong> - Sit down and breathe normally</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-yellow-400 mt-1">{'\u2022'}</span>
                     <span><strong>Shortness of breath</strong> - Return to normal breathing immediately</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-yellow-400 mt-1">{'\u2022'}</span>
                     <span><strong>Chest pain or discomfort</strong> - Seek medical attention if persistent</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-yellow-400 mt-1">{'\u2022'}</span>
                     <span><strong>Nausea or headaches</strong> - Stop and rest in a comfortable position</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-yellow-400 mt-1">•</span>
+                    <span className="text-yellow-400 mt-1">{'\u2022'}</span>
                     <span><strong>Anxiety or panic</strong> - Focus on gentle, natural breathing</span>
                   </li>
                 </ul>
@@ -1457,7 +1454,7 @@ export default function BreathingPageClient() {
             </div>
           </div>
 
-          {/* 高级技巧部分 */}
+          {/* 楂樼骇鎶€宸ч儴鍒?*/}
           <div className={`mt-16 p-8 rounded-3xl ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-green-900/20 to-teal-900/20 border border-green-800/30'
@@ -1466,11 +1463,11 @@ export default function BreathingPageClient() {
             <h3 className={`text-3xl font-light text-center mb-8 ${
               theme === 'dark' ? 'text-green-300' : 'text-green-700'
             }`}>
-              🎯 Advanced Techniques & Troubleshooting
+              {'\uD83C\uDFAF'} Advanced Techniques & Troubleshooting
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className={`p-6 rounded-xl ${
-                theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+                theme === 'dark' ? 'bg-[#1F2A22]/60' : 'bg-[#F8F1E7]/75'
               }`}>
                 <h3 className={`text-lg font-semibold mb-3 text-center ${
                   theme === 'dark' ? 'text-cyan-300' : 'text-cyan-600'
@@ -1478,14 +1475,14 @@ export default function BreathingPageClient() {
                   Breath Retention (Kumbhaka)
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   Once comfortable with basic patterns, breath retention (Kumbhaka) may be explored. Start with 2-3 seconds after exhale, gradually extending to 10-15 seconds. Research suggests this practice may help build CO2 tolerance and support mental clarity, but should only be attempted under guidance.
                 </p>
               </div>
 
               <div className={`p-6 rounded-xl ${
-                theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+                theme === 'dark' ? 'bg-[#1F2A22]/60' : 'bg-[#F8F1E7]/75'
               }`}>
                 <h3 className={`text-lg font-semibold mb-3 text-center ${
                   theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
@@ -1493,14 +1490,14 @@ export default function BreathingPageClient() {
                   Nasal Breathing Optimization
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   Practice alternate nostril breathing (Nadi Shodhana). Use thumb to close right nostril, ring finger for left. Research suggests this practice may help balance hemispheric brain activity and support nervous system regulation.
                 </p>
               </div>
 
               <div className={`p-6 rounded-xl ${
-                theme === 'dark' ? 'bg-gray-800/50' : 'bg-white/50'
+                theme === 'dark' ? 'bg-[#1F2A22]/60' : 'bg-[#F8F1E7]/75'
               }`}>
                 <h3 className={`text-lg font-semibold mb-3 text-center ${
                   theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
@@ -1508,7 +1505,7 @@ export default function BreathingPageClient() {
                   Integration with Movement
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
                 }`}>
                   Coordinate breathing with gentle movements or yoga poses. Inhale during expansion, exhale during contraction. This creates somatic awareness and enhances mind-body integration.
                 </p>
@@ -1521,7 +1518,7 @@ export default function BreathingPageClient() {
               <h3 className={`text-lg font-semibold mb-4 text-center ${
                 theme === 'dark' ? 'text-red-300' : 'text-red-600'
               }`}>
-                ⚠️ Common Pitfalls & Solutions
+                {'\u26A0\uFE0F'} Common Pitfalls & Solutions
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -1560,7 +1557,7 @@ export default function BreathingPageClient() {
             </div>
           </div>
 
-          {/* 综合提示 */}
+          {/* 缁煎悎鎻愮ず */}
           <div className={`text-center p-8 rounded-2xl mt-12 ${
             theme === 'dark'
               ? 'bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-800/30'
@@ -1569,12 +1566,12 @@ export default function BreathingPageClient() {
             <p className={`text-lg font-light ${
               theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'
             }`}>
-              💡 <strong>Pro tip:</strong> Start with the breathing technique that matches your current need - relaxation, focus, energy, or mindfulness. Consistency matters more than duration.
+              {'\uD83D\uDCA1'} <strong>Pro tip:</strong> Start with the breathing technique that matches your current need - relaxation, focus, energy, or mindfulness. Consistency matters more than duration.
             </p>
             <p className={`text-sm mt-3 ${
               theme === 'dark' ? 'text-blue-300' : 'text-blue-600'
             }`}>
-              🚀 <strong>Advanced practitioners:</strong> Combine techniques within a single session. Begin with natural breathing, transition to box breathing for focus, end with 4-7-8 for deep relaxation.
+              {'\uD83E\uDDE0'} <strong>Advanced practitioners:</strong> Combine techniques within a single session. Begin with natural breathing, transition to box breathing for focus, end with 4-7-8 for deep relaxation.
             </p>
           </div>
         </div>
@@ -1598,7 +1595,7 @@ export default function BreathingPageClient() {
         />
       </Suspense>
 
-      {/* FAQ 部分 - 呼吸练习常见问题 */}
+      {/* FAQ 閮ㄥ垎 - 鍛煎惛缁冧範甯歌闂 */}
       <FAQ
         items={[
           {
@@ -1634,3 +1631,13 @@ export default function BreathingPageClient() {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+

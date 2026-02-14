@@ -19,8 +19,8 @@ export default function TermsOfServicePageClient() {
     return (
       <div className={`min-h-screen ${
         theme === 'dark'
-          ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-          : 'bg-neumorphic-light text-neumorphic-tips-light'
+          ? 'theme-page-dark'
+          : 'theme-page-light'
       }`}>
         <div className="flex justify-center items-center min-h-screen">
           <div className="text-xl">Loading...</div>
@@ -32,8 +32,8 @@ export default function TermsOfServicePageClient() {
   return (
     <div className={`min-h-screen ${
       theme === 'dark'
-        ? 'bg-neumorphic-dark text-neumorphic-tips-dark'
-        : 'bg-neumorphic-light text-neumorphic-tips-light'
+        ? 'theme-page-dark'
+        : 'theme-page-light'
     }`}>
       <Navigation
         theme={theme}

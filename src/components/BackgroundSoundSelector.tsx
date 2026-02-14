@@ -16,14 +16,14 @@ interface BackgroundSoundSelectorProps {
 }
 
 export const BACKGROUND_SOUNDS: BackgroundSound[] = [
-  { id: 'none', name: 'None', file: '', icon: '🔇' },
-  { id: 'rain', name: 'Rain', file: '/sounds/rain.mp3', icon: '🌧️' },
-  { id: 'forest', name: 'Forest', file: '/sounds/forest.wav', icon: '🌲' },
-  { id: 'ocean', name: 'Ocean', file: '/sounds/ocean.wav', icon: '🌊' },
-  { id: 'lake', name: 'Lake', file: '/sounds/lake.mp3', icon: '🏞️' },
-  { id: 'insects', name: 'Insects', file: '/sounds/insects.mp3', icon: '🦗' },
-  { id: 'temple', name: 'Temple', file: '/sounds/temple.mp3', icon: '⛩️' },
-  { id: 'thunder', name: 'Thunder', file: '/sounds/thunder.wav', icon: '⛈️' }
+  { id: 'none', name: 'None', file: '', icon: '--' },
+  { id: 'rain', name: 'Rain', file: '/sounds/rain.mp3', icon: 'RA' },
+  { id: 'forest', name: 'Forest', file: '/sounds/forest.wav', icon: 'FO' },
+  { id: 'ocean', name: 'Ocean', file: '/sounds/ocean.wav', icon: 'OC' },
+  { id: 'lake', name: 'Lake', file: '/sounds/lake.mp3', icon: 'LK' },
+  { id: 'insects', name: 'Insects', file: '/sounds/insects.mp3', icon: 'IN' },
+  { id: 'temple', name: 'Temple', file: '/sounds/temple.mp3', icon: 'TP' },
+  { id: 'thunder', name: 'Thunder', file: '/sounds/thunder.wav', icon: 'TH' }
 ]
 
 export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSelectorProps) => {
@@ -39,27 +39,27 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
   return (
     <div className={`w-full max-w-2xl mx-auto p-8 rounded-3xl transition-all duration-500 ${
       theme === 'dark'
-        ? 'bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 border border-purple-500/20 shadow-2xl shadow-purple-500/10'
-        : 'bg-gradient-to-br from-white via-blue-50/50 to-white border border-blue-200 shadow-xl shadow-blue-500/5'
+        ? 'bg-gradient-to-br from-slate-900 via-indigo-900/20 to-slate-900 border border-indigo-500/20 shadow-2xl shadow-indigo-500/10'
+        : 'bg-gradient-to-br from-white via-teal-50/50 to-white border border-teal-200 shadow-xl shadow-teal-500/5'
     }`}>
       {/* Modern Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-4">
           <div className={`p-3 rounded-2xl ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-400/30'
-              : 'bg-gradient-to-br from-purple-100 to-blue-100 border border-purple-200'
+              ? 'bg-gradient-to-br from-indigo-500/20 to-teal-500/20 border border-indigo-400/30'
+              : 'bg-gradient-to-br from-indigo-100 to-teal-100 border border-indigo-200'
           }`}>
-            <span className="text-2xl">🎵</span>
+            <span className="text-2xl">{'\u{1F3B5}'}</span>
           </div>
           <div>
             <h3 className={`text-xl font-semibold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-800'
+              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
             }`}>
               Background Sounds
             </h3>
             <p className={`text-sm ${
-              theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
+              theme === 'dark' ? 'text-indigo-300' : 'text-indigo-600'
             }`}>
               Choose your meditation atmosphere
             </p>
@@ -71,8 +71,8 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
             onClick={() => setShowVolumeControl(!showVolumeControl)}
             className={`p-3 rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 ${
               theme === 'dark'
-                ? 'bg-gradient-to-r from-purple-500/30 to-blue-500/30 hover:from-purple-500/40 hover:to-blue-500/40 border border-purple-400/30 text-purple-300'
-                : 'bg-gradient-to-r from-purple-200 to-blue-200 hover:from-purple-300 hover:to-blue-300 border border-purple-300 text-purple-700'
+                ? 'bg-gradient-to-r from-indigo-500/30 to-teal-500/30 hover:from-indigo-500/40 hover:to-teal-500/40 border border-indigo-400/30 text-indigo-300'
+                : 'bg-gradient-to-r from-indigo-200 to-teal-200 hover:from-indigo-300 hover:to-teal-300 border border-indigo-300 text-indigo-700'
             }`}
             disabled={disabled}
           >
@@ -95,11 +95,11 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
               ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:scale-105 active:scale-95 hover:-translate-y-1'}
               ${backgroundSoundId === sound.id
                 ? theme === 'dark'
-                  ? 'bg-gradient-to-br from-purple-500/30 to-blue-500/30 border-2 border-purple-400 shadow-lg shadow-purple-500/25'
-                  : 'bg-gradient-to-br from-purple-200 to-blue-200 border-2 border-purple-400 shadow-lg shadow-purple-500/20'
+                  ? 'bg-gradient-to-br from-indigo-500/30 to-teal-500/30 border-2 border-indigo-400 shadow-lg shadow-indigo-500/25'
+                  : 'bg-gradient-to-br from-indigo-200 to-teal-200 border-2 border-indigo-400 shadow-lg shadow-indigo-500/20'
                 : theme === 'dark'
                   ? 'bg-gradient-to-br from-slate-800/50 to-slate-700/50 hover:from-slate-700/50 hover:to-slate-600/50 border border-slate-600/30'
-                  : 'bg-gradient-to-br from-gray-50/50 to-white/50 hover:from-gray-100/70 hover:to-white/70 border border-gray-200/50'
+                  : 'bg-gradient-to-br from-[#F6EFE4]/70 to-[#FBF4EA]/80 hover:from-[#EFE4D4]/85 hover:to-[#F8F1E7]/90 border border-[#D8CFC0]/55'
               }
             `}
           >
@@ -111,8 +111,8 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
               </div>
               <span className={`text-sm font-semibold ${
                 backgroundSoundId === sound.id
-                  ? theme === 'dark' ? 'text-purple-200' : 'text-purple-800'
-                  : theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
+                  ? theme === 'dark' ? 'text-indigo-200' : 'text-indigo-800'
+                  : theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#5A7466]'
               }`}>
                 {sound.name}
               </span>
@@ -121,7 +121,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
             {/* Modern Selected Indicator */}
             {backgroundSoundId === sound.id && (
               <div className={`absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center ${
-                theme === 'dark' ? 'bg-purple-400' : 'bg-purple-500'
+                theme === 'dark' ? 'bg-indigo-400' : 'bg-indigo-500'
               } shadow-lg`}>
                 <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -136,29 +136,29 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
       {showVolumeControl && backgroundSoundId !== 'none' && (
         <div className={`p-6 rounded-2xl border-2 transition-all duration-300 ${
           theme === 'dark'
-            ? 'bg-gradient-to-r from-slate-800/50 to-purple-900/20 border-purple-500/30'
-            : 'bg-gradient-to-r from-gray-50 to-purple-50/50 border-purple-300/50'
+            ? 'bg-gradient-to-r from-slate-800/50 to-indigo-900/20 border-indigo-500/30'
+            : 'bg-gradient-to-r from-[#F6EFE4] to-[#EFE4D4]/80 border-indigo-300/50'
         }`}>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className={`p-2 rounded-xl ${
-                  theme === 'dark' ? 'bg-purple-500/20' : 'bg-purple-100'
+                  theme === 'dark' ? 'bg-indigo-500/20' : 'bg-indigo-100'
                 }`}>
                   <svg className={`w-5 h-5 ${
-                    theme === 'dark' ? 'text-purple-300' : 'text-purple-600'
+                    theme === 'dark' ? 'text-indigo-300' : 'text-indigo-600'
                   }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                   </svg>
                 </div>
                 <span className={`font-medium ${
-                  theme === 'dark' ? 'text-purple-200' : 'text-purple-800'
+                  theme === 'dark' ? 'text-indigo-200' : 'text-indigo-800'
                 }`}>
                   Volume Level
                 </span>
               </div>
               <span className={`text-lg font-bold ${
-                theme === 'dark' ? 'text-purple-300' : 'text-purple-700'
+                theme === 'dark' ? 'text-indigo-300' : 'text-indigo-700'
               }`}>
                 50%
               </span>
@@ -184,18 +184,18 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
                 className={`w-full h-3 rounded-full appearance-none cursor-pointer transition-all duration-300 ${
                   theme === 'dark'
                     ? 'bg-slate-700'
-                    : 'bg-gray-200'
+                    : 'bg-[#DCCFBE]'
                 }`}
                 disabled={disabled}
                 style={{
                   background: `linear-gradient(to right, ${
-                    theme === 'dark' ? '#a855f7' : '#a855f7'
+                    theme === 'dark' ? '#6B8F7A' : '#6B8F7A'
                   } 0%, ${
-                    theme === 'dark' ? '#a855f7' : '#a855f7'
+                    theme === 'dark' ? '#6B8F7A' : '#6B8F7A'
                   } 50%, ${
-                    theme === 'dark' ? '#475569' : '#e5e7eb'
+                    theme === 'dark' ? '#3A4E44' : '#DCCFBE'
                   } 50%, ${
-                    theme === 'dark' ? '#475569' : '#e5e7eb'
+                    theme === 'dark' ? '#3A4E44' : '#DCCFBE'
                   } 100%)`
                 }}
               />
@@ -205,22 +205,22 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
                   width: 20px;
                   height: 20px;
                   border-radius: 50%;
-                  background: ${theme === 'dark' ? '#a855f7' : '#a855f7'};
+                  background: ${theme === 'dark' ? '#6B8F7A' : '#6B8F7A'};
                   cursor: pointer;
-                  box-shadow: 0 0 10px ${theme === 'dark' ? 'rgba(168, 85, 247, 0.5)' : 'rgba(168, 85, 247, 0.3)'};
+                  box-shadow: 0 0 10px ${theme === 'dark' ? 'rgba(107, 143, 122, 0.5)' : 'rgba(107, 143, 122, 0.3)'};
                   transition: all 0.3s ease;
                 }
                 input[type="range"]::-webkit-slider-thumb:hover {
                   transform: scale(1.2);
-                  box-shadow: 0 0 20px ${theme === 'dark' ? 'rgba(168, 85, 247, 0.7)' : 'rgba(168, 85, 247, 0.5)'};
+                  box-shadow: 0 0 20px ${theme === 'dark' ? 'rgba(107, 143, 122, 0.7)' : 'rgba(107, 143, 122, 0.5)'};
                 }
                 input[type="range"]::-moz-range-thumb {
                   width: 20px;
                   height: 20px;
                   border-radius: 50%;
-                  background: ${theme === 'dark' ? '#a855f7' : '#a855f7'};
+                  background: ${theme === 'dark' ? '#6B8F7A' : '#6B8F7A'};
                   cursor: pointer;
-                  box-shadow: 0 0 10px ${theme === 'dark' ? 'rgba(168, 85, 247, 0.5)' : 'rgba(168, 85, 247, 0.3)'};
+                  box-shadow: 0 0 10px ${theme === 'dark' ? 'rgba(107, 143, 122, 0.5)' : 'rgba(107, 143, 122, 0.3)'};
                   transition: all 0.3s ease;
                 }
               `}</style>
@@ -230,7 +230,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
             <div className="flex justify-between text-xs">
               {[0, 25, 50, 75, 100].map((level) => (
                 <span key={level} className={
-                  theme === 'dark' ? 'text-purple-300/50' : 'text-purple-600/50'
+                  theme === 'dark' ? 'text-indigo-300/50' : 'text-indigo-600/50'
                 }>
                   {level}%
                 </span>
@@ -243,17 +243,17 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
       {/* Current Status Display */}
       <div className={`mt-6 p-4 rounded-xl text-center ${
         theme === 'dark'
-          ? 'bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20'
-          : 'bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200'
+          ? 'bg-gradient-to-r from-indigo-900/20 to-teal-900/20 border border-indigo-500/20'
+          : 'bg-gradient-to-r from-indigo-50 to-teal-50 border border-indigo-200'
       }`}>
         <div className="flex items-center justify-center space-x-2">
           <div className={`w-3 h-3 rounded-full ${
             backgroundSoundId === 'none'
-              ? theme === 'dark' ? 'bg-gray-500' : 'bg-gray-400'
+              ? theme === 'dark' ? 'bg-[#5F7468]' : 'bg-[#B8AF9F]'
               : 'bg-green-500 animate-pulse'
           }`} />
           <span className={`text-sm font-medium ${
-            theme === 'dark' ? 'text-purple-200' : 'text-purple-800'
+            theme === 'dark' ? 'text-indigo-200' : 'text-indigo-800'
           }`}>
             {backgroundSoundId === 'none'
               ? 'Ambient sounds disabled'
@@ -265,3 +265,4 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
     </div>
   )
 }
+
