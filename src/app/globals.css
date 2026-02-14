@@ -449,12 +449,12 @@
     }
     
     .text-neumorphic-tips-light {
-    color: var(--neumorphic-light-tips);
-  }
+      color: #000000;
+    }
     
     .text-neumorphic-tips-dark {
-    color: var(--neumorphic-dark-tips);
-  }
+      color: #ffffff;
+    }
   }
   
   /* 濞夈劍鍓伴敍姘毙╅崝銊ь伂娴兼ê瀵插鑼╅懛?Tailwind 瀹搞儱鍙跨猾浼欑礉娴ｈ法鏁?md:lg: 缁涘鎼锋惔鏂跨础閸欐ü缍?*/

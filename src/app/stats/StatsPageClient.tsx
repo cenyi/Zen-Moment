@@ -555,7 +555,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                     Practice Status
                   </span>
                   <span className={`font-semibold ${
-                    streak > 0 ? (theme === 'dark' ? 'text-green-400' : 'text-green-600') : (theme === 'dark' ? 'text-[#90AB9E]' : 'text-[#5A7466]')
+                    streak > 0 ? (theme === 'dark' ? 'text-green-400' : 'text-green-600') : (theme === 'dark' ? 'text-[#90AB9E]' : 'text-[#547160]')
                   }`}>
                     {streak > 0 ? 'Active' : 'Beginner'}
                   </span>
@@ -671,8 +671,8 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
               }}
               className={`px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1 active:shadow-neumorphic-inset active:translate-y-0 ${
                 theme === 'dark'
-                  ? 'neumorphic-dark text-blue-400 hover:text-blue-300 border border-[#4A5E54]/35 hover:border-[#7FA87C]/60'
-                  : 'neumorphic text-blue-600 hover:text-blue-700 border border-[#D8CFC0]/45 hover:border-[#9BBFA7]/65'
+                  ? 'neumorphic-dark text-blue-400 hover:text-blue-300 border border-[#4F6F5C]/35 hover:border-[#8ABFA2]/60'
+                  : 'neumorphic text-blue-600 hover:text-blue-700 border border-[#D8C4A7]/45 hover:border-[#9BBFA7]/65'
               }`}
             >
               {'\uD83D\uDCE6'} Export JSON
@@ -684,8 +684,8 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
               }}
               className={`px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1 active:shadow-neumorphic-inset active:translate-y-0 ${
                 theme === 'dark'
-                  ? 'neumorphic-dark text-green-400 hover:text-green-300 border border-[#4A5E54]/35 hover:border-[#7FA87C]/60'
-                  : 'neumorphic text-green-600 hover:text-green-700 border border-[#D8CFC0]/45 hover:border-[#9BBFA7]/65'
+                  ? 'neumorphic-dark text-green-400 hover:text-green-300 border border-[#4F6F5C]/35 hover:border-[#8ABFA2]/60'
+                  : 'neumorphic text-green-600 hover:text-green-700 border border-[#D8C4A7]/45 hover:border-[#9BBFA7]/65'
               }`}
             >
               {'\uD83D\uDCC4'} Export CSV
@@ -697,8 +697,8 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
               }}
               className={`px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1 active:shadow-neumorphic-inset active:translate-y-0 ${
                 theme === 'dark'
-                  ? 'neumorphic-dark text-purple-400 hover:text-purple-300 border border-[#4A5E54]/35 hover:border-[#7FA87C]/60'
-                  : 'neumorphic text-purple-600 hover:text-purple-700 border border-[#D8CFC0]/45 hover:border-[#9BBFA7]/65'
+                  ? 'neumorphic-dark text-purple-400 hover:text-purple-300 border border-[#4F6F5C]/35 hover:border-[#8ABFA2]/60'
+                  : 'neumorphic text-purple-600 hover:text-purple-700 border border-[#D8C4A7]/45 hover:border-[#9BBFA7]/65'
               }`}
             >
               {'\uD83E\uDDFE'} Export Summary
@@ -715,8 +715,8 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
               }}
               className={`px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1 active:shadow-neumorphic-inset active:translate-y-0 ${
                 theme === 'dark'
-                  ? 'neumorphic-dark text-red-400 hover:text-red-300 border border-[#4A5E54]/35 hover:border-[#7FA87C]/60'
-                  : 'neumorphic text-red-600 hover:text-red-700 border border-[#D8CFC0]/45 hover:border-[#9BBFA7]/65'
+                  ? 'neumorphic-dark text-red-400 hover:text-red-300 border border-[#4F6F5C]/35 hover:border-[#8ABFA2]/60'
+                  : 'neumorphic text-red-600 hover:text-red-700 border border-[#D8C4A7]/45 hover:border-[#9BBFA7]/65'
               }`}
             >
               {'\u26A0\uFE0F'} Clear Data
@@ -765,7 +765,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                   Meditation Pattern Recognition
                 </h3>
                 <p className={`leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Identify trends in your meditation practice, discover optimal times for mindfulness sessions, and understand how different environmental factors affect your meditation quality and consistency.
                 </p>
@@ -781,7 +781,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                   Meditation Goal Achievement
                 </h3>
                 <p className={`leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Set realistic meditation goals, track your progress toward mindfulness milestones, and celebrate achievements that motivate continued practice and deeper meditation experiences.
                 </p>
@@ -797,7 +797,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                   Habit Formation
                 </h3>
                 <p className={`leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Build consistent meditation habits through data-backed insights, understand your personal patterns, and create sustainable mindfulness routines that fit your lifestyle and schedule.
                 </p>
@@ -813,7 +813,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                   Progress Visualization
                 </h3>
                 <p className={`leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   See your meditation journey through beautiful visualizations that highlight growth, patterns, and areas for improvement in your mindfulness practice and overall wellbeing.
                 </p>
@@ -829,7 +829,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                   Motivation Boost
                 </h3>
                 <p className={`leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Stay motivated with achievement badges, progress streaks, and personalized insights that celebrate your meditation milestones and encourage deeper mindfulness exploration.
                 </p>
@@ -845,7 +845,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                   Personal Growth
                 </h3>
                 <p className={`leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Track how consistent meditation practice transforms your mental clarity, emotional balance, and overall wellbeing through comprehensive progress reports and personalized recommendations.
                 </p>
@@ -871,7 +871,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                     Understanding Your Metrics
                   </h4>
                   <ul className={`space-y-3 ${
-                    theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                    theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                   }`}>
                     <li className="flex items-start space-x-2">
                       <span className="text-blue-400 mt-1">{'\u2022'}</span>
@@ -898,7 +898,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
                     Optimizing Your Practice
                   </h4>
                   <ul className={`space-y-3 ${
-                    theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                    theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                   }`}>
                     <li className="flex items-start space-x-2">
                       <span className="text-cyan-400 mt-1">{'\u2022'}</span>
@@ -980,6 +980,7 @@ Average Daily: ${monthlyStats.averageMeditationTime > 0 ?
     </>
   )
 }
+
 
 
 

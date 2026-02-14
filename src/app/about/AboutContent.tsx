@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTimerStore } from '../../store/timerStore'
 
@@ -10,7 +10,7 @@ export function AboutContent() {
       <div>
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <div className="w-20 h-20 bg-gradient-to-br from-[#6B8F7A] to-[#7FA87C] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+          <div className="w-20 h-20 bg-gradient-to-br from-[#6E9B7F] to-[#8ABFA2] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
             <span className="text-white font-bold text-3xl">Z</span>
           </div>
           <h1 className={`text-5xl md:text-6xl font-light mb-6 ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>
@@ -37,7 +37,7 @@ export function AboutContent() {
             </p>
             <p className={`${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>
               The irony is that the very devices that distract us can also become our most powerful allies
-              in finding mindfulness—when used with intention and purpose.
+              in finding mindfulness鈥攚hen used with intention and purpose.
             </p>
           </div>
         </div>
@@ -59,7 +59,7 @@ export function AboutContent() {
               </h3>
               <p className={`leading-relaxed ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>
                 We believe meditation shouldn&apos;t require complicated apps or expensive subscriptions.
-                Zen Moment offers essential tools that work immediately—no learning curve, no distractions,
+                Zen Moment offers essential tools that work immediately鈥攏o learning curve, no distractions,
                 just you and your practice.
               </p>
             </div>
@@ -72,7 +72,7 @@ export function AboutContent() {
               </h3>
               <p className={`leading-relaxed ${theme === 'dark' ? 'text-neumorphic-tips-dark' : 'text-neumorphic-tips-light'}`}>
                 Your meditation practice is deeply personal. That&apos;s why Zen Moment works entirely
-                on your device—no accounts, no tracking, no data collection. Just pure, uninterrupted
+                on your device鈥攏o accounts, no tracking, no data collection. Just pure, uninterrupted
                 mindfulness whenever you need it.
               </p>
             </div>
@@ -90,7 +90,7 @@ export function AboutContent() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Meditation Timer */}
             <div className={`p-6 rounded-xl ${
-              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4A5E54]/45' : 'bg-[#F8F1E7]/75 border border-[#D8CFC0]/60'
+              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4F6F5C]/45' : 'bg-[#F8F1E7]/75 border border-[#D8C4A7]/60'
             }`}>
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4">
@@ -102,14 +102,14 @@ export function AboutContent() {
                   Meditation Timer
                 </h3>
               </div>
-              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
                 A clean, distraction-free timer with customizable sessions and progress tracking to help you build a consistent meditation practice.
               </p>
             </div>
 
             {/* Breathing Exercises */}
             <div className={`p-6 rounded-xl ${
-              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4A5E54]/45' : 'bg-[#F8F1E7]/75 border border-[#D8CFC0]/60'
+              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4F6F5C]/45' : 'bg-[#F8F1E7]/75 border border-[#D8C4A7]/60'
             }`}>
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mr-4">
@@ -121,14 +121,14 @@ export function AboutContent() {
                   Breathing Exercises
                 </h3>
               </div>
-              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
                 Multiple scientifically-backed breathing techniques with visual guides to reduce anxiety and improve focus.
               </p>
             </div>
 
             {/* Ambient Sounds */}
             <div className={`p-6 rounded-xl ${
-              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4A5E54]/45' : 'bg-[#F8F1E7]/75 border border-[#D8CFC0]/60'
+              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4F6F5C]/45' : 'bg-[#F8F1E7]/75 border border-[#D8C4A7]/60'
             }`}>
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
@@ -140,14 +140,14 @@ export function AboutContent() {
                   Ambient Sounds
                 </h3>
               </div>
-              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
                 Natural background sounds like rain, ocean, and forest to create the perfect atmosphere for your practice.
               </p>
             </div>
 
             {/* Privacy & Offline */}
             <div className={`p-6 rounded-xl ${
-              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4A5E54]/45' : 'bg-[#F8F1E7]/75 border border-[#D8CFC0]/60'
+              theme === 'dark' ? 'bg-[#1F2A22]/45 border border-[#4F6F5C]/45' : 'bg-[#F8F1E7]/75 border border-[#D8C4A7]/60'
             }`}>
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4">
@@ -159,16 +159,16 @@ export function AboutContent() {
                   Private & Offline
                 </h3>
               </div>
-              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
-                Complete privacy with local data storage and offline functionality—your practice stays yours alone.
+              <p className={`leading-relaxed ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
+                Complete privacy with local data storage and offline functionality鈥攜our practice stays yours alone.
               </p>
             </div>
           </div>
 
           <div className={`mt-8 p-4 rounded-lg text-center ${
-            theme === 'dark' ? 'bg-[#1E2821]/50 border border-[#4A5E54]/35' : 'bg-[#F2E9DD]/70 border border-[#D8CFC0]/45'
+            theme === 'dark' ? 'bg-[#1E2821]/50 border border-[#4F6F5C]/35' : 'bg-[#F2E9DD]/70 border border-[#D8C4A7]/45'
           }`}>
-            <p className={`text-sm ${theme === 'dark' ? 'text-[#90AB9E]' : 'text-[#5A7466]'}`}>
+            <p className={`text-sm ${theme === 'dark' ? 'text-[#90AB9E]' : 'text-[#547160]'}`}>
               All tools work completely offline once loaded - perfect for meditation retreats and travel
             </p>
           </div>
@@ -185,7 +185,7 @@ export function AboutContent() {
           <div className="max-w-3xl mx-auto">
             {/* Zen Moment Team */}
             <div className={`p-8 rounded-xl text-center ${
-              theme === 'dark' ? 'bg-[#1E2821]/55 border border-[#4A5E54]/45' : 'bg-[#F6EEDF]/80 border border-[#D8CFC0]/60'
+              theme === 'dark' ? 'bg-[#1E2821]/55 border border-[#4F6F5C]/45' : 'bg-[#F6EEDF]/80 border border-[#D8C4A7]/60'
             }`}>
               {/* Team Logo */}
               <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${
@@ -210,32 +210,32 @@ export function AboutContent() {
               {/* Team Values */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
                 <div className={`p-4 rounded-lg ${
-                  theme === 'dark' ? 'bg-[#223029]/55 border border-[#4A5E54]/45' : 'bg-[#FBF4EA]/85 border border-[#D8CFC0]/55'
+                  theme === 'dark' ? 'bg-[#223029]/55 border border-[#4F6F5C]/45' : 'bg-[#FFF5E7]/85 border border-[#D8C4A7]/55'
                 }`}>
                   <h5 className={`font-semibold mb-2 ${theme === 'dark' ? 'text-blue-300' : 'text-blue-700'}`}>
                     Accessibility
                   </h5>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
                     Making meditation simple for everyone
                   </p>
                 </div>
                 <div className={`p-4 rounded-lg ${
-                  theme === 'dark' ? 'bg-[#223029]/55 border border-[#4A5E54]/45' : 'bg-[#FBF4EA]/85 border border-[#D8CFC0]/55'
+                  theme === 'dark' ? 'bg-[#223029]/55 border border-[#4F6F5C]/45' : 'bg-[#FFF5E7]/85 border border-[#D8C4A7]/55'
                 }`}>
                   <h5 className={`font-semibold mb-2 ${theme === 'dark' ? 'text-blue-300' : 'text-blue-700'}`}>
                     Privacy
                   </h5>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
                     Your practice stays personal and secure
                   </p>
                 </div>
                 <div className={`p-4 rounded-lg ${
-                  theme === 'dark' ? 'bg-[#223029]/55 border border-[#4A5E54]/45' : 'bg-[#FBF4EA]/85 border border-[#D8CFC0]/55'
+                  theme === 'dark' ? 'bg-[#223029]/55 border border-[#4F6F5C]/45' : 'bg-[#FFF5E7]/85 border border-[#D8C4A7]/55'
                 }`}>
                   <h5 className={`font-semibold mb-2 ${theme === 'dark' ? 'text-blue-300' : 'text-blue-700'}`}>
                     Simplicity
                   </h5>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
                     Focused tools for effective practice
                   </p>
                 </div>
@@ -245,9 +245,9 @@ export function AboutContent() {
 
           {/* Team Philosophy */}
           <div className={`mt-8 p-6 rounded-lg text-center ${
-            theme === 'dark' ? 'bg-[#1D271F]/45 border border-[#4A5E54]/35' : 'bg-[#F4EBDD]/70 border border-[#D8CFC0]/45'
+            theme === 'dark' ? 'bg-[#1D271F]/45 border border-[#4F6F5C]/35' : 'bg-[#F8E8D0]/70 border border-[#D8C4A7]/45'
           }`}>
-            <p className={`text-sm italic ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'}`}>
+            <p className={`text-sm italic ${theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'}`}>
               "We believe that meditation shouldn't be complicated or intimidating. Our mission is to create simple,
               intuitive tools that help you find your moment of zen, whenever and wherever you need it."
             </p>
@@ -290,3 +290,4 @@ export function AboutContent() {
     </main>
   )
 }
+

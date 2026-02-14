@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useTimerStore } from '../store/timerStore'
@@ -16,14 +16,14 @@ interface BackgroundSoundSelectorProps {
 }
 
 export const BACKGROUND_SOUNDS: BackgroundSound[] = [
-  { id: 'none', name: 'None', file: '', icon: '--' },
-  { id: 'rain', name: 'Rain', file: '/sounds/rain.mp3', icon: 'RA' },
-  { id: 'forest', name: 'Forest', file: '/sounds/forest.wav', icon: 'FO' },
-  { id: 'ocean', name: 'Ocean', file: '/sounds/ocean.wav', icon: 'OC' },
-  { id: 'lake', name: 'Lake', file: '/sounds/lake.mp3', icon: 'LK' },
-  { id: 'insects', name: 'Insects', file: '/sounds/insects.mp3', icon: 'IN' },
-  { id: 'temple', name: 'Temple', file: '/sounds/temple.mp3', icon: 'TP' },
-  { id: 'thunder', name: 'Thunder', file: '/sounds/thunder.wav', icon: 'TH' }
+  { id: 'none', name: 'None', file: '', icon: '\u{1F507}' },
+  { id: 'rain', name: 'Rain', file: '/sounds/rain.mp3', icon: '\u{1F327}' },
+  { id: 'forest', name: 'Forest', file: '/sounds/forest.wav', icon: '\u{1F332}' },
+  { id: 'ocean', name: 'Ocean', file: '/sounds/ocean.wav', icon: '\u{1F30A}' },
+  { id: 'lake', name: 'Lake', file: '/sounds/lake.mp3', icon: '\u{1F3DE}' },
+  { id: 'insects', name: 'Insects', file: '/sounds/insects.mp3', icon: '\u{1F41E}' },
+  { id: 'temple', name: 'Temple', file: '/sounds/temple.mp3', icon: '\u{1F514}' },
+  { id: 'thunder', name: 'Thunder', file: '/sounds/thunder.wav', icon: '\u{26C8}' }
 ]
 
 export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSelectorProps) => {
@@ -54,7 +54,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
           </div>
           <div>
             <h3 className={`text-xl font-semibold ${
-              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+              theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
             }`}>
               Background Sounds
             </h3>
@@ -99,7 +99,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
                   : 'bg-gradient-to-br from-indigo-200 to-teal-200 border-2 border-indigo-400 shadow-lg shadow-indigo-500/20'
                 : theme === 'dark'
                   ? 'bg-gradient-to-br from-slate-800/50 to-slate-700/50 hover:from-slate-700/50 hover:to-slate-600/50 border border-slate-600/30'
-                  : 'bg-gradient-to-br from-[#F6EFE4]/70 to-[#FBF4EA]/80 hover:from-[#EFE4D4]/85 hover:to-[#F8F1E7]/90 border border-[#D8CFC0]/55'
+                  : 'bg-gradient-to-br from-[#F6EFE4]/70 to-[#FFF5E7]/80 hover:from-[#F5E4C8]/85 hover:to-[#F8F1E7]/90 border border-[#D8C4A7]/55'
               }
             `}
           >
@@ -112,7 +112,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
               <span className={`text-sm font-semibold ${
                 backgroundSoundId === sound.id
                   ? theme === 'dark' ? 'text-indigo-200' : 'text-indigo-800'
-                  : theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#5A7466]'
+                  : theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#547160]'
               }`}>
                 {sound.name}
               </span>
@@ -137,7 +137,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
         <div className={`p-6 rounded-2xl border-2 transition-all duration-300 ${
           theme === 'dark'
             ? 'bg-gradient-to-r from-slate-800/50 to-indigo-900/20 border-indigo-500/30'
-            : 'bg-gradient-to-r from-[#F6EFE4] to-[#EFE4D4]/80 border-indigo-300/50'
+            : 'bg-gradient-to-r from-[#F6EFE4] to-[#F5E4C8]/80 border-indigo-300/50'
         }`}>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -189,9 +189,9 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
                 disabled={disabled}
                 style={{
                   background: `linear-gradient(to right, ${
-                    theme === 'dark' ? '#6B8F7A' : '#6B8F7A'
+                    theme === 'dark' ? '#6E9B7F' : '#6E9B7F'
                   } 0%, ${
-                    theme === 'dark' ? '#6B8F7A' : '#6B8F7A'
+                    theme === 'dark' ? '#6E9B7F' : '#6E9B7F'
                   } 50%, ${
                     theme === 'dark' ? '#3A4E44' : '#DCCFBE'
                   } 50%, ${
@@ -205,7 +205,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
                   width: 20px;
                   height: 20px;
                   border-radius: 50%;
-                  background: ${theme === 'dark' ? '#6B8F7A' : '#6B8F7A'};
+                  background: ${theme === 'dark' ? '#6E9B7F' : '#6E9B7F'};
                   cursor: pointer;
                   box-shadow: 0 0 10px ${theme === 'dark' ? 'rgba(107, 143, 122, 0.5)' : 'rgba(107, 143, 122, 0.3)'};
                   transition: all 0.3s ease;
@@ -218,7 +218,7 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
                   width: 20px;
                   height: 20px;
                   border-radius: 50%;
-                  background: ${theme === 'dark' ? '#6B8F7A' : '#6B8F7A'};
+                  background: ${theme === 'dark' ? '#6E9B7F' : '#6E9B7F'};
                   cursor: pointer;
                   box-shadow: 0 0 10px ${theme === 'dark' ? 'rgba(107, 143, 122, 0.5)' : 'rgba(107, 143, 122, 0.3)'};
                   transition: all 0.3s ease;
@@ -265,4 +265,5 @@ export const BackgroundSoundSelector = ({ theme, disabled }: BackgroundSoundSele
     </div>
   )
 }
+
 

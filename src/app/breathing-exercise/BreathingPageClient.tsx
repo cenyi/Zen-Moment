@@ -522,7 +522,7 @@ export default function BreathingPageClient() {
                 Present Moment Awareness
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Mindful breathing anchors you in the present moment, reducing anxiety about the future and regrets about the past. Each breath becomes a doorway to mindfulness and deeper self-awareness.
               </p>
@@ -538,7 +538,7 @@ export default function BreathingPageClient() {
                 Emotional Regulation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Mindfulness breathing helps observe emotions without judgment, creating space between stimulus and response. This enhanced emotional intelligence leads to better decision-making and relationships.
               </p>
@@ -554,7 +554,7 @@ export default function BreathingPageClient() {
                 Enhanced Concentration
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Regular mindfulness breathing practice strengthens attention muscles, improving focus in daily activities. Experience greater productivity and mental clarity through consistent mindful awareness.
               </p>
@@ -570,7 +570,7 @@ export default function BreathingPageClient() {
                 Self-Compassion Growth
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Mindfulness breathing cultivates self-compassion and kindness toward yourself and others. Develop a more positive self-image and reduce harsh self-criticism through gentle awareness practices.
               </p>
@@ -586,7 +586,7 @@ export default function BreathingPageClient() {
                 Stress Resilience
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Build resilience to life's challenges through mindfulness breathing. Develop the ability to remain calm and centered amidst chaos, transforming stress into opportunities for growth.
               </p>
@@ -602,7 +602,7 @@ export default function BreathingPageClient() {
                 Spiritual Connection
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Mindfulness breathing opens pathways to deeper spiritual insights and connection. Experience moments of profound peace and unity consciousness through dedicated practice.
               </p>
@@ -628,7 +628,7 @@ export default function BreathingPageClient() {
                   Core Mindfulness Principles
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   <li className="flex items-start space-x-2">
                     <span className="text-purple-400 mt-1">{'\u2022'}</span>
@@ -655,7 +655,7 @@ export default function BreathingPageClient() {
                   Integration into Daily Life
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   <li className="flex items-start space-x-2">
                     <span className="text-cyan-400 mt-1">{'\u2022'}</span>
@@ -720,7 +720,7 @@ export default function BreathingPageClient() {
                 Breathing Exercises Before Sleep
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Deep breathing exercises and 4-7-8 breathing techniques are perfect for bedtime routines and sleep breathing exercises. Calm your nervous system, release daily stress, and prepare your mind for restorative sleep with our free guided breathing exercises online.
               </p>
@@ -736,7 +736,7 @@ export default function BreathingPageClient() {
                 Breathing Exercises During Work
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Quick 3-minute breathing exercises including box breathing techniques for workplace stress relief and anxiety reduction. Use breathing exercises during meetings, before presentations, or when feeling overwhelmed with work pressure. Perfect breathing techniques for focus.
               </p>
@@ -752,7 +752,7 @@ export default function BreathingPageClient() {
                 Breathing Exercises for Anxiety & Stress Relief
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Free breathing exercises and deep breathing techniques for immediate anxiety relief and stress reduction. Access Zen Moment's online breathing exercises anytime you need quick relaxation, mental clarity, and anxiety management throughout your day.
               </p>
@@ -768,7 +768,7 @@ export default function BreathingPageClient() {
                 Focus & Concentration with Breathing Techniques
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Use breathing exercises and techniques like box breathing to enhance concentration before important tasks. Deep breathing and 4-7-8 breathing techniques improve oxygen flow and mental clarity for better focus. Perfect breathing exercises for productivity.
               </p>
@@ -784,7 +784,7 @@ export default function BreathingPageClient() {
                 Pre-Exercise Breathing Techniques
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Optimize your workout with breathing exercises and deep breathing techniques. Prepare your body and mind with guided breathing exercises for enhanced performance and recovery.
               </p>
@@ -800,7 +800,7 @@ export default function BreathingPageClient() {
                 Quick Break Breathing Exercises
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
               }`}>
                 Take 2-3 minute breathing exercises and breathing breaks throughout your day. Perfect for coffee breaks, between meetings, or whenever you need mental refreshment with quick breathing techniques.
               </p>
@@ -863,7 +863,7 @@ export default function BreathingPageClient() {
                   Please Read This First
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   <strong>Talk to your doctor</strong> before trying these exercises if you have asthma, breathing problems, heart issues, or if you're pregnant. If you start feeling dizzy or unwell while practicing, just stop and breathe normally for a bit.
                 </p>
@@ -890,7 +890,7 @@ export default function BreathingPageClient() {
                   What Happens in Your Body
                 </h3>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   <li className="flex items-start space-x-2">
                     <span className="text-green-400 mt-1">{'\u2022'}</span>
@@ -1387,7 +1387,7 @@ export default function BreathingPageClient() {
                   When to Check with Your Doctor
                 </h3>
                 <ul className={`space-y-2 ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   <li className="flex items-start space-x-2">
                     <span className="text-red-400 mt-1">{'\u2022'}</span>
@@ -1418,7 +1418,7 @@ export default function BreathingPageClient() {
                   When to Stop and Take a Break
                 </h3>
                 <ul className={`space-y-2 ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   <li className="flex items-start space-x-2">
                     <span className="text-yellow-400 mt-1">{'\u2022'}</span>
@@ -1475,7 +1475,7 @@ export default function BreathingPageClient() {
                   Breath Retention (Kumbhaka)
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Once comfortable with basic patterns, breath retention (Kumbhaka) may be explored. Start with 2-3 seconds after exhale, gradually extending to 10-15 seconds. Research suggests this practice may help build CO2 tolerance and support mental clarity, but should only be attempted under guidance.
                 </p>
@@ -1490,7 +1490,7 @@ export default function BreathingPageClient() {
                   Nasal Breathing Optimization
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Practice alternate nostril breathing (Nadi Shodhana). Use thumb to close right nostril, ring finger for left. Research suggests this practice may help balance hemispheric brain activity and support nervous system regulation.
                 </p>
@@ -1505,7 +1505,7 @@ export default function BreathingPageClient() {
                   Integration with Movement
                 </h3>
                 <p className={`text-sm leading-relaxed ${
-                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#5A7466]'
+                  theme === 'dark' ? 'text-[#C7DCCF]' : 'text-[#547160]'
                 }`}>
                   Coordinate breathing with gentle movements or yoga poses. Inhale during expansion, exhale during contraction. This creates somatic awareness and enhances mind-body integration.
                 </p>
@@ -1631,6 +1631,7 @@ export default function BreathingPageClient() {
     </div>
   )
 }
+
 
 
 

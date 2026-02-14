@@ -34,8 +34,8 @@ export const BreathingGuide = ({ theme = 'dark' }: BreathingGuideProps) => {
       <div
         className={`absolute top-0 left-0 right-0 h-1 ${
           theme === 'dark'
-            ? 'bg-gradient-to-r from-transparent via-[#6B8F7A] to-transparent opacity-60'
-            : 'bg-gradient-to-r from-transparent via-[#7FA87C] to-transparent opacity-70'
+            ? 'bg-gradient-to-r from-transparent via-[#6E9B7F] to-transparent opacity-60'
+            : 'bg-gradient-to-r from-transparent via-[#8ABFA2] to-transparent opacity-70'
         }`}
       />
 
@@ -44,11 +44,11 @@ export const BreathingGuide = ({ theme = 'dark' }: BreathingGuideProps) => {
           <div
             className={`inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium ${
               theme === 'dark'
-                ? 'bg-[#6B8F7A]/15 text-[#A8C8B0] border border-[#6B8F7A]/35'
+                ? 'bg-[#6E9B7F]/15 text-[#B4CFBE] border border-[#6E9B7F]/35'
                 : 'bg-[#DCE9DF] text-[#4D6A5A] border border-[#BFD8C8]'
             }`}
           >
-            <span className="w-2 h-2 bg-[#6B8F7A] rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-[#6E9B7F] rounded-full animate-pulse" />
             <span>Discover More Features</span>
           </div>
         </div>
@@ -107,11 +107,12 @@ export const BreathingGuide = ({ theme = 'dark' }: BreathingGuideProps) => {
           </div>
 
           <div className="mt-12 text-base">
-            <p>Free & Private 路 No Account Required 路 Science-informed Techniques</p>
+            <p>Free & Private | No Account Required | Science-informed Techniques</p>
           </div>
         </div>
       </div>
     </section>
   )
 }
+
 

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 
@@ -71,7 +71,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
           </div>
           <div>
             <h3 className={`text-xl font-semibold ${
-              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+              theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
             }`}>
               Custom Breathing Pattern
             </h3>
@@ -178,7 +178,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 </svg>
               </div>
               <h4 className={`font-semibold ${
-                theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+                theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
               }`}>
                 Quick Presets
               </h4>
@@ -195,7 +195,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                     ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:scale-105 active:scale-95 hover:-translate-y-1'}
                     ${theme === 'dark'
                       ? 'bg-gradient-to-br from-slate-800/50 to-indigo-800/30 hover:from-slate-700/50 hover:to-indigo-700/30 border border-slate-600/30 hover:border-indigo-500/40'
-                      : 'bg-gradient-to-br from-[#F6EFE4]/70 to-indigo-50/60 hover:from-[#EFE4D4]/85 hover:to-indigo-100/75 border border-[#D8CFC0]/55 hover:border-indigo-300/50'
+                      : 'bg-gradient-to-br from-[#F6EFE4]/70 to-indigo-50/60 hover:from-[#F5E4C8]/85 hover:to-indigo-100/75 border border-[#D8C4A7]/55 hover:border-indigo-300/50'
                     }
                   `}
                 >
@@ -205,7 +205,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                     {preset.name}
                   </div>
                   <div className={`text-xs font-mono ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-[#5A7466]'
+                    theme === 'dark' ? 'text-slate-400' : 'text-[#547160]'
                   }`}>
                     {preset.pattern.inhale}-{preset.pattern.hold}-{preset.pattern.exhale}
                     {preset.pattern.holdAfter ? `-${preset.pattern.holdAfter}` : ''}
@@ -228,7 +228,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 </svg>
               </div>
               <h4 className={`font-semibold ${
-                theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+                theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
               }`}>
                 Manual Fine-tuning
               </h4>
@@ -290,7 +290,7 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                     theme === 'dark' ? 'bg-purple-500/20' : 'bg-purple-100'
                   }`}>
-                    <span className="text-lg">鈴革笍</span>
+                    <span className="text-lg">{'\u23F8'}</span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
@@ -442,10 +442,10 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
                 <ul className={`space-y-1 text-sm ${
                   theme === 'dark' ? 'text-indigo-200' : 'text-indigo-700'
                 }`}>
-                  <li>鈥?<strong>4-7-8 pattern:</strong> Great for relaxation and sleep preparation</li>
-                  <li>鈥?<strong>Equal patterns (4-4-4):</strong> Excellent for focus and concentration</li>
-                  <li>鈥?<strong>Longer exhales:</strong> Help activate the parasympathetic nervous system</li>
-                  <li>鈥?<strong>Start gentle:</strong> Begin with shorter times if you're new to breathing exercises</li>
+                  <li>{'\u2022'} <strong>4-7-8 pattern:</strong> Great for relaxation and sleep preparation</li>
+                  <li>{'\u2022'} <strong>Equal patterns (4-4-4):</strong> Excellent for focus and concentration</li>
+                  <li>{'\u2022'} <strong>Longer exhales:</strong> Help activate the parasympathetic nervous system</li>
+                  <li>{'\u2022'} <strong>Start gentle:</strong> Begin with shorter times if you're new to breathing exercises</li>
                 </ul>
               </div>
             </div>
@@ -455,3 +455,4 @@ export const CustomBreathingSettings = ({ theme, disabled, onSettingsChange }: C
     </div>
   )
 }
+

@@ -114,7 +114,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
                 className={`text-center p-6 rounded-2xl transition-all duration-300 ${
                   feature.highlight
                     ? theme === 'dark'
-                      ? 'neumorphic-dark border border-[#6B8F7A]/35'
+                      ? 'neumorphic-dark border border-[#6E9B7F]/35'
                       : 'neumorphic border border-[#9BBFA7]/45'
                     : theme === 'dark'
                       ? 'neumorphic-dark'
@@ -129,7 +129,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
           </div>
         </div>
 
-        <div className="border-t border-[#6B8F7A]/20 pt-16">
+        <div className="border-t border-[#6E9B7F]/20 pt-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-light mb-4">Frequently Asked Questions</h2>
             <p className="text-lg">Everything you need to know to get started.</p>
@@ -142,7 +142,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
                   key={faq.question}
                   className={`rounded-2xl border p-8 transition-all duration-300 ${
                     theme === 'dark'
-                      ? 'neumorphic-dark-inset border-[#4A5E54]/40'
+                      ? 'neumorphic-dark-inset border-[#4F6F5C]/40'
                       : 'neumorphic-inset border-[#C9D9CC]/55'
                   }`}
                 >
@@ -150,7 +150,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
                     <div
                       className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
                         theme === 'dark'
-                          ? 'neumorphic-dark-flat text-[#A8C8B0] border border-[#6B8F7A]/35'
+                          ? 'neumorphic-dark-flat text-[#B4CFBE] border border-[#6E9B7F]/35'
                           : 'neumorphic-flat text-[#4D6A5A] border border-[#9BBFA7]/45'
                       }`}
                     >
@@ -168,7 +168,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
             <div
               className={`mt-12 text-center p-8 rounded-2xl backdrop-blur-sm max-w-4xl mx-auto ${
                 theme === 'dark'
-                  ? 'neumorphic-dark border border-[#6B8F7A]/35'
+                  ? 'neumorphic-dark border border-[#6E9B7F]/35'
                   : 'neumorphic border border-[#9BBFA7]/45'
               }`}
             >
@@ -191,7 +191,7 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
           <div
             className={`rounded-2xl p-8 md:p-12 ${
               theme === 'dark'
-                ? 'neumorphic-dark border border-[#6B8F7A]/35'
+                ? 'neumorphic-dark border border-[#6E9B7F]/35'
                 : 'neumorphic border border-[#9BBFA7]/45'
             }`}
           >
@@ -220,4 +220,5 @@ export const FeatureHighlights = ({ theme = 'dark' }: FeatureHighlightsProps) =>
     </section>
   )
 }
+
 

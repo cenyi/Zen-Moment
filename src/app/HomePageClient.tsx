@@ -25,14 +25,14 @@ const SkeletonLoader = ({ theme, loadingPhase }: { theme: 'dark' | 'light', load
     {/* 瀵艰埅鏍忛鏋?*/}
     <div className="w-full h-16 px-4 py-3 flex justify-between items-center">
       <div className={`w-24 h-8 rounded-lg animate-pulse ${
-        theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
+        theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#EEDCC1]'
       }`}></div>
       <div className="flex gap-3">
         <div className={`w-10 h-10 rounded-full animate-pulse ${
-          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#EEDCC1]'
         }`}></div>
         <div className={`w-10 h-10 rounded-full animate-pulse ${
-          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#EEDCC1]'
         }`}></div>
       </div>
     </div>
@@ -95,17 +95,17 @@ const SkeletonLoader = ({ theme, loadingPhase }: { theme: 'dark' | 'light', load
       {/* 楠ㄦ灦灞忓唴瀹瑰尯鍩?- 妯℃嫙璁℃椂鍣ㄧ晫闈?*/}
       <div className="w-full max-w-md">
         <div className={`w-full h-32 rounded-2xl mb-6 animate-pulse ${
-          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#EEDCC1]'
         }`}></div>
         <div className="flex justify-center gap-4 mb-6">
           {[...Array(3)].map((_, i) => (
             <div key={i} className={`w-12 h-12 rounded-full animate-pulse ${
-              theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
+              theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#EEDCC1]'
             }`}></div>
           ))}
         </div>
         <div className={`w-full h-16 rounded-xl animate-pulse ${
-          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#E8DDCF]'
+          theme === 'dark' ? 'bg-[#2A3A31]' : 'bg-[#EEDCC1]'
         }`}></div>
       </div>
     </div>
@@ -304,12 +304,12 @@ export default function Home() {
           {/* 涓绘爣棰?- 绱у噾鍗曡鐗堟湰 */}
           <div className="text-center mb-6 sm:mb-8">
             <h1 id="hero-heading" className={`text-xl sm:text-2xl md:text-3xl font-light tracking-wide ${
-              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+              theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
             }`}>
               Breathe. Focus. Find Peace.
             </h1>
             <p className={`text-sm sm:text-base font-light mt-2 ${
-              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+              theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
             }`}>
               Zen Moment - Free Online Meditation Timer & Breathing Guide
             </p>
@@ -334,7 +334,7 @@ export default function Home() {
             {/* 璁℃椂鍣ㄦ枃瀛?*/}
             <div className="flex flex-col items-center justify-center w-full py-10" role="timer" aria-label="Zen Moment meditation timer">
               <div className={`text-6xl md:text-7xl lg:text-8xl font-mono font-light leading-none tracking-wider ${
-                theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+                theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
               }`} aria-live="polite" aria-atomic="true">
                 <span className="text-center relative z-10">
                   {formatTime(isRunning ? remainingTime : duration)}
@@ -348,10 +348,10 @@ export default function Home() {
               </div>
               {isBreathing && breathingPhase && (
                 <div className={`text-xl md:text-2xl mt-4 font-medium transition-colors duration-300 animate-fade-in ${
-                  breathingPhase === 'inhale' ? (theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]') :
-                  breathingPhase === 'hold' ? (theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]') :
-                  breathingPhase === 'exhale' ? (theme === 'dark' ? 'text-[#7FA87C]' : 'text-[#C5BBA7]') :
-                  (theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]')
+                  breathingPhase === 'inhale' ? (theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]') :
+                  breathingPhase === 'hold' ? (theme === 'dark' ? 'text-[#D6B188]' : 'text-[#8ABFA2]') :
+                  breathingPhase === 'exhale' ? (theme === 'dark' ? 'text-[#8ABFA2]' : 'text-[#D6B188]') :
+                  (theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]')
                 }`} role="status" aria-live="polite">
                   {breathingPhase === 'inhale' ? 'Breathe In' :
                    breathingPhase === 'hold' ? 'Hold' :
@@ -479,13 +479,13 @@ export default function Home() {
                       : 'cursor-pointer shadow-neumorphic hover:shadow-neumorphic-hover hover:-translate-y-1 active:shadow-neumorphic-inset active:translate-y-0'
                   } ${
                     theme === 'dark'
-                      ? 'bg-[#1D2922] text-[#E9E8E6] hover:text-[#A8C8B0] border border-[#4A5E54]/40'
-                      : 'bg-[#FBF4EA] text-[#2C2A29] hover:text-[#6B8F7A] border border-[#D8CFC0]/40'
+                      ? 'bg-[#1A2A21] text-[#EBECE8] hover:text-[#B4CFBE] border border-[#4F6F5C]/40'
+                      : 'bg-[#FFF5E7] text-[#2D2A24] hover:text-[#6E9B7F] border border-[#D8C4A7]/40'
                   } ${
                     (parseInt(customMinutes) === preset.minutes && parseInt(customSeconds) === preset.seconds)
                       ? theme === 'dark'
-                        ? 'bg-[#162019] text-[#A8C8B0] ring-2 ring-[#6B8F7A]/50 border-[#6B8F7A]/50'
-                        : 'bg-[#F1E6D6] text-[#6B8F7A] ring-2 ring-[#6B8F7A]/50 border-[#6B8F7A]/50'
+                        ? 'bg-[#162019] text-[#B4CFBE] ring-2 ring-[#6E9B7F]/50 border-[#6E9B7F]/50'
+                        : 'bg-[#F4DFC0] text-[#6E9B7F] ring-2 ring-[#6E9B7F]/50 border-[#6E9B7F]/50'
                       : ''
                   }`}
                   aria-label={`Set duration to ${preset.label}`}
@@ -500,8 +500,8 @@ export default function Home() {
               isRunning ? 'opacity-50 cursor-not-allowed' : ''
             } ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/60 border-[#4A5E54]/40'
-                : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/40'
+                ? 'bg-[#1A2A21]/60 border-[#4F6F5C]/40'
+                : 'bg-[#FFF5E7]/60 border-[#D8C4A7]/40'
             }`}>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
@@ -532,13 +532,13 @@ export default function Home() {
                         }
                       }
                     }}
-                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-[#6B8F7A] focus:ring-offset-1 ${
+                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-[#6E9B7F] focus:ring-offset-1 ${
                       theme === 'dark'
-                        ? 'bg-[#1D2922] shadow-neumorphic-dark text-[#E9E8E6] placeholder-[#A8C8B0]'
-                        : 'bg-[#FBF4EA] shadow-neumorphic text-[#2C2A29] placeholder-[#6B8F7A]'
+                        ? 'bg-[#1A2A21] shadow-neumorphic-dark text-[#EBECE8] placeholder-[#B4CFBE]'
+                        : 'bg-[#FFF5E7] shadow-neumorphic text-[#2D2A24] placeholder-[#6E9B7F]'
                     }`}
                   />
-                  <span className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>min</span>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'}`}>min</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <input
@@ -567,13 +567,13 @@ export default function Home() {
                         }
                       }
                     }}
-                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-[#6B8F7A] focus:ring-offset-1 ${
+                    className={`w-16 px-2 py-1 text-center text-sm rounded border-none outline-none focus:ring-2 focus:ring-[#6E9B7F] focus:ring-offset-1 ${
                       theme === 'dark'
-                        ? 'bg-[#1D2922] shadow-neumorphic-dark text-[#E9E8E6] placeholder-[#A8C8B0]'
-                        : 'bg-[#FBF4EA] shadow-neumorphic text-[#2C2A29] placeholder-[#6B8F7A]'
+                        ? 'bg-[#1A2A21] shadow-neumorphic-dark text-[#EBECE8] placeholder-[#B4CFBE]'
+                        : 'bg-[#FFF5E7] shadow-neumorphic text-[#2D2A24] placeholder-[#6E9B7F]'
                     }`}
                   />
-                  <span className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>sec</span>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'}`}>sec</span>
                 </div>
               </div>
             </div>
@@ -613,12 +613,12 @@ export default function Home() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className={`text-4xl md:text-5xl font-light mb-6 ${
-              theme === 'dark' ? 'text-[#E9E8E6]' : 'text-[#2C2A29]'
+              theme === 'dark' ? 'text-[#EBECE8]' : 'text-[#2D2A24]'
             }`}>
               Start Your Meditation Journey with Zen Moment
             </h2>
             <p className={`text-xl font-light max-w-3xl mx-auto ${
-              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+              theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
             }`}>
               Zen Moment offers the perfect free online meditation timer for beginners and quick meditation sessions. Experience the best free meditation app with guided breathing exercises for stress relief and focus improvement.
             </p>
@@ -628,17 +628,17 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className={`p-8 rounded-2xl border ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
-                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
+                ? 'bg-[#1A2A21]/80 border-[#4F6F5C]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4F6F5C]'
+                : 'bg-[#FFF5E7]/80 border-[#D8C4A7]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8C4A7]'
             }`}>
               <div className="text-3xl mb-4">{'\uD83E\uDDE0'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
+                theme === 'dark' ? 'text-[#D6B188]' : 'text-[#8ABFA2]'
               }`}>
                 Enhanced Focus & Clarity
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Regular meditation practice improves concentration, reduces mental fog, and enhances cognitive performance. Studies show that just 10 minutes of daily meditation can significantly improve attention span and mental clarity.
               </p>
@@ -646,17 +646,17 @@ export default function Home() {
 
             <div className={`p-8 rounded-2xl border ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
-                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
+                ? 'bg-[#1A2A21]/80 border-[#4F6F5C]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4F6F5C]'
+                : 'bg-[#FFF5E7]/80 border-[#D8C4A7]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8C4A7]'
             }`}>
               <div className="text-3xl mb-4">{'\uD83D\uDC86\u200D\u2640\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Stress Reduction & Meditation Relaxation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Using Zen Moment's meditation timer, meditation activates the body's natural relaxation response, lowering cortisol levels and reducing symptoms of anxiety and depression. Experience deep peace and tranquility through guided meditation techniques.
               </p>
@@ -664,17 +664,17 @@ export default function Home() {
 
             <div className={`p-8 rounded-2xl border ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
-                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
+                ? 'bg-[#1A2A21]/80 border-[#4F6F5C]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4F6F5C]'
+                : 'bg-[#FFF5E7]/80 border-[#D8C4A7]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8C4A7]'
             }`}>
               <div className="text-3xl mb-4">{'\uD83D\uDE34'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-[#7FA87C]' : 'text-[#C5BBA7]'
+                theme === 'dark' ? 'text-[#8ABFA2]' : 'text-[#D6B188]'
               }`}>
                 Better Sleep with Meditation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Our free meditation timer helps calm racing thoughts and prepares your mind for restful sleep. Many practitioners report falling asleep faster and experiencing deeper, more restorative sleep patterns with regular meditation practice.
               </p>
@@ -682,17 +682,17 @@ export default function Home() {
 
             <div className={`p-8 rounded-2xl border ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
-                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
+                ? 'bg-[#1A2A21]/80 border-[#4F6F5C]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4F6F5C]'
+                : 'bg-[#FFF5E7]/80 border-[#D8C4A7]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8C4A7]'
             }`}>
               <div className="text-3xl mb-4">{'\u2696\uFE0F'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
+                theme === 'dark' ? 'text-[#D6B188]' : 'text-[#8ABFA2]'
               }`}>
                 Emotional Balance
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Develop greater emotional awareness and regulation through meditation. Learn to respond rather than react to life's challenges with mindfulness-based stress reduction techniques.
               </p>
@@ -700,17 +700,17 @@ export default function Home() {
 
             <div className={`p-8 rounded-2xl border ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
-                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
+                ? 'bg-[#1A2A21]/80 border-[#4F6F5C]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4F6F5C]'
+                : 'bg-[#FFF5E7]/80 border-[#D8C4A7]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8C4A7]'
             }`}>
               <div className="text-3xl mb-4">{'\uD83D\uDCAA'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Increased Resilience
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Build mental and emotional strength through consistent meditation practice. Develop the resilience to navigate life's ups and downs with greater ease and stability.
               </p>
@@ -718,17 +718,17 @@ export default function Home() {
 
             <div className={`p-8 rounded-2xl border ${
               theme === 'dark'
-                ? 'bg-[#1D2922]/80 border-[#4A5E54]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4A5E54]'
-                : 'bg-[#FBF4EA]/80 border-[#D8CFC0]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8CFC0]'
+                ? 'bg-[#1A2A21]/80 border-[#4F6F5C]/50 shadow-[10px_10px_20px_#0D100E,-10px_-10px_20px_#4F6F5C]'
+                : 'bg-[#FFF5E7]/80 border-[#D8C4A7]/50 shadow-[10px_10px_20px_#FFFFFF,-10px_-10px_20px_#D8C4A7]'
             }`}>
               <div className="text-3xl mb-4">{'\uD83C\uDF31'}</div>
               <h3 className={`text-2xl font-light mb-4 ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Personal Growth Through Meditation
               </h3>
               <p className={`leading-relaxed ${
-                theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
               }`}>
                 Meditation opens doors to deeper self-understanding and spiritual growth. Connect with your inner wisdom and discover your true potential through guided meditation practices with Zen Moment.
               </p>
@@ -738,52 +738,52 @@ export default function Home() {
           {/* Quick Start Section - Target Beginners and Quick Users */}
           <div className={`p-12 rounded-3xl border ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-[#1D2922]/60 to-[#162019]/60 border-[#4A5E54]/40'
-              : 'bg-gradient-to-br from-[#FBF4EA]/60 to-[#F1E6D6]/60 border-[#D8CFC0]/40'
+              ? 'bg-gradient-to-br from-[#1A2A21]/60 to-[#162019]/60 border-[#4F6F5C]/40'
+              : 'bg-gradient-to-br from-[#FFF5E7]/60 to-[#F4DFC0]/60 border-[#D8C4A7]/40'
           }`}>
             <h3 className={`text-3xl font-light text-center mb-4 ${
-              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+              theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
             }`}>
               {'\u26A1'} Quick Meditation for Beginners
             </h3>
             <p className={`text-lg text-center mb-8 ${
-              theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+              theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
             }`}>
               Start with just 5 minutes using Zen Moment's free meditation timer
             </p>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className={`text-center p-4 rounded-xl border ${
-                theme === 'dark' ? 'bg-[#1D2922]/50 border-[#4A5E54]/30' : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/30'
+                theme === 'dark' ? 'bg-[#1A2A21]/50 border-[#4F6F5C]/30' : 'bg-[#FFF5E7]/60 border-[#D8C4A7]/30'
               }`}>
                 <div className="text-2xl mb-2">{'\uD83C\uDF3F'}</div>
                 <h4 className={`font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
+                  theme === 'dark' ? 'text-[#D6B188]' : 'text-[#8ABFA2]'
                 }`}>
                   Meditation for Beginners
                 </h4>
-                <p className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>Simple 5-minute meditation sessions to build your meditation practice with our free meditation timer</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'}`}>Simple 5-minute meditation sessions to build your meditation practice with our free meditation timer</p>
               </div>
               <div className={`text-center p-4 rounded-xl border ${
-                theme === 'dark' ? 'bg-[#1D2922]/50 border-[#4A5E54]/30' : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/30'
+                theme === 'dark' ? 'bg-[#1A2A21]/50 border-[#4F6F5C]/30' : 'bg-[#FFF5E7]/60 border-[#D8C4A7]/30'
               }`}>
                 <div className="text-2xl mb-2">{'\u23F1\uFE0F'}</div>
                 <h4 className={`font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                  theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
                 }`}>
                   Free Meditation Timer
                 </h4>
-                <p className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>Perfect for busy professionals needing quick meditation sessions for stress relief and focus improvement</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'}`}>Perfect for busy professionals needing quick meditation sessions for stress relief and focus improvement</p>
               </div>
               <div className={`text-center p-4 rounded-xl border ${
-                theme === 'dark' ? 'bg-[#1D2922]/50 border-[#4A5E54]/30' : 'bg-[#FBF4EA]/60 border-[#D8CFC0]/30'
+                theme === 'dark' ? 'bg-[#1A2A21]/50 border-[#4F6F5C]/30' : 'bg-[#FFF5E7]/60 border-[#D8C4A7]/30'
               }`}>
                 <div className="text-2xl mb-2">{'\uD83D\uDD13'}</div>
                 <h4 className={`font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-[#7FA87C]' : 'text-[#C5BBA7]'
+                  theme === 'dark' ? 'text-[#8ABFA2]' : 'text-[#D6B188]'
                 }`}>
                   Free Online Meditation Tool
                 </h4>
-                <p className={`text-sm ${theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'}`}>No ads, no tracking - just pure meditation experience with guided breathing exercises</p>
+                <p className={`text-sm ${theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'}`}>No ads, no tracking - just pure meditation experience with guided breathing exercises</p>
               </div>
             </div>
           </div>
@@ -791,34 +791,34 @@ export default function Home() {
           {/* Meditation Tips */}
           <div className={`p-12 rounded-3xl border ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-[#1D2922]/60 to-[#162019]/60 border-[#4A5E54]/40'
-              : 'bg-gradient-to-br from-[#FBF4EA]/60 to-[#F1E6D6]/60 border-[#D8CFC0]/40'
+              ? 'bg-gradient-to-br from-[#1A2A21]/60 to-[#162019]/60 border-[#4F6F5C]/40'
+              : 'bg-gradient-to-br from-[#FFF5E7]/60 to-[#F4DFC0]/60 border-[#D8C4A7]/40'
           }`}>
             <h3 className={`text-3xl font-light text-center mb-8 ${
-              theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
+              theme === 'dark' ? 'text-[#D6B188]' : 'text-[#8ABFA2]'
             }`}>
               {'\uD83E\uDDD8'} Advanced Meditation Techniques with Zen Moment
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h4 className={`text-xl font-medium mb-4 ${
-                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                  theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
                 }`}>
                   Beginner's Meditation Guide
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                  theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#A8C8B0] mt-1">{'\u2022'}</span>
+                    <span className="text-[#B4CFBE] mt-1">{'\u2022'}</span>
                     <span><strong>Start small:</strong> Begin with 5-10 minutes daily meditation sessions using our free meditation timer and gradually increase duration as you become more comfortable with meditation practice.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#D4A574] mt-1">{'\u2022'}</span>
+                    <span className="text-[#C89C67] mt-1">{'\u2022'}</span>
                     <span><strong>Find a quiet space:</strong> Choose a peaceful environment where you won't be disturbed during your meditation sessions.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#A8C8B0] mt-1">{'\u2022'}</span>
+                    <span className="text-[#B4CFBE] mt-1">{'\u2022'}</span>
                     <span><strong>Focus on your breath:</strong> Use your breath as an anchor to keep your mind present during meditation with Zen Moment's guided timer.</span>
                   </li>
                   <li className="flex items-start space-x-2">
@@ -829,19 +829,19 @@ export default function Home() {
               </div>
               <div>
                 <h4 className={`text-xl font-medium mb-4 ${
-                  theme === 'dark' ? 'text-[#C5BBA7]' : 'text-[#7FA87C]'
+                  theme === 'dark' ? 'text-[#D6B188]' : 'text-[#8ABFA2]'
                 }`}>
                   Best Practices for Meditation Success
                 </h4>
                 <ul className={`space-y-3 ${
-                  theme === 'dark' ? 'text-[#A8C8B0]' : 'text-[#6B8F7A]'
+                  theme === 'dark' ? 'text-[#B4CFBE]' : 'text-[#6E9B7F]'
                 }`}>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#D4A574] mt-1">{'\u2022'}</span>
+                    <span className="text-[#C89C67] mt-1">{'\u2022'}</span>
                     <span><strong>Consistency is key:</strong> Regular daily meditation practice is more important than session length. Use Zen Moment's meditation timer for consistent practice.</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="text-[#A8C8B0] mt-1">{'\u2022'}</span>
+                    <span className="text-[#B4CFBE] mt-1">{'\u2022'}</span>
                     <span><strong>Mix meditation styles:</strong> Combine different meditation techniques like mindfulness, loving-kindness, and body scan for comprehensive meditation benefits.</span>
                   </li>
                   <li className="flex items-start space-x-2">
@@ -899,6 +899,7 @@ export default function Home() {
       </div>
   )
 }
+
 
 
 
